@@ -8,8 +8,10 @@ import PropertyBox from "@/components/projectBox/PropertyBox";
 import Link from "next/link";
 import { LikeUnlikePropertyApi } from "@/api/apiCall";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const { push } = useRouter();
   const data = useDataStore((store) => store.homeScreen);
   const { fetchhomeScreen } = useDataStore();
   useEffect(() => {
@@ -91,6 +93,7 @@ export default function Home() {
                     <PropertyBox
                       item={item}
                       LikeUnlikeProperty={LikeUnlikeProperty}
+                      push={push}
                     />
                   </div>
                 ))}

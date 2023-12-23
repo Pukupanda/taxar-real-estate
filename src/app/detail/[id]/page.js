@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect } from "react";
 import { FourSlideSettings } from "@/Utils";
-import Image from "next/image";
 import SliderComponent from "@/components/sliderComponent/SliderComponent";
 import ProjectBox from "@/components/projectBox/ProjectBox";
-
 import { useParams } from "next/navigation";
 import { useDataStore } from "@/api/store/store";
 import ImageSliderWithThumnail from "@/components/ImageSliderWithThumnail/ImageSliderWithThumnail";
@@ -36,6 +34,13 @@ function Detail() {
                     {detail?.propertyDetails?.title} -{" "}
                     {detail?.propertyDetails?.pArea}
                   </h3>
+                  <h6 className="mb-2">
+                    Facing Direction:-{" "}
+                    <span className="text-capitalize fw-bold">
+                      {detail?.propertyDetails?.facingDirection}
+                    </span>
+                  </h6>
+
                   <div className="mb-3">
                     <img src="/assets/img/Address.png" alt="" width="15px" />{" "}
                     {detail?.propertyDetails?.location}

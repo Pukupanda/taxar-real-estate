@@ -22,6 +22,7 @@ dist/
 # Maven
 target/
 dist/
+build/
 
 # JetBrains IDE
 .idea/
@@ -48,3 +49,4 @@ Thumbs.db
 *.mov
 *.wmv
 
+.vercel

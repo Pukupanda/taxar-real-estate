@@ -14,7 +14,7 @@ function PropertyBox(props) {
             if (token) {
               props.LikeUnlikeProperty(props.item?._id);
             } else {
-              push("/login");
+              props.push("/login");
             }
           }}
           role="button"

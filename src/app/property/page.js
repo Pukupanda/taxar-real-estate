@@ -5,13 +5,14 @@ import Loader from "@/components/Loader/Loader";
 import Paginations from "@/components/Paginations/Pagination";
 import PropertyBox from "@/components/projectBox/PropertyBox";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 function PropertyList() {
   const list = useDataStore((store) => store.propertyList);
   const { fetchpropertyList } = useDataStore();
-
+  const { push } = useRouter();
   const [loading, setLoading] = useState(false);
   const [page, setpage] = useState(1);
   const [status, setstatus] = useState("1");
@@ -62,6 +63,7 @@ function PropertyList() {
                   <PropertyBox
                     item={item}
                     LikeUnlikeProperty={LikeUnlikeProperty}
+                    push={push}
                   />
                 </div>
               ))
