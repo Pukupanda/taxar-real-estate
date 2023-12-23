@@ -1,0 +1,194 @@
+.property__card {
+  border-radius: 8px;
+  margin-bottom: 3px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.property__card-media {
+  position: relative;
+  height: 212px;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.property__card-media > div {
+  height: 100%;
+  overflow: hidden;
+}
+.property__card-media img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+.property__card-media-widgets {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px 10px 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  z-index: 1;
+}
+.property__card-media-widgets:before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.property__card-media-widgets .tag:not(:last-child) {
+  margin-right: 4px;
+}
+.property__card-media-widgets .tag {
+  transition: all 0.3s ease-out;
+  transition-delay: 0.3s;
+}
+.tag-black {
+  color: #fff;
+  background: #277150;
+  background-size: 250%;
+  font-size: 12px;
+  transition: 0.3s ease-in-out;
+}
+.property__card:not(:hover)
+  .property__card-media-widgets
+  .tag:not(:first-child) {
+  opacity: 0;
+}
+.compare {
+  visibility: hidden;
+  opacity: 0;
+}
+.tag-circ {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.tag-black-heart {
+  color: #fff;
+  background-color: rgba(29, 54, 69, 0.8);
+}
+.heartIconContainer {
+  display: flex;
+  align-items: center;
+}
+.heartIcon {
+  color: #fff;
+  margin-left: -0.3em;
+  margin-right: -0.3em;
+}
+.tag span:nth-child(2) {
+  color: #fff;
+  font-weight: 700;
+}
+.search_tooltiptext,
+.tooltiptext {
+  visibility: hidden;
+  background-color: #277150;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  overflow: unset !important;
+  width: auto;
+  position: absolute;
+  display: flex;
+  white-space: nowrap;
+  font-size: x-small;
+}
+.tooltiptext {
+  right: 1%;
+  bottom: 17%;
+}
+.property__card:hover
+  > a
+  > .property__card-media
+  > .property__card-media-widgets
+  > .compare {
+  visibility: visible;
+  opacity: 1;
+}
+.tag-black-heart:hover {
+  background-color: #277150;
+}
+.tag-black-heart:hover .tooltiptext {
+  visibility: visible;
+}
+.property__card .property__card-text {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  /* height: 208px; */
+  justify-content: space-between;
+  padding: 0 16px 20px;
+}
+.property__card-type {
+  display: block;
+  color: #004a75;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.property__card-title {
+  color: #4d4d4d;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  overflow: hidden;
+  text-transform: capitalize;
+}
+.property__card-location {
+  display: flex;
+  align-items: center;
+  color: #4e6072;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 8px 0 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.property__card-location:before {
+  content: "";
+  display: inline-block;
+  width: 13px;
+  height: 16px;
+  margin-right: 6px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxMyAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuNDY5MjMgMTZDNi40NjQwNyAxNS45NDQ4IDYuNDExNzEgMTUuOTMwMyA2LjM3Nzk4IDE1LjkwMjlDNC45MTI4OCAxNC43MzIzIDMuNTg1ODQgMTMuNDI1MSAyLjQxNTUgMTEuOTY3MkMxLjY3MTI1IDExLjA0MDUgMS4wMTI2OSAxMC4wNTk0IDAuNTQyOTY1IDguOTYyNzdDLTAuMTU0MDc5IDcuMzM2NDggLTAuMTgwMjYzIDUuNzAxNTcgMC40NjYwMDEgNC4wNjA0QzAuODg4OTA5IDIuOTg1NzMgMS41NzI4NiAyLjA5MzUgMi40OTEyOCAxLjM3OThDMy4zNTA5OCAwLjcxMTUwNyA0LjMyMDU3IDAuMjc5MjkgNS40MDAwNiAwLjA5NjA2NzhDNi41OTEwMiAtMC4xMDU5NDcgNy43NTE0NCAwLjAwOTkzNzY1IDguODc1NzYgMC40NTAzNzZDOS45NjcxNSAwLjg3ODI4NiAxMC44Nzc2IDEuNTQ4NTQgMTEuNjA0IDIuNDU5MTdDMTIuMzAyMyAzLjMzNDE3IDEyLjc0NDIgNC4zMjM4OCAxMi45MTg4IDUuNDIyODNDMTMuMTAyNSA2LjU3Nzc1IDEyLjk3NTEgNy43MDA1OCAxMi41MzE2IDguNzg5NzNDMTIuMDE3IDEwLjA1MzEgMTEuMjUxMyAxMS4xNjA3IDEwLjM4NzMgMTIuMjA5MUM5LjI2MTc3IDEzLjU3NSA3Ljk5NzQxIDE0LjgwNCA2LjYxMjA1IDE1LjkxMjNDNi41ODIzIDE1LjkzNjIgNi41MzQyOSAxNS45NDg3IDYuNTMzMSAxNS45OTk2QzYuNTExNjggMTYgNi40OTA2NSAxNiA2LjQ2OTIzIDE2Wk02LjUwMjE2IDEuMjUyNTZDNi4xNjQxNSAxLjI1ODA0IDUuODI3NzMgMS4yODY2MiA1LjQ5NjA3IDEuMzUwMDRDNS4yOTUzMiAxLjM4ODQxIDUuMDk0OTggMS40MzkzMSA0LjkwMDk4IDEuNTAzNTFDMy42MzU0MyAxLjkyMTI0IDIuNjQ3OTggMi42ODk3NiAxLjk4NDI2IDMuODMyOTRDMS4yNjU4IDUuMDcwMDggMS4wNzI5OSA2LjM5MjE4IDEuNDYwOTggNy43NzNDMS43NjkyNCA4Ljg3MDM4IDIuMzcyMjYgOS44MjI5IDMuMDQ5MDcgMTAuNzMwNEM0LjAyODk4IDEyLjA0NDcgNS4xNzk4OCAxMy4yMDI3IDYuNDA0OTYgMTQuMjkzMUM2LjQ5MjY0IDE0LjM3MSA2LjUzMzkgMTQuMzQ5IDYuNjA2ODkgMTQuMjgzN0M3LjQ4NDQ1IDEzLjUwMDcgOC4zMjg2OCAxMi42ODUyIDkuMDk1NTQgMTEuNzk0OUM5Ljk2MTU5IDEwLjc4OTEgMTAuNzQxOSA5LjcyODU1IDExLjI4MDcgOC41MDkwM0MxMS44NDUyIDcuMjMxNTYgMTEuODc4MiA1LjkzODQzIDExLjQwMjEgNC42MzU1MkMxMC42NjI2IDIuNjEzNDIgOC42ODI1NSAxLjI1MzM0IDYuNTAyMTYgMS4yNTI1NloiIGZpbGw9IiNBM0EzQTMiLz4KPHBhdGggZD0iTTYuNDk1ODEgOS4zNzc3N0M0LjgzNzExIDkuMzc0MjQgMy40ODk4MyA4LjA0MDc5IDMuNDkyMjEgNi40MDU0OUMzLjQ5NDk5IDQuNzcyNTQgNC44NTQ1NiAzLjQzNDc5IDYuNTA2MTMgMy40Mzk4OEM4LjE2MjQ1IDMuNDQ0OTYgOS41MTQwOSA0Ljc4NDI5IDkuNTA5NzIgNi40MTU2N0M5LjUwNDk2IDguMDUyOTMgOC4xNTMzMiA5LjM4MTI5IDYuNDk1ODEgOS4zNzc3N1pNNi40OTg1OSA4LjEyNzdDNy40NTc0NyA4LjEyODg4IDguMjM5ODEgNy4zNjE1NCA4LjI0MjU5IDYuNDE2ODVDOC4yNDUzNiA1LjQ3MjE1IDcuNDY3MzkgNC42OTYyIDYuNTExMjggNC42OTA3MkM1LjU0OTIzIDQuNjg0ODUgNC43NTg1NiA1LjQ2MTk4IDQuNzU5MzUgNi40MTIxNUM0Ljc2MDU0IDcuMzU3NjIgNS41Mzk3MSA4LjEyNjUzIDYuNDk4NTkgOC4xMjc3WiIgZmlsbD0iI0EzQTNBMyIvPgo8L3N2Zz4K);
+  background-position: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.property__card-tags {
+  margin-top: 8px;
+}
+.tag-gray {
+  color: #fff;
+  background-color: #ef6b23;
+}
+
+.btn-link,
+.btn-link:hover {
+  background: #ef6b23;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+.LikeUnlike {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}

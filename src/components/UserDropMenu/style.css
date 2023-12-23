@@ -1,0 +1,16 @@
+.profileDrop {
+  display: none;
+  position: absolute;
+  top: 100%;
+  min-width: 10vw;
+  left: 0;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  text-transform: capitalize;
+}
+.showProfile:hover .profileDrop {
+  display: grid;
+  grid-gap: 10px;
+}

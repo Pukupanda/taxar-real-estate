@@ -1,0 +1,30 @@
+.prertyFilter {
+  position: sticky;
+  top: 6rem;
+}
+.radio-buttons label {
+  cursor: pointer;
+  position: relative;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  padding: 6px 15px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.radio-buttons .form-group {
+  display: inline-block;
+  margin: 6px;
+}
+.radio-buttons input[type="radio"] {
+  display: none;
+}
+
+.radio-buttons input[type="radio"]:checked + label {
+  background-color: #fc9934;
+  color: #fff;
+}
+.multi-range-slider {
+  border: 0 !important;
+  box-shadow: unset !important;
+}
