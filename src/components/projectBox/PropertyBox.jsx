@@ -1,23 +1,11 @@
-"use client";
 import React from "react";
 import "./style.css";
 import Link from "next/link";
 import Cookies from "js-cookie";
-import { usePathname, useRouter } from "next/navigation";
-import { LikeUnlikePropertyApi } from "@/api/apiCall";
-import { toast } from "react-toastify";
 
 function PropertyBox(props) {
   const token = Cookies.get("Taxar");
-  const router = useRouter();
-  const pathname = usePathname();
-  const LikeUnlikeProperty = (val) => {
-    LikeUnlikePropertyApi(val).then((res) => {
-      toast.success(res?.message);
-      router.refresh();
-    });
-  };
-  console.log(router, "router");
+
   return (
     <>
       <div className="property__card featured_card position-relative">
@@ -25,10 +13,10 @@ function PropertyBox(props) {
           className="LikeUnlike"
           onClick={() => {
             if (token) {
-              LikeUnlikeProperty(props.item?._id);
+              props.LikeUnlikeProperty(props.item?._id);
             } else {
-              push("/login");
-              Cookies.set("pageUrl", pathname);
+              props.push("/login");
+              Cookies.set("pageUrl", props.pathname);
             }
           }}
           role="button"
