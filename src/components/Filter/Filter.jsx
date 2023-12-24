@@ -57,7 +57,7 @@ function Filter() {
           />
           <label for="Location">Location</label>
         </div>
-        <h6>SuBCATEGORY</h6>
+        <h6>SUBCATEGORY</h6>
         <div className="radio-buttons mb-3">
           <div className="form-group">
             <input type="radio" id="2 BHK" name="prortyType" />
