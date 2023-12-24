@@ -55,7 +55,7 @@ function Career() {
                       <h6>{item?.experience}</h6>
                       <p>{item?.description}</p>
                       <div
-                        className="loginBtn btn"
+                        className="loginBtn btn deailViewAbsula"
                         role="button"
                         onClick={() => {
                           setmodalName("apply now");

@@ -57,7 +57,11 @@ function ImageUploadInput(props) {
             fill={true}
           />
         </span>
-        <div className={props.showText === "yes" ? "textColor" : "d-none"}>
+        <div
+          className={
+            props.showText === "yes" ? "textColor text-center" : "d-none"
+          }
+        >
           <h6 className="mb-0">{props.Text}</h6>
         </div>
         <input

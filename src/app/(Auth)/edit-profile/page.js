@@ -7,9 +7,9 @@ function EditProfile() {
       <section className="">
         <div className="singleBoxBg">
           <div className="singleBoxStyle">
-            <div className="text-center">
+            {/* <div className="text-center">
               <h3>Edit Profile</h3>
-            </div>
+            </div> */}
             <SignupEditProfileForm pageName="" />
           </div>
         </div>

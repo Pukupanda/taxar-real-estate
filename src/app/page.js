@@ -9,6 +9,7 @@ import Link from "next/link";
 import { LikeUnlikePropertyApi } from "@/api/apiCall";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Loader from "@/components/Loader/Loader";
 
 export default function Home() {
   const { push } = useRouter();
@@ -33,12 +34,12 @@ export default function Home() {
               <h1 className="themeOrg mb-3">
                 &apos;Connecting People to Property and Prosperity&apos;
               </h1>
-              <a
+              <Link
                 className="bookingBtn w-auto py-2 px-4 rounded-pill"
-                href="booking.html"
+                href="/booking"
               >
                 Booking
-              </a>
+              </Link>
             </div>
             <div className="col-sm-12 col-md-6 col-lg-6 mb-3">
               <img
@@ -50,7 +51,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="aboutUs mt-4">
+      <section className="aboutUs">
         <div className="container">
           <div className="aboutFixedBg">
             <div className="aboutContent">
@@ -75,34 +76,38 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="categoryProjectBg mt-5">
+      <section className="bg-white py-4">
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-10 col-lg-10 mb-4">
-              <h3 className="text-white">Featured Property</h3>
+              <h3 className="text-dark">Featured Property</h3>
             </div>
             <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
-              <Link href={"/property"} className="text-white">
+              <Link href={"/property"} className="text-dark fw-bold">
                 View All
               </Link>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-12">
-              <SliderComponent setting={FourSlideSettings}>
-                {data?.featuredProperties?.map((item, i) => (
-                  <div key={i}>
-                    <PropertyBox
-                      item={item}
-                      LikeUnlikeProperty={LikeUnlikeProperty}
-                      push={push}
-                    />
-                  </div>
-                ))}
-              </SliderComponent>
+              {data?.featuredProperties?.length > 0 ? (
+                <SliderComponent setting={FourSlideSettings}>
+                  {data?.featuredProperties?.map((item, i) => (
+                    <div key={i}>
+                      <PropertyBox
+                        item={item}
+                        LikeUnlikeProperty={LikeUnlikeProperty}
+                        push={push}
+                      />
+                    </div>
+                  ))}
+                </SliderComponent>
+              ) : (
+                <Loader />
+              )}
             </div>
           </div>
         </div>
       </section>
-      <section className="mt-5">
+      <section className="">
         <div className="container">
           <div className="row justify-content-center align-items-center">
             <div className="col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -157,20 +162,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="categoryProjectBg mt-5">
+      <section className="bg-white py-4">
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
-              <h3 className="text-white">Featured Projects</h3>
+              <h3 className="text-dark">Featured Projects</h3>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-12">
-              <SliderComponent setting={FourSlideSettings}>
-                {data?.featuredProject?.map((item, i) => (
-                  <div key={i}>
-                    <ProjectBox item={item} />
-                  </div>
-                ))}
-              </SliderComponent>
+              {data?.featuredProject?.length > 0 ? (
+                <SliderComponent setting={FourSlideSettings}>
+                  {data?.featuredProject?.map((item, i) => (
+                    <div key={i}>
+                      <ProjectBox item={item} />
+                    </div>
+                  ))}
+                </SliderComponent>
+              ) : (
+                <Loader />
+              )}
             </div>
           </div>
         </div>
@@ -183,30 +192,34 @@ export default function Home() {
               <h3 className="">Our Teams</h3>
             </div>
             <div className="col-sm-12 col-md-9 col-lg-8">
-              <SliderComponent setting={SingleImageCarouselsettings}>
-                {data?.teams?.map((item, i) => (
-                  <div key={i}>
-                    <div className="ourTeam text-center">
-                      <img
-                        src={
-                          item?.profilePicture?.includes("http")
-                            ? item?.profilePicture
-                            : "/assets/img/dummyImage.png"
-                        }
-                        alt=""
-                        width="100px"
-                        height="100px"
-                        className="rounded-circle m-auto ob-cover"
-                      />
-                      <h4 className="mt-3">{item?.fullName}</h4>
-                      <h6>
-                        <i>{item?.designation}</i>
-                      </h6>
-                      <p>{item?.description}</p>
+              {data?.teams?.length > 0 ? (
+                <SliderComponent setting={SingleImageCarouselsettings}>
+                  {data?.teams?.map((item, i) => (
+                    <div key={i}>
+                      <div className="ourTeam text-center">
+                        <img
+                          src={
+                            item?.profilePicture?.includes("http")
+                              ? item?.profilePicture
+                              : "/assets/img/dummyImage.png"
+                          }
+                          alt=""
+                          width="100px"
+                          height="100px"
+                          className="rounded-circle m-auto ob-cover"
+                        />
+                        <h4 className="mt-3">{item?.fullName}</h4>
+                        <h6>
+                          <i>{item?.designation}</i>
+                        </h6>
+                        <p>{item?.description}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </SliderComponent>
+                  ))}
+                </SliderComponent>
+              ) : (
+                <Loader />
+              )}
             </div>
           </div>
         </div>

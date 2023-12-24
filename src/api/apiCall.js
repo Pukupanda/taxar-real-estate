@@ -184,3 +184,8 @@ export const getInTouchApi = async (payload) => {
     return data;
   });
 };
+export const AddPropertyApi = async (payload) => {
+  return postRawData("user/property/addUpdate", payload).then((data) => {
+    return data;
+  });
+};

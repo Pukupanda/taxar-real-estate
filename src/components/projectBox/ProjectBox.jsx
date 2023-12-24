@@ -59,7 +59,7 @@ function ProjectBox(props) {
           <div className="property__card-footer">
             <div className="property__card-author align-items-center">
               <span className="tag tag-gray2 fw-bold">
-                {props.item?.numOfProperty || 0}&nbsp; Properties
+                {props.item?.propertyCount || 0}&nbsp; Properties
               </span>
             </div>
             <Link href={`/property/${props.item?._id}`}>

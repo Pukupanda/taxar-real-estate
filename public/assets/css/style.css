@@ -269,13 +269,14 @@ input:focus {
 }
 .singleBoxBg {
   position: relative;
-  background: linear-gradient(
+  background-color: #fff;
+  /* background: linear-gradient(
     86deg,
     rgba(242, 119, 33, 0.6587885154061625) 0%,
     rgba(7, 215, 83, 0.5047268907563025) 0%,
     rgba(219, 122, 55, 0.633578431372549) 63%,
     rgba(219, 122, 55, 0.5747549019607843) 100%
-  );
+  ); */
   /* url(/assets/img/banner2.jpeg); */
   background-repeat: no-repeat;
   background-position: center center;
@@ -286,14 +287,14 @@ input:focus {
 }
 .btn-save {
   color: #fff !important;
-  background: rgb(242, 119, 33);
-  background: linear-gradient(
+  background-color: #277150 !important;
+  /* background: linear-gradient(
     145deg,
     rgba(242, 119, 33, 0.6587885154061625) 0%,
     rgba(39, 113, 80, 1) 0%,
     rgba(239, 107, 35, 1) 82%,
     rgba(239, 107, 35, 1) 100%
-  );
+  ); */
 }
 .btn-save:hover {
   color: #fff;
@@ -310,6 +311,8 @@ input:focus {
   right: 0;
   top: 0;
   bottom: 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
 }
 .pass-view:before {
   background-image: url(/assets/img/view.png);
@@ -403,7 +406,39 @@ footer {
   top: 10px !important;
   left: 5px !important;
 }
+.deailViewAbsula {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.formStyle .form-group .form-control {
+  height: 50px;
+}
+.radio-buttons label {
+  cursor: pointer;
+  position: relative;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  padding: 6px 15px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.radio-buttons .form-group {
+  display: inline-block;
+  margin: 6px;
+}
+.radio-buttons input[type="checkbox"] {
+  display: none;
+}
 
+.radio-buttons input[type="checkbox"]:checked + label {
+  background-color: #fc9934;
+  color: #fff;
+}
+.ql-editor {
+  min-height: 200px;
+}
 /*================ Responsive ================ */
 @media (max-width: 991.9px) {
   .homeSlider .bannerImg {
@@ -422,5 +457,8 @@ footer {
   }
   .AmenitBox .categoryCard {
     min-width: 100px;
+  }
+  .deailViewAbsula {
+    position: static;
   }
 }

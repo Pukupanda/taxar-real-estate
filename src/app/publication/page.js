@@ -45,8 +45,11 @@ function Publication() {
                     <div className="proprtyInfo w-100">
                       <h5 className="text-capitalize">{item?.title}</h5>
                       <p>{item?.description}</p>
-                      <Link href={`/publication/detail/${item?._id}`}>
-                        <div className="loginBtn btn">View Details</div>
+                      <Link
+                        href={`/publication/detail/${item?._id}`}
+                        className="loginBtn btn deailViewAbsula"
+                      >
+                        View Details
                       </Link>
                     </div>
                   </div>

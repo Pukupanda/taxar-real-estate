@@ -6,9 +6,9 @@ function Signup() {
       <section className="">
         <div className="singleBoxBg">
           <div className="singleBoxStyle">
-            <div className="text-center">
+            {/* <div className="text-center">
               <h3>Sign Up</h3>
-            </div>
+            </div> */}
             <SignupEditProfileForm pageName="signup" />
           </div>
         </div>

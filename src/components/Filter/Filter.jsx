@@ -44,16 +44,8 @@ function Filter() {
             <label for="land">land</label>
           </div>
           <div className="form-group">
-            <input type="radio" id="flats" name="cate" />
-            <label for="flats">flats</label>
-          </div>
-          <div className="form-group">
-            <input type="radio" id="office" name="cate" />
-            <label for="office">office</label>
-          </div>
-          <div className="form-group">
-            <input type="radio" id="shop" name="cate" />
-            <label for="shop">shop</label>
+            <input type="radio" id="house" name="cate" />
+            <label for="house">house</label>
           </div>
         </div>
         <div className="form-floating mb-3">
@@ -65,7 +57,7 @@ function Filter() {
           />
           <label for="Location">Location</label>
         </div>
-        <h6>PROPERTY TYPE</h6>
+        <h6>SuBCATEGORY</h6>
         <div className="radio-buttons mb-3">
           <div className="form-group">
             <input type="radio" id="2 BHK" name="prortyType" />

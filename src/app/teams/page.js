@@ -43,7 +43,7 @@ async function Teams() {
                 {list?.data?.Team?.slice(2, list?.data?.Team?.length)?.map(
                   (item, i) => (
                     <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={i}>
-                      <div className="bg-white shadow rounded p-3">
+                      <div className="bg-white shadow rounded p-3 text-center">
                         <Image
                           src={
                             item?.profilePicture?.includes("http")
