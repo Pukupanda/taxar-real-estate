@@ -9,8 +9,7 @@ export const metadata = {
   title: "Taxar Real Estate",
   description: "Taxar Real Estate",
 };
-export const dynamic = "force-dynamic";
-
+export const revalidate = 0;
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

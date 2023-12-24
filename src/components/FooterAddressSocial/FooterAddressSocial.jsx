@@ -1,52 +1,61 @@
-"use client";
-import { useDataStore } from "@/api/store/store";
+import { FooterAddressApi } from "@/api/apiCall";
 import Link from "next/link";
-import React, { useEffect } from "react";
+export const dynamic = true;
 
-function FooterAddressSocial() {
-  const data = useDataStore((store) => store.FooterAddress);
-  const { fetchFooterAddress } = useDataStore();
-  useEffect(() => {
-    fetchFooterAddress();
-  }, []);
+async function FooterAddressSocial() {
+  const data = await FooterAddressApi();
 
   return (
     <>
       <p>
-        <i className="fa-solid fa-location-dot"></i> {data?.address}
+        <i className="fa-solid fa-location-dot"></i> {data?.data?.address}
       </p>
       <p>
-        <i className="fa-solid fa-phone"></i> {data?.contactNumber}
+        <i className="fa-solid fa-phone"></i> {data?.data?.contactNumber}
       </p>
       <p>
-        <i className="fa-solid fa-envelope"></i> {data?.email}
+        <i className="fa-solid fa-envelope"></i> {data?.data?.email}
       </p>
       <p className="fs-3">
         <Link
           className="text-dark"
           target="_black"
-          href={data?.facebookUrl?.includes("http") ? data?.facebookUrl : "#"}
+          href={
+            data?.data?.facebookUrl?.includes("http")
+              ? data?.data?.facebookUrl
+              : "#"
+          }
         >
           <i className="fa-brands fa-square-facebook"></i>
         </Link>{" "}
         <Link
           className="text-dark"
           target="_black"
-          href={data?.instaUrl?.includes("http") ? data?.instaUrl : "#"}
+          href={
+            data?.data?.instaUrl?.includes("http") ? data?.data?.instaUrl : "#"
+          }
         >
           <i className="fa-brands fa-instagram"></i>
         </Link>{" "}
         <Link
           className="text-dark"
           target="_black"
-          href={data?.linkedInUrl?.includes("http") ? data?.linkedInUrl : "#"}
+          href={
+            data?.data?.linkedInUrl?.includes("http")
+              ? data?.data?.linkedInUrl
+              : "#"
+          }
         >
           <i className="fa-brands fa-linkedin"></i>
         </Link>{" "}
         <Link
           className="text-dark"
           target="_black"
-          href={data?.twitterUrl?.includes("http") ? data?.twitterUrl : "#"}
+          href={
+            data?.data?.twitterUrl?.includes("http")
+              ? data?.data?.twitterUrl
+              : "#"
+          }
         >
           <i className="fa-brands fa-square-twitter"></i>
         </Link>{" "}

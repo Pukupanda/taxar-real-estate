@@ -1,22 +1,29 @@
+"use client";
 import { FourSlideSettings, SingleImageCarouselsettings } from "@/Utils";
-import { homeScreenApi } from "@/api/apiCall";
-import Loader from "@/components/Loader/Loader";
-import ProjectBox from "@/components/projectBox/ProjectBox";
-import PropertyBox from "@/components/projectBox/PropertyBox";
 import SliderComponent from "@/components/sliderComponent/SliderComponent";
+import ProjectBox from "@/components/projectBox/ProjectBox";
+import { useDataStore } from "@/api/store/store";
+import { useEffect } from "react";
+import PropertyBox from "@/components/projectBox/PropertyBox";
 import Link from "next/link";
+import { LikeUnlikePropertyApi } from "@/api/apiCall";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
-export default async function Home() {
-  // const { push } = useRouter();
-  // const pathname = usePathname();
-  const { data } = await homeScreenApi();
+export default function Home() {
+  const { push } = useRouter();
+  const data = useDataStore((store) => store.homeScreen);
+  const { fetchhomeScreen } = useDataStore();
+  useEffect(() => {
+    fetchhomeScreen();
+  }, []);
 
-  // const { fetchhomeScreen } = useDataStore();
-  // useEffect(() => {
-  //   fetchhomeScreen();
-  // }, []);
-  console.log(data, "data");
-
+  const LikeUnlikeProperty = (val) => {
+    LikeUnlikePropertyApi(val).then((res) => {
+      toast.success(res?.message);
+      fetchhomeScreen();
+    });
+  };
   return (
     <>
       <section className="homeSlider">
@@ -43,7 +50,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <section className="aboutUs">
+      <section className="aboutUs mt-4">
         <div className="container">
           <div className="aboutFixedBg">
             <div className="aboutContent">
@@ -68,38 +75,34 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      {data?.featuredProperties?.length > 0 && (
-        <section className="categoryProjectBg">
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-12 col-md-10 col-lg-10 mb-4">
-                <h3 className="text-dark fw-bold">Featured Property</h3>
-              </div>
-              <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
-                <Link href={"/property"} className="text-dark">
-                  View All
-                </Link>
-              </div>
-              <div className="col-sm-12 col-md-12 col-lg-12">
-                <SliderComponent setting={FourSlideSettings}>
-                  {data?.featuredProperties?.map((item, i) => (
-                    <div key={i}>
-                      <PropertyBox
-                        item={item}
-                        // LikeUnlikeProperty={LikeUnlikeProperty}
-                        // push={push}
-                        // pathname={pathname}
-                      />
-                    </div>
-                  ))}
-                </SliderComponent>
-              </div>
+      <section className="categoryProjectBg mt-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12 col-md-10 col-lg-10 mb-4">
+              <h3 className="text-white">Featured Property</h3>
+            </div>
+            <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
+              <Link href={"/property"} className="text-white">
+                View All
+              </Link>
+            </div>
+            <div className="col-sm-12 col-md-12 col-lg-12">
+              <SliderComponent setting={FourSlideSettings}>
+                {data?.featuredProperties?.map((item, i) => (
+                  <div key={i}>
+                    <PropertyBox
+                      item={item}
+                      LikeUnlikeProperty={LikeUnlikeProperty}
+                      push={push}
+                    />
+                  </div>
+                ))}
+              </SliderComponent>
             </div>
           </div>
-        </section>
-      )}
-
-      <section className="">
+        </div>
+      </section>
+      <section className="mt-5">
         <div className="container">
           <div className="row justify-content-center align-items-center">
             <div className="col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -154,30 +157,26 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="categoryProjectBg">
+      <section className="categoryProjectBg mt-5">
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
-              <h3 className="text-dark">Featured Projects</h3>
+              <h3 className="text-white">Featured Projects</h3>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-12">
-              {data?.featuredProject?.length > 0 ? (
-                <SliderComponent setting={FourSlideSettings}>
-                  {data?.featuredProject?.map((item, i) => (
-                    <div key={i}>
-                      <ProjectBox item={item} />
-                    </div>
-                  ))}
-                </SliderComponent>
-              ) : (
-                <Loader />
-              )}
+              <SliderComponent setting={FourSlideSettings}>
+                {data?.featuredProject?.map((item, i) => (
+                  <div key={i}>
+                    <ProjectBox item={item} />
+                  </div>
+                ))}
+              </SliderComponent>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="aboutFixedBg">
+      <section className="aboutFixedBg mt-5">
         <div className="container">
           <div className="row justify-content-center py-4 bg-white">
             <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
