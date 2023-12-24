@@ -9,6 +9,7 @@ export const metadata = {
   title: "Taxar Real Estate",
   description: "Taxar Real Estate",
 };
+export const dynamic = "force-dynamic";
 
 export default function RootLayout({ children }) {
   return (

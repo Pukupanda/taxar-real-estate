@@ -52,26 +52,15 @@ function ProjectBox(props) {
               <h3 className="property__card-title">
                 <span tabindex="0">{props.item?.title}</span>
               </h3>
-              {/* <p className="property__card-location">{props.item?.location}</p> */}
-              <div className="property__card-tags">
-                <span className="tag tag-gray">
-                  {props.item?.numOfProperty}&nbsp; Properties
-                </span>
-              </div>
+              <p className="property__card-location">{props.item?.location}</p>
+              <div className="property__card-tags"></div>
             </div>
           </Link>
           <div className="property__card-footer">
             <div className="property__card-author align-items-center">
-              <div className="property__card-author-media">
-                <p>D</p>
-              </div>
-              <div className="property__card-author-text">
-                <h4 className="property__card-author-title">
-                  <Link target="_blank" rel="noreferrer" tabindex="0" href="/#">
-                    Downtown Housing
-                  </Link>
-                </h4>
-              </div>
+              <span className="tag tag-gray2 fw-bold">
+                {props.item?.numOfProperty || 0}&nbsp; Properties
+              </span>
             </div>
             <Link href={`/property/${props.item?._id}`}>
               <div className="btn btn-link">View Details</div>

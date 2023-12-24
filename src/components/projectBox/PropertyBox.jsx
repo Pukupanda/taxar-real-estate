@@ -1,11 +1,23 @@
+"use client";
 import React from "react";
 import "./style.css";
 import Link from "next/link";
 import Cookies from "js-cookie";
+import { usePathname, useRouter } from "next/navigation";
+import { LikeUnlikePropertyApi } from "@/api/apiCall";
+import { toast } from "react-toastify";
 
 function PropertyBox(props) {
   const token = Cookies.get("Taxar");
-
+  const router = useRouter();
+  const pathname = usePathname();
+  const LikeUnlikeProperty = (val) => {
+    LikeUnlikePropertyApi(val).then((res) => {
+      toast.success(res?.message);
+      router.refresh();
+    });
+  };
+  console.log(router, "router");
   return (
     <>
       <div className="property__card featured_card position-relative">
@@ -13,10 +25,10 @@ function PropertyBox(props) {
           className="LikeUnlike"
           onClick={() => {
             if (token) {
-              props.LikeUnlikeProperty(props.item?._id);
+              LikeUnlikeProperty(props.item?._id);
             } else {
-              props.push("/login");
-              Cookies.set("pageUrl", props.pathname);
+              push("/login");
+              Cookies.set("pageUrl", pathname);
             }
           }}
           role="button"
@@ -45,10 +57,17 @@ function PropertyBox(props) {
           </div>
           <div className="px-3 pb-3">
             <div className="property__card-header">
-              <span className="property__card-type" tabindex="0">
-                {props.item?.category}
-              </span>
+              <div className=" d-flex justify-content-between text-capitalize align-items-center">
+                <span className="property__card-type" tabindex="0">
+                  {props.item?.category}
+                </span>
+                <span className="property__card-type" tabindex="0">
+                  {props.item?.facingDirection}
+                </span>
+              </div>
+
               <h3 className="property__card-title">
+                <span>{props.item?.pArea} - </span>{" "}
                 <span tabindex="0">{props.item?.title}</span>
               </h3>
               <p className="property__card-location">{props.item?.location}</p>
