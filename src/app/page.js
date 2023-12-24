@@ -8,10 +8,11 @@ import PropertyBox from "@/components/projectBox/PropertyBox";
 import Link from "next/link";
 import { LikeUnlikePropertyApi } from "@/api/apiCall";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Home() {
   const { push } = useRouter();
+  const pathname = usePathname();
   const data = useDataStore((store) => store.homeScreen);
   const { fetchhomeScreen } = useDataStore();
   useEffect(() => {
@@ -79,10 +80,10 @@ export default function Home() {
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-10 col-lg-10 mb-4">
-              <h3 className="text-white">Featured Property</h3>
+              <h3 className="text-dark">Featured Property</h3>
             </div>
             <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
-              <Link href={"/property"} className="text-white">
+              <Link href={"/property"} className="text-dark">
                 View All
               </Link>
             </div>
@@ -94,6 +95,7 @@ export default function Home() {
                       item={item}
                       LikeUnlikeProperty={LikeUnlikeProperty}
                       push={push}
+                      pathname={pathname}
                     />
                   </div>
                 ))}
@@ -161,7 +163,7 @@ export default function Home() {
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
-              <h3 className="text-white">Featured Projects</h3>
+              <h3 className="text-dark">Featured Projects</h3>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-12">
               <SliderComponent setting={FourSlideSettings}>

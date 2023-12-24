@@ -238,92 +238,78 @@ function AddEditProperty() {
                 <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
                   <div className="form-group">
                     <div className="input-container">
-                      <select
-                        className="form-control form-select text-capitalize"
-                        name="propertyType"
-                        value={formik.values.propertyType}
-                        {...formik.getFieldProps("propertyType")}
-                      >
-                        <option value="">Select Property Type</option>
-                      </select>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Title"
+                        {...formik.getFieldProps("propertyCode")}
+                      />
                     </div>
                   </div>
-                  {formik.errors.propertyType &&
-                    formik.touched.propertyType && (
+                  {formik.errors.propertyCode &&
+                    formik.touched.propertyCode && (
                       <div className="text-danger">
                         {" "}
-                        {formik.errors.propertyType}
+                        {formik.errors.propertyCode}
                       </div>
                     )}
                 </div>
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <div className="form-group">
+                    <div className="input-container">
+                      <select
+                        className="form-control form-select text-capitalize"
+                        {...formik.getFieldProps("propertyFor")}
+                      >
+                        <option value="">Select property For</option>
+                        <option value="rent">rent</option>
+                        <option value="buy">buy</option>
+                      </select>
+                    </div>
+                  </div>
+                  {formik.errors.propertyFor && formik.touched.propertyFor && (
+                    <div className="text-danger">
+                      {" "}
+                      {formik.errors.propertyFor}
+                    </div>
+                  )}
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <div className="form-group">
+                    <div className="input-container">
+                      <select
+                        className="form-control form-select text-capitalize"
+                        {...formik.getFieldProps("category")}
+                      >
+                        <option value="">Select Catagory</option>
+                        <option value="houses">houses</option>
+                        <option value="land">land</option>
+                      </select>
+                    </div>
+                  </div>
+                  {formik.errors.category && formik.touched.category && (
+                    <div className="text-danger"> {formik.errors.category}</div>
+                  )}
+                </div>
 
                 <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
                   <div className="form-group">
                     <div className="input-container">
                       <select
                         className="form-control form-select text-capitalize"
-                        name="sellingType"
-                        {...formik.getFieldProps("sellingType")}
+                        {...formik.getFieldProps("subCategory")}
                       >
-                        <option value="">Select Property Listing</option>
+                        <option value="">Select sub Category</option>
+                        <option value="flat">flat</option>
+                        <option value="bungalow">bungalow</option>
                       </select>
                     </div>
                   </div>
-                  {formik.errors.sellingType && formik.touched.sellingType && (
+                  {formik.errors.subCategory && formik.touched.subCategory && (
                     <div className="text-danger">
                       {" "}
-                      {formik.errors.sellingType}
+                      {formik.errors.subCategory}
                     </div>
-                  )}
-                </div>
-
-                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
-                  <div className="form-group">
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="No of Rooms"
-                        {...formik.getFieldProps("noRooms")}
-                      />
-                    </div>
-                  </div>
-                  {formik.errors.noRooms && formik.touched.noRooms && (
-                    <div className="text-danger"> {formik.errors.noRooms}</div>
-                  )}
-                </div>
-
-                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
-                  <div className="form-group">
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="No of Bathrooms"
-                        {...formik.getFieldProps("noBathrooms")}
-                      />
-                    </div>
-                  </div>
-                  {formik.errors.noBathrooms && formik.touched.noBathrooms && (
-                    <div className="text-danger">
-                      {" "}
-                      {formik.errors.noBathrooms}
-                    </div>
-                  )}
-                </div>
-                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
-                  <div className="form-group">
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="No of Floors"
-                        {...formik.getFieldProps("noFloor")}
-                      />
-                    </div>
-                  </div>
-                  {formik.errors.noFloor && formik.touched.noFloor && (
-                    <div className="text-danger"> {formik.errors.noFloor}</div>
                   )}
                 </div>
 
@@ -349,14 +335,13 @@ function AddEditProperty() {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Price"
-                        name="price"
-                        {...formik.getFieldProps("price")}
+                        placeholder="Unit"
+                        {...formik.getFieldProps("unit")}
                       />
                     </div>
                   </div>
-                  {formik.errors.price && formik.touched.price && (
-                    <div className="text-danger"> {formik.errors.price}</div>
+                  {formik.errors.unit && formik.touched.unit && (
+                    <div className="text-danger"> {formik.errors.unit}</div>
                   )}
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
@@ -405,6 +390,69 @@ function AddEditProperty() {
                   </div>
                   {formik.errors.location && formik.touched.location && (
                     <div className="text-danger"> {formik.errors.location}</div>
+                  )}
+                </div>
+
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <div className="form-group">
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="City"
+                        {...formik.getFieldProps("city")}
+                      />
+                    </div>
+                  </div>
+                  {formik.errors.city && formik.touched.city && (
+                    <div className="text-danger"> {formik.errors.city}</div>
+                  )}
+                </div>
+
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <div className="form-group">
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Price"
+                        name="price"
+                        {...formik.getFieldProps("price")}
+                      />
+                    </div>
+                  </div>
+                  {formik.errors.price && formik.touched.price && (
+                    <div className="text-danger"> {formik.errors.price}</div>
+                  )}
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <div className="form-group">
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="P Area"
+                        {...formik.getFieldProps("pArea")}
+                      />
+                    </div>
+                  </div>
+                  {formik.errors.pArea && formik.touched.pArea && (
+                    <div className="text-danger"> {formik.errors.pArea}</div>
+                  )}
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <div className="form-group">
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="P Area"
+                        {...formik.getFieldProps("pArea")}
+                      />
+                    </div>
+                  </div>
+                  {formik.errors.pArea && formik.touched.pArea && (
+                    <div className="text-danger"> {formik.errors.pArea}</div>
                   )}
                 </div>
                 <div className="col-sm-12 col-md-12 text-center mb-5">

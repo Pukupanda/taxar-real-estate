@@ -5,7 +5,7 @@ import Loader from "@/components/Loader/Loader";
 import Paginations from "@/components/Paginations/Pagination";
 import PropertyBox from "@/components/projectBox/PropertyBox";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -16,6 +16,7 @@ function PropertyList() {
   const [loading, setLoading] = useState(false);
   const [page, setpage] = useState(1);
   const [status, setstatus] = useState("1");
+  const pathname = usePathname();
 
   const handlePage = (val) => {
     setpage(val);
@@ -64,6 +65,7 @@ function PropertyList() {
                     item={item}
                     LikeUnlikeProperty={LikeUnlikeProperty}
                     push={push}
+                    pathname={pathname}
                   />
                 </div>
               ))

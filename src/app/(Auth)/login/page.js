@@ -8,11 +8,13 @@ import Loader from "@/components/Loader/Loader";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { LoginApi } from "@/api/apiCall";
-import { useDataStore } from "@/api/store/store";
 
 function Login() {
   const { push } = useRouter();
   const [loading, setLoading] = useState(false);
+
+  const pageUrl = Cookies.get("pageUrl");
+
   const initialValues = {
     email: "",
     password: "",
@@ -36,7 +38,12 @@ function Login() {
         if (data?.code === 1) {
           toast.success(data.message);
           Cookies.set("Taxar", data?.data?.user?.token);
-          push("/");
+          if (pageUrl) {
+            push(pageUrl);
+            Cookies.remove("pageUrl");
+          } else {
+            push("/");
+          }
           setLoading(false);
         } else {
           setLoading(false);

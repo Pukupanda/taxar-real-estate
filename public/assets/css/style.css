@@ -95,13 +95,20 @@ input:focus {
 }
 /*=============== Category style ============*/
 .categoryProjectBg {
-  background: rgb(242, 119, 33);
+  /* background: rgb(242, 119, 33);
   background: linear-gradient(
     145deg,
     rgba(242, 119, 33, 0.6587885154061625) 0%,
     rgba(39, 113, 80, 0.9529061624649859) 0%,
     rgba(239, 107, 35, 0.9473039215686274) 64%,
     rgba(239, 107, 35, 0.9501050420168067) 100%
+  ); */
+  background: linear-gradient(
+    160deg,
+    #ffe3b4,
+    #ffcc77 32%,
+    #c9f39e 60%,
+    #beff7c
   );
   padding: 50px 0;
   position: relative;
