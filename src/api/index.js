@@ -81,14 +81,16 @@ export const postRawData = async (url = "", data = {}) => {
     const token = await Cookies.get("Taxar");
 
     const response = await axios.post(BASE_URL + url, data, {
-      headers: { Authorization: token ? "Bearer " + token : null },
+      headers: {
+        Authorization: token ? "Bearer " + token : null,
+      },
     });
 
     return response.data;
   } catch (error) {
-    toast.error(error.message);
-    console.log(error.response, "response");
-    toast.error(error.response.data);
+    // toast.error(error.message);
+    // console.log(error.response, "response");
+    // toast.error(error.response.data);
     return error.response.data;
   }
 };

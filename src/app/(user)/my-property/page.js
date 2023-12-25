@@ -7,9 +7,10 @@ import { useDataStore } from "@/api/store/store";
 import Loader from "@/components/Loader/Loader";
 import Paginations from "@/components/Paginations/Pagination";
 import PropertyBox from "@/components/projectBox/PropertyBox";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 function MyProperty() {
@@ -86,20 +87,94 @@ function MyProperty() {
                 Add New Property
               </Link>
             </div>
-            {/* <div className="col-sm-6 col-md-6 col-lg-6 mb-3 text-end">
-              <Table className="table">
+            <div className="col-sm-12 col-md-12 col-lg-12 mb-3">
+              <Table className="table table-borderless text-capitalize table-striped">
                 <Thead>
-                  <Th>image</Th>
-                  <Th>title</Th>
-                  <Th>category</Th>
-                  <Th>sub category</Th>
-                  <Th>facing Direction</Th>
-                  <Th>price</Th>
-                  <Th>action</Th>
+                  <Tr>
+                    <Th>image</Th>
+                    <Th>title</Th>
+                    <Th>category</Th>
+                    <Th>sub Category</Th>
+                    <Th>price</Th>
+                    <Th>facing direction</Th>
+                    <Th>Location</Th>
+                    <Th>action</Th>
+                  </Tr>
                 </Thead>
+                <Tbody>
+                  {loading ? (
+                    <Tr className="text-center">
+                      <Td colSpan={10}>
+                        <Loader />
+                      </Td>
+                    </Tr>
+                  ) : list?.properties?.length > 0 ? (
+                    list?.properties?.map((item, i) => (
+                      <Tr>
+                        <Td>
+                          <Image
+                            src={
+                              item?.displayImage?.includes("http")
+                                ? item?.displayImage
+                                : "/assets/img/dummyImage.png"
+                            }
+                            alt={item?.title}
+                            width={50}
+                            height={50}
+                            className="rounded-3"
+                            quality={100}
+                            priority
+                          />
+                        </Td>
+                        <Td>{item?.title}</Td>
+                        <Td>{item?.category}</Td>
+                        <Td>{item?.subCategory}</Td>
+                        <Td>{item?.price}</Td>
+                        <Td>{item?.facingDirection}</Td>
+                        <Td>{item?.location}</Td>
+                        <Td>
+                          <div className="d-flex align-items-center gap-3">
+                            <Link href={`/detail/${item?._id}`}>
+                              <Image
+                                src={"/assets/img/view.png"}
+                                alt=""
+                                width={19}
+                                height={15}
+                                quality={100}
+                                priority
+                              />
+                            </Link>
+                            <Link href={`/my-property/edit/${item?._id}`}>
+                              <Image
+                                src={"/assets/img/edit.png"}
+                                alt=""
+                                width={24}
+                                height={24}
+                                quality={100}
+                                priority
+                              />
+                            </Link>
+                            <Image
+                              src={"/assets/img/delete.png"}
+                              alt=""
+                              width={20}
+                              height={20}
+                              quality={100}
+                              priority
+                            />
+                          </div>
+                        </Td>
+                      </Tr>
+                    ))
+                  ) : (
+                    <Tr className="text-center">
+                      <Td colSpan={10}>No Properties Found</Td>
+                    </Tr>
+                  )}
+                </Tbody>
               </Table>
-            </div> */}
-            {loading ? (
+            </div>
+            {/* {loading ? (
               <Loader />
             ) : list?.properties?.length > 0 ? (
               list?.properties?.map((item, i) => (
@@ -109,7 +184,7 @@ function MyProperty() {
               ))
             ) : (
               <div className="text-center">No Properties Found</div>
-            )}
+            )} */}
           </div>
           {!loading && list?.properties?.length > 0 && (
             <div className="">

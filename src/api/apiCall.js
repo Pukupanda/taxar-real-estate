@@ -189,3 +189,8 @@ export const AddPropertyApi = async (payload) => {
     return data;
   });
 };
+export const propertyFeatureListApi = async (payload) => {
+  return getData("propertyFeature", payload).then((data) => {
+    return data;
+  });
+};

@@ -45,3 +45,10 @@
 .banner.upload-btn-wrapper .btn img {
   border-radius: 5px;
 }
+.remove.arr {
+  position: absolute;
+  top: 5px;
+  right: 18px;
+  cursor: pointer;
+  z-index: 999;
+}

@@ -11,46 +11,86 @@ import ImageUploadInput from "../ImageUploadInput/ImageUploadInput";
 import MobileInput from "@/components/PhoneInput/MobileInput";
 import TextEditor from "@/components/TextEditor/TextEditor";
 import { AddPropertyApi } from "@/api/apiCall";
+import { useDataStore } from "@/api/store/store";
 
 function AddEditProperty() {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const { push } = useRouter();
 
+  const detail = useDataStore((store) => store.propertyDetail);
+  const { fetchPropertyDetail } = useDataStore();
+  useEffect(() => {
+    fetchPropertyDetail({ id: id });
+  }, [id]);
+
+  const FeatureList = useDataStore((store) => store.propertyFeatureList);
+  const { fetchpropertyFeatureList } = useDataStore();
+  useEffect(() => {
+    fetchpropertyFeatureList();
+  }, [id]);
+
+  const Feature = FeatureList?.Feature?.map((item) => {
+    return {
+      label: item?.label,
+      value: item?.value,
+      icon: item?.icon,
+      _id: item?._id,
+      checked: false,
+    };
+  });
+
   const initialValues = {
-    images: [{ image: "" }],
-    title: "",
-    propertyCode: "",
-    propertyFor: "",
-    category: "",
-    subCategory: "",
-    displayImage: "",
-    price: "",
-    priceInWords: "",
-    area: "",
-    unit: "",
-    countryCode: "",
-    contactNo: "",
-    secondaryCountryCode: "",
-    secondaryContactNo: "",
-    location: "",
-    city: "",
-    lat: "76.47564",
-    long: "72.867484",
-    features: [
-      {
-        label: "swimming pool",
-        value: "1",
-        icon: "dshjdhs",
-        checked: false,
-      },
-      { label: "bathroom", value: "2", icon: "dshjdhs", checked: false },
-    ],
-    shortDetails: "",
-    details: "",
-    pArea: "",
-    isFeatured: false,
-    facingDirection: "",
+    images: id
+      ? detail?.propertyDetails?.images?.map((item) => {
+          return {
+            image: item?.image,
+          };
+        })
+      : [{ image: "" }],
+    title: id ? detail?.propertyDetails?.title : "",
+    propertyCode: id ? detail?.propertyDetails?.propertyCode : "",
+    propertyFor: id ? detail?.propertyDetails?.propertyFor : "",
+    category: id ? detail?.propertyDetails?.category : "",
+    subCategory: id ? detail?.propertyDetails?.subCategory : "",
+    displayImage: id ? detail?.propertyDetails?.displayImage : "",
+    price: id ? detail?.propertyDetails?.price : "",
+    priceInWords: id ? detail?.propertyDetails?.priceInWords : "",
+    area: id ? detail?.propertyDetails?.area : "",
+    unit: id ? detail?.propertyDetails?.unit : "",
+    countryCode: id ? detail?.propertyDetails?.countryCode : "",
+    contactNo: id ? detail?.propertyDetails?.contactNo : "",
+    secondaryCountryCode: id
+      ? detail?.propertyDetails?.secondaryCountryCode
+      : "",
+    secondaryContactNo: id ? detail?.propertyDetails?.secondaryContactNo : "",
+    location: id ? detail?.propertyDetails?.location : "",
+    city: id ? detail?.propertyDetails?.city : "",
+    lat: id ? detail?.propertyDetails?.lat : "76.47564",
+    long: id ? detail?.propertyDetails?.long : "72.867484",
+    features: id
+      ? detail?.propertyDetails?.features?.length > 0
+        ? Feature?.map((fd) => {
+            let arr = [...detail?.propertyDetails?.features];
+            let isfound = arr.find((it) => it?._id === fd?._id);
+            if (isfound) {
+              return {
+                _id: isfound?._id,
+                label: fd?.label,
+                value: fd?.value,
+                icon: fd?.icon,
+                checked: true,
+              };
+            }
+            return fd;
+          })
+        : Feature
+      : Feature,
+    shortDetails: id ? detail?.propertyDetails?.shortDescription : "",
+    details: id ? detail?.propertyDetails?.details : "",
+    pArea: id ? detail?.propertyDetails?.pArea : "",
+    isFeatured: id ? detail?.propertyDetails?.isFeatured : false,
+    facingDirection: id ? detail?.propertyDetails?.facingDirection : "",
   };
 
   const formik = useFormik({
@@ -69,22 +109,27 @@ function AddEditProperty() {
       let arr = values.features
         ?.filter((item) => item?.checked)
         ?.map((fd) => {
-          return { label: fd?.label, value: fd?.value, icon: fd?.icon };
+          return {
+            label: fd?.label,
+            value: fd?.value,
+            icon: fd?.icon,
+            _id: fd?._id,
+          };
         });
 
       const payload = {
         propertyId: "",
-        projectId: "",
-        images: values.images,
+        projectId: null,
         title: values.title,
         propertyCode: values.propertyCode,
         propertyFor: values.propertyFor,
         category: values.category,
         subCategory: values.subCategory,
         displayImage: values.displayImage,
+        images: values.images,
         price: values.price,
         priceInWords: values.priceInWords,
-        area: values.area,
+        area: parseInt(values.area),
         unit: values.unit,
         contactNo: `${values.countryCode} ${values.contactNo}`,
         secondaryContactNo: `${values.secondaryCountryCode} ${values.secondaryContactNo}`,
@@ -93,25 +138,27 @@ function AddEditProperty() {
         lat: values.lat,
         long: values.long,
         features: arr,
-        shortDescription: values.shortDetails,
         details: values.details,
         pArea: values.pArea,
-        isFeatured: values.isFeatured,
-        facingDirection: values.facingDirection,
         noOfProperty: "",
+        isFeatured: values.isFeatured,
+        shortDescription: values.shortDetails,
+        facingDirection: values.facingDirection,
       };
 
       const Editpayload = {
-        images: values.images,
+        propertyId: id,
+        projectId: null,
         title: values.title,
         propertyCode: values.propertyCode,
         propertyFor: values.propertyFor,
         category: values.category,
         subCategory: values.subCategory,
         displayImage: values.displayImage,
+        images: values.images,
         price: values.price,
         priceInWords: values.priceInWords,
-        area: values.area,
+        area: parseInt(values.area),
         unit: values.unit,
         contactNo: `${values.countryCode} ${values.contactNo}`,
         secondaryContactNo: `${values.secondaryCountryCode} ${values.secondaryContactNo}`,
@@ -120,12 +167,12 @@ function AddEditProperty() {
         lat: values.lat,
         long: values.long,
         features: arr,
-        shortDescription: values.shortDetails,
         details: values.details,
         pArea: values.pArea,
+        noOfProperty: "",
         isFeatured: values.isFeatured,
+        shortDescription: values.shortDetails,
         facingDirection: values.facingDirection,
-        propertyId: id,
       };
 
       console.log(id ? Editpayload : payload, "dataPay");
@@ -133,27 +180,27 @@ function AddEditProperty() {
       if (id) {
         AddPropertyApi(Editpayload).then((data) => {
           setLoading(false);
-          if (data?.payload?.code === 1) {
-            toast.success(data.payload.message);
+          if (data?.code === 1) {
+            toast.success(data?.message);
             push("/my-property", {
               replace: true,
             });
           } else {
             setLoading(false);
-            toast.error(data.payload.message);
+            toast.error(data?.message);
           }
         });
       } else {
         AddPropertyApi(payload).then((data) => {
           setLoading(false);
-          if (data?.payload?.code === 1) {
-            toast.success(data.payload.message);
+          if (data?.code === 1) {
+            toast.success(data?.message);
             push("/my-property", {
               replace: true,
             });
           } else {
             setLoading(false);
-            toast.error(data.payload.message);
+            toast.error(data?.message);
           }
         });
       }
@@ -316,8 +363,8 @@ function AddEditProperty() {
                         {...formik.getFieldProps("propertyFor")}
                       >
                         <option value="">Select property For</option>
-                        <option value="rent">rent</option>
-                        <option value="buy">buy</option>
+                        <option value="Rent">rent</option>
+                        <option value="Buy">buy</option>
                       </select>
                     </div>
                   </div>
@@ -336,8 +383,8 @@ function AddEditProperty() {
                         {...formik.getFieldProps("category")}
                       >
                         <option value="">Select Catagory</option>
-                        <option value="house">house</option>
-                        <option value="land">land</option>
+                        <option value="House">house</option>
+                        <option value="Land">land</option>
                       </select>
                     </div>
                   </div>
@@ -354,7 +401,7 @@ function AddEditProperty() {
                         {...formik.getFieldProps("subCategory")}
                       >
                         <option value="">Select sub Category</option>
-                        {formik.values.category === "house" ? (
+                        {formik.values.category === "House" ? (
                           <>
                             <option value="mansion">mansion</option>
                             <option value="bungalow">bungalow</option>
@@ -363,7 +410,7 @@ function AddEditProperty() {
                             <option value="villa">villa</option>
                             <option value="cottage">cottage</option>
                           </>
-                        ) : formik.values.category === "land" ? (
+                        ) : formik.values.category === "Land" ? (
                           <>
                             <option value="agricultural">agricultural</option>
                             <option value="residential">residential</option>
@@ -580,8 +627,9 @@ function AddEditProperty() {
                         <div className="form-group" key={i}>
                           <input
                             type="checkbox"
-                            id={item?.value}
+                            id={item?._id}
                             name={`features.${i}.checked`}
+                            checked={item?.checked}
                             onChange={(e) => {
                               let checked = e.target.checked;
                               formik.setFieldValue(
@@ -590,7 +638,7 @@ function AddEditProperty() {
                               );
                             }}
                           />
-                          <label htmlFor={item?.value}>{item?.label}</label>
+                          <label htmlFor={item?._id}>{item?.label}</label>
                         </div>
                       ))}
                     </div>

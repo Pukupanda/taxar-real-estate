@@ -439,6 +439,9 @@ footer {
 .ql-editor {
   min-height: 200px;
 }
+tr {
+  vertical-align: middle;
+}
 /*================ Responsive ================ */
 @media (max-width: 991.9px) {
   .homeSlider .bannerImg {

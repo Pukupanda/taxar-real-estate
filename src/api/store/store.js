@@ -15,6 +15,7 @@ import {
   gettermAndConditionApi,
   homeScreenApi,
   propertyDetailApi,
+  propertyFeatureListApi,
   propertyListApi,
   teamsListApi,
   userPropertyListApi,
@@ -95,6 +96,12 @@ export const useDataStore = create((set) => ({
   fetchFooterAddress: async (data) => {
     const res = await FooterAddressApi(data);
     set({ FooterAddress: await res?.data });
+  },
+
+  propertyFeatureList: {},
+  fetchpropertyFeatureList: async (data) => {
+    const res = await propertyFeatureListApi(data);
+    set({ propertyFeatureList: await res?.data });
   },
 
   about: {},
