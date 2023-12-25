@@ -86,8 +86,9 @@ export const postRawData = async (url = "", data = {}) => {
 
     return response.data;
   } catch (error) {
-    // toast.error(error.message);
-    // toast.error(error.response.data);
+    toast.error(error.message);
+    console.log(error.response, "response");
+    toast.error(error.response.data);
     return error.response.data;
   }
 };

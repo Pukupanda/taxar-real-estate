@@ -23,18 +23,32 @@ function Property() {
   };
   const token = Cookies.get("Taxar");
 
+  const [propertyFor, setpropertyFor] = useState("");
+  const [city, setcity] = useState("");
+  const [category, setcategory] = useState("");
+  const [subCategory, setsubCategory] = useState("");
+  const [budgetMin, setbudgetMin] = useState("");
+  const [budgetMax, setbudgetMax] = useState("");
+  const [isFeatured, setisFeatured] = useState("");
+  const [location, setlocation] = useState("");
+
+  const params = {
+    page: page,
+    limit: 10,
+  };
+
   useEffect(() => {
     setloading(true);
-    fetchProjectDetails(id, { page: page, limit: 10 }).then(() => {
+    fetchProjectDetails(id, params).then(() => {
       setloading(false);
     });
-  }, []);
+  }, [page]);
 
   const LikeUnlikeProperty = (val) => {
     setloading(true);
     LikeUnlikePropertyApi(val).then((res) => {
       toast.success(res?.message);
-      fetchProjectDetails(id, { page: page, limit: 10 }).then(() => {
+      fetchProjectDetails(id, params).then(() => {
         setloading(false);
       });
     });
@@ -46,7 +60,25 @@ function Property() {
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-3 position-relative">
-              <Filter />
+              <Filter
+                apiCall={fetchProjectDetails}
+                propertyFor={propertyFor}
+                setpropertyFor={setpropertyFor}
+                city={city}
+                setcity={setcity}
+                category={category}
+                setcategory={setcategory}
+                subCategory={subCategory}
+                setsubCategory={setsubCategory}
+                budgetMin={budgetMin}
+                setbudgetMin={setbudgetMin}
+                budgetMax={budgetMax}
+                setbudgetMax={setbudgetMax}
+                isFeatured={isFeatured}
+                setisFeatured={setisFeatured}
+                location={location}
+                setlocation={setlocation}
+              />
             </div>
             <div className="col-sm-12 col-md-12 col-lg-9">
               {loading ? (

@@ -9,6 +9,8 @@ import Paginations from "@/components/Paginations/Pagination";
 import PropertyBox from "@/components/projectBox/PropertyBox";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 function MyProperty() {
   const list = useDataStore((store) => store.userPropertyList);
@@ -84,6 +86,19 @@ function MyProperty() {
                 Add New Property
               </Link>
             </div>
+            {/* <div className="col-sm-6 col-md-6 col-lg-6 mb-3 text-end">
+              <Table className="table">
+                <Thead>
+                  <Th>image</Th>
+                  <Th>title</Th>
+                  <Th>category</Th>
+                  <Th>sub category</Th>
+                  <Th>facing Direction</Th>
+                  <Th>price</Th>
+                  <Th>action</Th>
+                </Thead>
+              </Table>
+            </div> */}
             {loading ? (
               <Loader />
             ) : list?.properties?.length > 0 ? (

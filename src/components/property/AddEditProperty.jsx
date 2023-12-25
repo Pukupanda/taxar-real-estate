@@ -73,6 +73,8 @@ function AddEditProperty() {
         });
 
       const payload = {
+        propertyId: "",
+        projectId: "",
         images: values.images,
         title: values.title,
         propertyCode: values.propertyCode,
@@ -91,11 +93,12 @@ function AddEditProperty() {
         lat: values.lat,
         long: values.long,
         features: arr,
-        // shortDetails: values.shortDetails,
+        shortDescription: values.shortDetails,
         details: values.details,
         pArea: values.pArea,
         isFeatured: values.isFeatured,
         facingDirection: values.facingDirection,
+        noOfProperty: "",
       };
 
       const Editpayload = {
@@ -117,7 +120,7 @@ function AddEditProperty() {
         lat: values.lat,
         long: values.long,
         features: arr,
-        // shortDetails: values.shortDetails,
+        shortDescription: values.shortDetails,
         details: values.details,
         pArea: values.pArea,
         isFeatured: values.isFeatured,
