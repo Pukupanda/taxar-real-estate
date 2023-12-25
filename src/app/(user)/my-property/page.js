@@ -110,7 +110,7 @@ function MyProperty() {
                     </Tr>
                   ) : list?.properties?.length > 0 ? (
                     list?.properties?.map((item, i) => (
-                      <Tr>
+                      <Tr key={i}>
                         <Td>
                           <Image
                             src={
