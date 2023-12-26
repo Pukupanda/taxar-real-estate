@@ -144,7 +144,7 @@ function LikedProperty() {
               <Paginations
                 page={page}
                 handlePage={handlePage}
-                total={list?.total_properties}
+                total={list?.total}
               />
             </div>
           )}

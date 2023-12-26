@@ -30,6 +30,18 @@ function AddEditProperty() {
     fetchpropertyFeatureList();
   }, [id]);
 
+  const mob1 = id && detail?.propertyDetails?.contactNo?.split(" ");
+
+  const countryCode = mob1?.[0];
+  const contactNo = mob1?.[1];
+
+  const mob2 = id && detail?.propertyDetails?.secondaryContactNo?.split(" ");
+
+  const secondarycountryCode = mob2?.[0];
+  const secondaryContactNo = mob2?.[1];
+
+  // console.log(mob1, "mob1");
+
   const Feature = FeatureList?.Feature?.map((item) => {
     return {
       label: item?.label,
@@ -58,12 +70,10 @@ function AddEditProperty() {
     priceInWords: id ? detail?.propertyDetails?.priceInWords : "",
     area: id ? detail?.propertyDetails?.area : "",
     unit: id ? detail?.propertyDetails?.unit : "",
-    countryCode: id ? detail?.propertyDetails?.countryCode : "",
-    contactNo: id ? detail?.propertyDetails?.contactNo : "",
-    secondaryCountryCode: id
-      ? detail?.propertyDetails?.secondaryCountryCode
-      : "",
-    secondaryContactNo: id ? detail?.propertyDetails?.secondaryContactNo : "",
+    countryCode: id ? countryCode : "",
+    contactNo: id ? contactNo : "",
+    secondaryCountryCode: id ? secondarycountryCode : "",
+    secondaryContactNo: id ? secondaryContactNo : "",
     location: id ? detail?.propertyDetails?.location : "",
     city: id ? detail?.propertyDetails?.city : "",
     lat: id ? detail?.propertyDetails?.lat : "76.47564",
