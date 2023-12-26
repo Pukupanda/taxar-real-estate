@@ -104,7 +104,7 @@ function LikedProperty() {
                             />
                           </Link>
                           <div
-                            className="LikeUnlike"
+                            className=""
                             onClick={() => {
                               LikeUnlikeProperty(item?._id);
                             }}
