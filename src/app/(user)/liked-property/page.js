@@ -7,10 +7,12 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { LikeUnlikePropertyApi } from "@/api/apiCall";
+import { toast } from "react-toastify";
 
-function MyBookingsList() {
-  const list = useDataStore((store) => store.bookingsList);
-  const { fetchbookingsList } = useDataStore();
+function LikedProperty() {
+  const list = useDataStore((store) => store.likedProperty);
+  const { fetchlikedProperty } = useDataStore();
 
   const [loading, setLoading] = useState(false);
   const [page, setpage] = useState(1);
@@ -25,10 +27,20 @@ function MyBookingsList() {
   };
   useEffect(() => {
     setLoading(true);
-    fetchbookingsList(params).then(() => {
+    fetchlikedProperty(params).then(() => {
       setLoading(false);
     });
   }, [page]);
+
+  const LikeUnlikeProperty = (val) => {
+    setLoading(true);
+    LikeUnlikePropertyApi(val).then((res) => {
+      toast.success(res?.message);
+      fetchlikedProperty(params).then(() => {
+        setLoading(false);
+      });
+    });
+  };
 
   return (
     <>
@@ -55,17 +67,17 @@ function MyBookingsList() {
                       <Loader />
                     </Td>
                   </Tr>
-                ) : list?.bookings?.length > 0 ? (
-                  list?.bookings?.map((item, i) => (
+                ) : list?.properties?.length > 0 ? (
+                  list?.properties?.map((item, i) => (
                     <Tr key={i}>
                       <Td>
                         <Image
                           src={
-                            item?.property?.displayImage?.includes("http")
-                              ? item?.property?.displayImage
+                            item?.displayImage?.includes("http")
+                              ? item?.displayImage
                               : "/assets/img/dummyImage.png"
                           }
-                          alt={item?.property?.title}
+                          alt={item?.title}
                           width={50}
                           height={50}
                           className="rounded-3"
@@ -73,15 +85,15 @@ function MyBookingsList() {
                           priority
                         />
                       </Td>
-                      <Td>{item?.property?.title}</Td>
-                      <Td>{item?.property?.category}</Td>
-                      <Td>{item?.property?.subCategory}</Td>
-                      <Td>{item?.property?.price}</Td>
-                      <Td>{item?.property?.facingDirection}</Td>
-                      <Td>{item?.property?.location}</Td>
+                      <Td>{item?.title}</Td>
+                      <Td>{item?.category}</Td>
+                      <Td>{item?.subCategory}</Td>
+                      <Td>{item?.price}</Td>
+                      <Td>{item?.facingDirection}</Td>
+                      <Td>{item?.location}</Td>
                       <Td>
                         <div className="d-flex align-items-center gap-2">
-                          <Link href={`/detail/${item?.property?._id}`}>
+                          <Link href={`/detail/${item?._id}`}>
                             <Image
                               src={"/assets/img/view.png"}
                               alt=""
@@ -91,6 +103,19 @@ function MyBookingsList() {
                               priority
                             />
                           </Link>
+                          <div
+                            className="LikeUnlike"
+                            onClick={() => {
+                              LikeUnlikeProperty(item?._id);
+                            }}
+                            role="button"
+                          >
+                            <i
+                              class={`fa-${
+                                item?.isLiked === 0 ? "regular" : "solid"
+                              } fa-heart themeGrn`}
+                            ></i>
+                          </div>
                         </div>
                       </Td>
                     </Tr>
@@ -103,23 +128,23 @@ function MyBookingsList() {
               </Tbody>
             </Table>
             {/* {loading ? (
-              <Loader />
-            ) : list?.bookings?.length > 0 ? (
-              list?.bookings?.map((item, i) => (
-                <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={i}>
-                  <PropertyBox item={item?.property} />
-                </div>
-              ))
-            ) : (
-              "No Booking Found"
-            )} */}
+          <Loader />
+        ) : list?.properties?.length > 0 ? (
+          list?.bookings?.map((item, i) => (
+            <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={i}>
+              <PropertyBox item={item?.property} />
+            </div>
+          ))
+        ) : (
+          "No Booking Found"
+        )} */}
           </div>
-          {!loading && list?.bookings?.length > 0 && (
+          {!loading && list?.properties?.length > 0 && (
             <div className="">
               <Paginations
                 page={page}
                 handlePage={handlePage}
-                total={list?.total_bookings}
+                total={list?.total_properties}
               />
             </div>
           )}
@@ -129,4 +154,4 @@ function MyBookingsList() {
   );
 }
 
-export default MyBookingsList;
+export default LikedProperty;

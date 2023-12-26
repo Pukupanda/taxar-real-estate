@@ -442,6 +442,44 @@ footer {
 tr {
   vertical-align: middle;
 }
+.table td .toggle {
+  height: 16px;
+  width: 32px;
+  border-radius: 16px;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  border: 2px solid #aaaaaa;
+  transition: all 0.2s ease;
+  /*	margin-top: 9px;*/
+}
+.table td .toggle:checked {
+  border: 2px solid #f16b24;
+  background-color: transparent;
+}
+.table td .toggle:checked:after {
+  transform: translatex(17px);
+  background: #f16b24;
+}
+.table td input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+.table td .toggle:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 0px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #aaa;
+  box-shadow: 0 1px 2px rgb(44 44 44 / 20%);
+  transition: all 0.2s cubic-bezier(0.5, 0.1, 0.75, 1.35);
+}
 /*================ Responsive ================ */
 @media (max-width: 991.9px) {
   .homeSlider .bannerImg {

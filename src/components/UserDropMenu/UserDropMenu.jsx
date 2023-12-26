@@ -54,6 +54,14 @@ function UserDropMenu(props) {
             my booking
           </Link>
           <Link
+            href="/liked-property"
+            className={
+              pathname?.includes("liked-property") ? "themeOrg" : "themeGrn"
+            }
+          >
+            liked property
+          </Link>
+          <Link
             href="/change-password"
             className={
               pathname?.includes("change-password") ? "themeOrg" : "themeGrn"

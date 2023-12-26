@@ -56,9 +56,9 @@ function ChangePassword() {
         <div className="singleBoxBg">
           <div className="singleBoxStyle">
             <form onSubmit={formik.handleSubmit}>
-              <div className="text-center">
+              {/* <div className="text-center">
                 <h3>Change Password</h3>
-              </div>
+              </div> */}
 
               <div className="form-floating mb-3">
                 <input

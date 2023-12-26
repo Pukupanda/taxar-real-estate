@@ -31,10 +31,14 @@ function Property() {
   const [budgetMax, setbudgetMax] = useState("");
   const [isFeatured, setisFeatured] = useState("");
   const [location, setlocation] = useState("");
+  const [apiCall, setapiCall] = useState(false);
 
   const params = {
     page: page,
     limit: 10,
+    propertyFor: propertyFor,
+    city: city,
+    category: category,
   };
 
   useEffect(() => {
@@ -42,7 +46,7 @@ function Property() {
     fetchProjectDetails(id, params).then(() => {
       setloading(false);
     });
-  }, [page]);
+  }, [page, apiCall]);
 
   const LikeUnlikeProperty = (val) => {
     setloading(true);
@@ -61,7 +65,7 @@ function Property() {
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-3 position-relative">
               <Filter
-                apiCall={fetchProjectDetails}
+                setapiCall={setapiCall}
                 propertyFor={propertyFor}
                 setpropertyFor={setpropertyFor}
                 city={city}

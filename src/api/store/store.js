@@ -14,6 +14,7 @@ import {
   getprivacyPolicyApi,
   gettermAndConditionApi,
   homeScreenApi,
+  likedPropertyApi,
   propertyDetailApi,
   propertyFeatureListApi,
   propertyListApi,
@@ -50,6 +51,12 @@ export const useDataStore = create((set) => ({
   fetchUserPropertyList: async (data) => {
     const res = await userPropertyListApi(data);
     set({ userPropertyList: await res?.data });
+  },
+
+  likedProperty: {},
+  fetchlikedProperty: async (data) => {
+    const res = await likedPropertyApi(data);
+    set({ likedProperty: await res?.data });
   },
 
   teamsList: {},

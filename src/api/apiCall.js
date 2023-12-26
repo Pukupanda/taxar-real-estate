@@ -122,6 +122,11 @@ export const userPropertyDeleteApi = async (payload) => {
     return data;
   });
 };
+export const likedPropertyApi = async (payload) => {
+  return getData("user/likedProperty", payload).then((data) => {
+    return data;
+  });
+};
 export const teamsListApi = async (payload) => {
   return getData("teams", payload).then((data) => {
     return data;

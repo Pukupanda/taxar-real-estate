@@ -6,12 +6,13 @@ import {
 import { useDataStore } from "@/api/store/store";
 import Loader from "@/components/Loader/Loader";
 import Paginations from "@/components/Paginations/Pagination";
-import PropertyBox from "@/components/projectBox/PropertyBox";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+import { toast } from "react-toastify";
+import Confirmation from "@/components/modals/Confirmation";
 
 function MyProperty() {
   const list = useDataStore((store) => store.userPropertyList);
@@ -19,7 +20,14 @@ function MyProperty() {
 
   const [loading, setLoading] = useState(false);
   const [page, setpage] = useState(1);
-  const [status, setstatus] = useState("1");
+  const [status, setstatus] = useState("0");
+
+  const [show, setShow] = useState(false);
+  const [modalName, setModalName] = useState("");
+  const [itemId, setItemId] = useState("");
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   const handlePage = (val) => {
     setpage(val);
@@ -28,24 +36,28 @@ function MyProperty() {
   const params = {
     page: page,
     limit: 10,
-    isActive: status === "1" ? true : false,
+    isActive: status === "0" ? true : false,
   };
   useEffect(() => {
     setLoading(true);
     fetchUserPropertyList(params).then(() => {
       setLoading(false);
     });
-  }, []);
+  }, [page, status]);
 
-  const activeDeactiveProperty = (id) => {
+  const activeDeactiveProperty = (data) => {
     setLoading(true);
-    userPropertyActiveDeactiveApi({ id: id }).then(() => {
+    userPropertyActiveDeactiveApi(data).then((res) => {
+      toast.success(res?.message);
+      fetchUserPropertyList(params);
       setLoading(false);
     });
   };
-  const deleteProperty = (id) => {
+  const deleteProperty = (data) => {
     setLoading(true);
-    userPropertyDeleteApi({ id: id }).then(() => {
+    userPropertyDeleteApi(data).then((res) => {
+      toast.success(res?.message);
+      fetchUserPropertyList(params);
       setLoading(false);
     });
   };
@@ -58,20 +70,20 @@ function MyProperty() {
             <div className="col-sm-6 col-md-6 col-lg-6 mb-3">
               <div className="nav gap-2">
                 <div
-                  className={status === "1" ? "tabStyle loginBtn" : "tabStyle"}
+                  className={status === "0" ? "tabStyle loginBtn" : "tabStyle"}
                   role="button"
                   onClick={() => {
-                    setstatus("1");
+                    setstatus("0");
                     setpage("1");
                   }}
                 >
                   Active
                 </div>
                 <div
-                  className={status === "2" ? "tabStyle loginBtn" : "tabStyle"}
+                  className={status === "1" ? "tabStyle loginBtn" : "tabStyle"}
                   role="button"
                   onClick={() => {
-                    setstatus("2");
+                    setstatus("1");
                     setpage("1");
                   }}
                 >
@@ -133,7 +145,7 @@ function MyProperty() {
                         <Td>{item?.facingDirection}</Td>
                         <Td>{item?.location}</Td>
                         <Td>
-                          <div className="d-flex align-items-center gap-3">
+                          <div className="d-flex align-items-center gap-2">
                             <Link href={`/detail/${item?._id}`}>
                               <Image
                                 src={"/assets/img/view.png"}
@@ -161,6 +173,25 @@ function MyProperty() {
                               height={20}
                               quality={100}
                               priority
+                              onClick={() => {
+                                setModalName("delete modal");
+                                setItemId(item?._id);
+                                handleShow();
+                                // deleteProperty(item?._id);
+                              }}
+                              role="button"
+                            />
+
+                            <input
+                              type="checkbox"
+                              className="toggle"
+                              id=""
+                              checked={status === "0" ? "" : "checked"}
+                              onChange={() => {
+                                setModalName("status modal");
+                                setItemId(item?._id);
+                                handleShow();
+                              }}
                             />
                           </div>
                         </Td>
@@ -197,6 +228,20 @@ function MyProperty() {
           )}
         </div>
       </section>
+      {(show && modalName === "delete modal") ||
+      (show && modalName === "status modal") ? (
+        <Confirmation
+          show={show}
+          handleShow={handleShow}
+          confirmDelete={deleteProperty}
+          keyName={"id"}
+          itemId={itemId}
+          page={"property"}
+          UpdateStatus={activeDeactiveProperty}
+          modalName={modalName}
+          isActive={status}
+        />
+      ) : null}
     </>
   );
 }

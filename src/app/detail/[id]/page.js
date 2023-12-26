@@ -6,6 +6,7 @@ import ProjectBox from "@/components/projectBox/ProjectBox";
 import { useParams } from "next/navigation";
 import { useDataStore } from "@/api/store/store";
 import ImageSliderWithThumnail from "@/components/ImageSliderWithThumnail/ImageSliderWithThumnail";
+import { userPropertyDeleteApi } from "@/api/apiCall";
 
 function Detail() {
   const { id } = useParams();
@@ -58,7 +59,7 @@ function Detail() {
                     <ul className="m-0 p-0 list-unstyled">
                       {detail?.propertyDetails?.features?.map((item, i) => (
                         <li className="d-inline-block p-3" key={i}>
-                          <div className="d-flex gap-2 align-items-center fs12">
+                          <div className="d-flex gap-2 align-items-center fs12 text-capitalize">
                             <img
                               src={
                                 item?.icon?.includes("http")
@@ -78,7 +79,11 @@ function Detail() {
                   </div>
                   <div className="bg-white p-3 mt-3">
                     <h5>Description</h5>
-                    <p>{detail?.propertyDetails?.details}</p>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: detail?.propertyDetails?.details,
+                      }}
+                    ></div>
                     {/* <h5>Amenities</h5>
                     <ul className="list-unstyled p-0 m-0">
                       <li className="d-inline-block p-3 AmenitBox">
