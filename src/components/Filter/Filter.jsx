@@ -295,7 +295,7 @@ function Filter(props) {
             type="submit"
             className="btn btn-save"
             onClick={() => {
-              props.setapiCall(true);
+              props.apiCall();
             }}
           >
             Apply
