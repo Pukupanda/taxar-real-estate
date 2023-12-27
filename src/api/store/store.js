@@ -9,6 +9,7 @@ import {
   blogsListApi,
   bookingsListApi,
   careerListApi,
+  emiCalculatorApi,
   getAboutApi,
   getDetailApi,
   getprivacyPolicyApi,
@@ -57,6 +58,12 @@ export const useDataStore = create((set) => ({
   fetchlikedProperty: async (data) => {
     const res = await likedPropertyApi(data);
     set({ likedProperty: await res?.data });
+  },
+
+  emiCalculator: {},
+  fetchemiCalculator: async (data) => {
+    const res = await emiCalculatorApi(data);
+    set({ emiCalculator: await res?.data });
   },
 
   teamsList: {},

@@ -5,7 +5,7 @@ async function PrivacyPolicy() {
 
   return (
     <>
-      <section className="">
+      <section className="min-vh-50">
         <div className="container">
           <div className="">
             <div className="mt-3 bg-white p-3">

@@ -1,8 +1,8 @@
-import { gettermAndConditionApi } from "@/api/apiCall";
+import { homeLoanApi } from "@/api/apiCall";
 export const dynamic = true;
-async function TermCondition() {
-  const detail = await gettermAndConditionApi();
 
+async function HomeLoan() {
+  const detail = await homeLoanApi();
   return (
     <>
       <section className="min-vh-50">
@@ -18,4 +18,4 @@ async function TermCondition() {
   );
 }
 
-export default TermCondition;
+export default HomeLoan;

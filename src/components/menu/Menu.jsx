@@ -139,12 +139,12 @@ function Menu() {
                   aria-labelledby="navbarDarkDropdownMenuLink"
                 >
                   <li>
-                    <Link className="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="/emi-calculator">
                       EMI Calculator
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="/home-loan">
                       Home Loan
                     </Link>
                   </li>

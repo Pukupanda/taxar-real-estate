@@ -199,3 +199,13 @@ export const propertyFeatureListApi = async (payload) => {
     return data;
   });
 };
+export const homeLoanApi = async (payload) => {
+  return getData("auth/homeLoan", payload).then((data) => {
+    return data;
+  });
+};
+export const emiCalculatorApi = async (payload) => {
+  return postRawData("emiCalculator", payload).then((data) => {
+    return data;
+  });
+};
