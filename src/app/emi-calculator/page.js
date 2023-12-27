@@ -33,9 +33,9 @@ function EMICalculator() {
     onSubmit: (values, { isSubmitting, resetForm }) => {
       setLoading(true);
       const payload = {
-        principal: values.principal,
-        interestRate: values.interestRate,
-        tenure: values.tenure,
+        principal: values.principal.toString(),
+        interestRate: values.interestRate.toString(),
+        tenure: values.tenure.toString(),
         tenureType: values.tenureType,
       };
 
