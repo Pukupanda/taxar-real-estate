@@ -56,7 +56,7 @@ function EMICalculator() {
                   <div className="text-center"></div>
                   <div className="form-floating mb-3">
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       placeholder=""
                       id="principal"
@@ -72,7 +72,7 @@ function EMICalculator() {
                   </div>
                   <div className="form-floating mb-3">
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       placeholder=""
                       id="interestRate"
@@ -89,7 +89,7 @@ function EMICalculator() {
                   </div>
                   <div className="form-floating mb-3">
                     <select
-                      type="text"
+                      type="number"
                       className="form-control"
                       placeholder=""
                       id="tenureType"
@@ -109,7 +109,7 @@ function EMICalculator() {
                   </div>
                   <div className="form-floating mb-3">
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       placeholder=""
                       id="tenure"
@@ -131,11 +131,11 @@ function EMICalculator() {
             </div>
             <div className="col-sm-12 col-md-6 col-lg-6">
               <h3>EMI</h3>
-              <p>Rs.{data?.emi}</p>
+              <p>Rs.{data?.emi || 0}</p>
               <h3>Total Interest</h3>
-              <p>Rs.{data?.totalInterest}</p>
+              <p>Rs.{data?.totalInterest || 0}</p>
               <h3>Total Payment</h3>
-              <p>Rs.{data?.totalPayment}</p>
+              <p>Rs.{data?.totalPayment || 0}</p>
             </div>
           </div>
         </div>
