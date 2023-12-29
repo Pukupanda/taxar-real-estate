@@ -125,6 +125,7 @@ function AddEditProperty() {
       details: Yup.string().required("Required"),
       shortDetails: Yup.string().required("Required"),
       displayImage: Yup.string().required("Required"),
+      contactNo: Yup.string().required("Required"),
     }),
     enableReinitialize: true,
     onSubmit: (values, { isSubmitting, resetForm }) => {
