@@ -56,7 +56,7 @@ function PropertyBox(props) {
                 )}
               </div>
 
-              <h3 className="property__card-title">
+              <h3 className="property__card-title text-truncate">
                 <span>{props.item?.pArea} - </span>{" "}
                 <span tabindex="0">{props.item?.title}</span>
               </h3>

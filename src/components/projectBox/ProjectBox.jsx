@@ -49,7 +49,7 @@ function ProjectBox(props) {
               <span className="property__card-type" tabindex="0">
                 {props.item?.propertyType}
               </span>
-              <h3 className="property__card-title">
+              <h3 className="property__card-title text-truncate">
                 <span tabindex="0">{props.item?.title}</span>
               </h3>
               {
