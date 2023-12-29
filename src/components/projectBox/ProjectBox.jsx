@@ -52,15 +52,21 @@ function ProjectBox(props) {
               <h3 className="property__card-title">
                 <span tabindex="0">{props.item?.title}</span>
               </h3>
-              <p className="property__card-location">{props.item?.location}</p>
+              {
+                <p className="property__card-location text-truncat">
+                  {props.item?.location && props.item?.location}
+                </p>
+              }
               <div className="property__card-tags"></div>
             </div>
           </Link>
           <div className="property__card-footer">
             <div className="property__card-author align-items-center">
-              <span className="tag tag-gray2 fw-bold">
-                {props.item?.propertyCount || 0}&nbsp; Properties
-              </span>
+              {props.item?.propertyCount > 0 && (
+                <span className="tag tag-gray2 fw-bold">
+                  {props.item?.propertyCount || 0}&nbsp; Properties
+                </span>
+              )}
             </div>
             <Link href={`/property/${props.item?._id}`}>
               <div className="btn btn-link">View Details</div>

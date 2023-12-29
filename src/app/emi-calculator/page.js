@@ -2,7 +2,10 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-toastify";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut, Pie } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 import Loader from "@/components/Loader/Loader";
 import { useRouter } from "next/navigation";
 import { useDataStore } from "@/api/store/store";
@@ -13,6 +16,55 @@ function EMICalculator() {
 
   const data = useDataStore((store) => store.emiCalculator);
   const { fetchemiCalculator } = useDataStore();
+
+  const val = [
+    { value: data?.emi || 736, label: "EMI", bg: "#3296ED", bd: "#3296ED" },
+    {
+      value: data?.totalInterest || 5,
+      label: "Total Interest",
+      bg: "#006699",
+      bd: "#006699",
+    },
+    {
+      value: data?.totalPayment || 1500,
+      label: "Total Payment",
+      bg: "orange",
+      bd: "orange",
+    },
+  ];
+
+  const options = {
+    title: {
+      display: true,
+      // text: "Número de registros",
+      fontColor: "white",
+    },
+
+    legend: {
+      position: "right",
+      align: "start",
+      labels: { fontColor: "white" },
+    },
+    layout: {
+      padding: 15,
+    },
+    plugins: {
+      labels: { render: "percentage", fontColor: "white" },
+    },
+  };
+
+  const processedData = {
+    labels: val.map((i) => i.label),
+    datasets: [
+      {
+        // label: "# of votes",
+        data: val.map((i) => i.value),
+        backgroundColor: val.map((i) => i.bg),
+        borderColor: val.map((i) => i.bd),
+        borderWidth: 1,
+      },
+    ],
+  };
 
   const initialValues = {
     principal: "",
@@ -44,13 +96,13 @@ function EMICalculator() {
       });
     },
   });
-  console.log(data, "data");
+
   return (
     <>
       <section className="mt-3 ">
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-6">
+            <div className="col-sm-12 col-md-3 col-lg-3">
               <div className="">
                 <form onSubmit={formik.handleSubmit}>
                   <div className="text-center"></div>
@@ -130,6 +182,15 @@ function EMICalculator() {
               </div>
             </div>
             <div className="col-sm-12 col-md-6 col-lg-6">
+              <div className="w-100 h-100">
+                <Doughnut
+                  className="w-75 h-auto m-auto"
+                  data={processedData}
+                  options={options}
+                />
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-3 col-lg-3">
               <h3>EMI</h3>
               <p>Rs.{data?.emi || 0}</p>
               <h3>Total Interest</h3>

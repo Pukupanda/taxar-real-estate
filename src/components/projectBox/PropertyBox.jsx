@@ -49,16 +49,22 @@ function PropertyBox(props) {
                 <span className="property__card-type" tabindex="0">
                   {props.item?.category}
                 </span>
-                <span className="property__card-type" tabindex="0">
-                  {props.item?.facingDirection}
-                </span>
+                {props.item?.facingDirection && (
+                  <span className="property__card-type" tabindex="0">
+                    {props.item?.facingDirection}-Facing
+                  </span>
+                )}
               </div>
 
               <h3 className="property__card-title">
                 <span>{props.item?.pArea} - </span>{" "}
                 <span tabindex="0">{props.item?.title}</span>
               </h3>
-              <p className="property__card-location">{props.item?.location}</p>
+              {props.item?.location && (
+                <p className="property__card-location">
+                  {props.item?.location}
+                </p>
+              )}
             </div>
           </div>
         </Link>

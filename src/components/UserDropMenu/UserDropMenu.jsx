@@ -25,9 +25,9 @@ function UserDropMenu(props) {
   return (
     <>
       <li className="nav-item position-relative showProfile">
-        <Link className="nav-link loginBtn" href="login">
+        <span className="nav-link loginBtn" role="button">
           {props.detail?.userName}
-        </Link>
+        </span>
         <div className="profileDrop">
           <Link
             href="/edit-profile"

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import { FieldArray, FormikProvider, useFormik } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
@@ -12,6 +12,8 @@ import MobileInput from "@/components/PhoneInput/MobileInput";
 import TextEditor from "@/components/TextEditor/TextEditor";
 import { AddPropertyApi } from "@/api/apiCall";
 import { useDataStore } from "@/api/store/store";
+import CreatableSelect from "react-select/creatable";
+import { category, propertyFor, subCategory } from "@/Utils";
 
 function AddEditProperty() {
   const { id } = useParams();
@@ -52,6 +54,8 @@ function AddEditProperty() {
     };
   });
 
+  const [otherFeaturesArr, setotherFeaturesArr] = useState(null);
+
   const initialValues = {
     images: id
       ? detail?.propertyDetails?.images?.map((item) => {
@@ -59,7 +63,7 @@ function AddEditProperty() {
             image: item?.image,
           };
         })
-      : [{ image: "" }],
+      : [],
     title: id ? detail?.propertyDetails?.title : "",
     propertyCode: id ? detail?.propertyDetails?.propertyCode : "",
     propertyFor: id ? detail?.propertyDetails?.propertyFor : "",
@@ -96,6 +100,7 @@ function AddEditProperty() {
           })
         : Feature
       : Feature,
+    otherFeatures: otherFeaturesArr,
     shortDetails: id ? detail?.propertyDetails?.shortDescription : "",
     details: id ? detail?.propertyDetails?.details : "",
     pArea: id ? detail?.propertyDetails?.pArea : "",
@@ -111,6 +116,15 @@ function AddEditProperty() {
       title: Yup.string().required("Required"),
       price: Yup.string().required("Required"),
       location: Yup.string().required("Required"),
+      propertyCode: Yup.string().required("Required"),
+      area: Yup.string().required("Required"),
+      unit: Yup.string().required("Required"),
+      pArea: Yup.string().required("Required"),
+      facingDirection: Yup.string().required("Required"),
+      propertyFor: Yup.string().required("Required"),
+      details: Yup.string().required("Required"),
+      shortDetails: Yup.string().required("Required"),
+      displayImage: Yup.string().required("Required"),
     }),
     enableReinitialize: true,
     onSubmit: (values, { isSubmitting, resetForm }) => {
@@ -325,6 +339,7 @@ function AddEditProperty() {
                         });
                         //console.log(arr);
                       }}
+                      role="button"
                     >
                       + Add More Image
                     </h6>
@@ -373,8 +388,11 @@ function AddEditProperty() {
                         {...formik.getFieldProps("propertyFor")}
                       >
                         <option value="">Select property For</option>
-                        <option value="Rent">rent</option>
-                        <option value="Buy">buy</option>
+                        {propertyFor?.map((item, i) => (
+                          <option value={item?.value} key={i}>
+                            {item?.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -393,8 +411,11 @@ function AddEditProperty() {
                         {...formik.getFieldProps("category")}
                       >
                         <option value="">Select Catagory</option>
-                        <option value="House">house</option>
-                        <option value="Land">land</option>
+                        {category?.map((item, i) => (
+                          <option value={item?.value} key={i}>
+                            {item?.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -403,46 +424,42 @@ function AddEditProperty() {
                   )}
                 </div>
 
-                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
-                  <div className="form-group">
-                    <div className="input-container">
-                      <select
-                        className="form-control form-select text-capitalize"
-                        {...formik.getFieldProps("subCategory")}
-                      >
-                        <option value="">Select sub Category</option>
-                        {formik.values.category === "House" ? (
-                          <>
-                            <option value="mansion">mansion</option>
-                            <option value="bungalow">bungalow</option>
-                            <option value="triplex">triplex</option>
-                            <option value="duplex">duplex</option>
-                            <option value="villa">villa</option>
-                            <option value="cottage">cottage</option>
-                          </>
-                        ) : formik.values.category === "Land" ? (
-                          <>
-                            <option value="agricultural">agricultural</option>
-                            <option value="residential">residential</option>
-                            <option value="commercial">commercial</option>
-                          </>
-                        ) : null}
-                      </select>
+                {formik.values.category && (
+                  <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                    <div className="form-group">
+                      <div className="input-container">
+                        <select
+                          className="form-control form-select text-capitalize"
+                          {...formik.getFieldProps("subCategory")}
+                        >
+                          <option value="">Select sub Category</option>
+                          {subCategory
+                            ?.filter(
+                              (it) => it?.category === formik.values.category
+                            )
+                            ?.map((item, i) => (
+                              <option value={item?.value} key={i}>
+                                {item?.name}
+                              </option>
+                            ))}
+                        </select>
+                      </div>
                     </div>
+                    {formik.errors.subCategory &&
+                      formik.touched.subCategory && (
+                        <div className="text-danger">
+                          {" "}
+                          {formik.errors.subCategory}
+                        </div>
+                      )}
                   </div>
-                  {formik.errors.subCategory && formik.touched.subCategory && (
-                    <div className="text-danger">
-                      {" "}
-                      {formik.errors.subCategory}
-                    </div>
-                  )}
-                </div>
+                )}
 
                 <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
                   <div className="form-group">
                     <div className="input-container">
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         placeholder="Area"
                         {...formik.getFieldProps("area")}
@@ -541,7 +558,7 @@ function AddEditProperty() {
                   <div className="form-group">
                     <div className="input-container">
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         placeholder="Price"
                         name="price"
@@ -559,7 +576,7 @@ function AddEditProperty() {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="P Area"
+                        placeholder="Popular Area"
                         {...formik.getFieldProps("pArea")}
                       />
                     </div>
@@ -571,12 +588,20 @@ function AddEditProperty() {
                 <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
                   <div className="form-group">
                     <div className="input-container">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Facing Direction"
+                      <select
+                        className="form-control form-select"
                         {...formik.getFieldProps("facingDirection")}
-                      />
+                      >
+                        <option value={""}>Facing Direction</option>
+                        <option value={"East"}>East</option>
+                        <option value={"West"}>West</option>
+                        <option value={"South"}>South</option>
+                        <option value={"North"}>North</option>
+                        <option value={"North East"}>North East</option>
+                        <option value={"South East"}>South East</option>
+                        <option value={"South West"}>South West</option>
+                        <option value={"South East"}>South East</option>
+                      </select>
                     </div>
                   </div>
                   {formik.errors.facingDirection &&
@@ -586,6 +611,52 @@ function AddEditProperty() {
                         {formik.errors.facingDirection}
                       </div>
                     )}
+                </div>
+
+                <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
+                  <h5>Features</h5>
+                  <div className="">
+                    <div className="radio-buttons mb-3">
+                      {formik?.values?.features?.map((item, i) => (
+                        <div className="form-group" key={i}>
+                          <input
+                            type="checkbox"
+                            id={item?._id}
+                            name={`features.${i}.checked`}
+                            checked={item?.checked}
+                            onChange={(e) => {
+                              let checked = e.target.checked;
+                              formik.setFieldValue(
+                                `features.${i}.checked`,
+                                checked
+                              );
+                            }}
+                          />
+                          <label htmlFor={item?._id}>{item?.label}</label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {formik.errors.features && formik.touched.features && (
+                    <div className="text-danger"> {formik.errors.features}</div>
+                  )}
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
+                  <h5>Other Features</h5>
+                  <div className="">
+                    <CreatableSelect
+                      // inputValue={inputValue}
+                      isClearable
+                      isMulti
+                      onChange={(newValue) => {
+                        setotherFeaturesArr(newValue);
+                      }}
+                      placeholder="Type Other Features and press enter..."
+                    />
+                  </div>
+                  {formik.errors.features && formik.touched.features && (
+                    <div className="text-danger"> {formik.errors.features}</div>
+                  )}
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
                   <h6>Contact No</h6>
@@ -627,35 +698,6 @@ function AddEditProperty() {
                         {formik.errors.secondaryContactNo}
                       </div>
                     )}
-                </div>
-
-                <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
-                  <h5>Features</h5>
-                  <div className="">
-                    <div className="radio-buttons mb-3">
-                      {formik?.values?.features?.map((item, i) => (
-                        <div className="form-group" key={i}>
-                          <input
-                            type="checkbox"
-                            id={item?._id}
-                            name={`features.${i}.checked`}
-                            checked={item?.checked}
-                            onChange={(e) => {
-                              let checked = e.target.checked;
-                              formik.setFieldValue(
-                                `features.${i}.checked`,
-                                checked
-                              );
-                            }}
-                          />
-                          <label htmlFor={item?._id}>{item?.label}</label>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  {formik.errors.features && formik.touched.features && (
-                    <div className="text-danger"> {formik.errors.features}</div>
-                  )}
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
                   <div className="">

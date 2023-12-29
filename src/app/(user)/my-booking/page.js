@@ -66,19 +66,19 @@ function MyBookingsList() {
                               : "/assets/img/dummyImage.png"
                           }
                           alt={item?.property?.title}
-                          width={50}
-                          height={50}
+                          width={80}
+                          height={80}
                           className="rounded-3"
                           quality={100}
                           priority
                         />
                       </Td>
-                      <Td>{item?.property?.title}</Td>
-                      <Td>{item?.property?.category}</Td>
-                      <Td>{item?.property?.subCategory}</Td>
-                      <Td>{item?.property?.price}</Td>
-                      <Td>{item?.property?.facingDirection}</Td>
-                      <Td>{item?.property?.location}</Td>
+                      <Td>{item?.property?.title || "NA"}</Td>
+                      <Td>{item?.property?.category || "NA"}</Td>
+                      <Td>{item?.property?.subCategory || "NA"}</Td>
+                      <Td>{item?.property?.price || "NA"}</Td>
+                      <Td>{item?.property?.facingDirection || "NA"}</Td>
+                      <Td>{item?.property?.location || "NA"}</Td>
                       <Td>
                         <div className="d-flex align-items-center gap-2">
                           <Link href={`/detail/${item?.property?._id}`}>

@@ -176,3 +176,23 @@ export const SingleImageCarouselsettings = {
     },
   ],
 };
+
+export const propertyFor = [
+  { name: "rent", value: "Rent" },
+  { name: "buy", value: "Buy" },
+];
+export const category = [
+  { name: "house", value: "house" },
+  { name: "land", value: "land" },
+];
+export const subCategory = [
+  { name: "mansion", value: "mansion", category: "house" },
+  { name: "bungalow", value: "bungalow", category: "house" },
+  { name: "triplex", value: "triplex", category: "house" },
+  { name: "duplex", value: "duplex", category: "house" },
+  { name: "villa", value: "villa", category: "house" },
+  { name: "cottage", value: "cottage", category: "house" },
+  { name: "agricultural", value: "agricultural", category: "land" },
+  { name: "residential", value: "residential", category: "land" },
+  { name: "commercial", value: "commercial", category: "land" },
+];

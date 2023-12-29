@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import FooterAddressSocial from "../FooterAddressSocial/FooterAddressSocial";
 import moment from "moment";
+import Image from "next/image";
 
 function Footer() {
   return (

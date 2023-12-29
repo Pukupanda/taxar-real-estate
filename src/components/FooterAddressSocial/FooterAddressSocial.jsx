@@ -1,4 +1,5 @@
 import { FooterAddressApi } from "@/api/apiCall";
+import Image from "next/image";
 import Link from "next/link";
 export const dynamic = true;
 
@@ -60,6 +61,20 @@ async function FooterAddressSocial() {
           <i className="fa-brands fa-square-twitter"></i>
         </Link>{" "}
       </p>
+      <a
+        href={`https://api.whatsapp.com/send?phone=${data?.data?.contactNumber}`}
+        target="_blank"
+        className="position-fixed fixedBotoRi"
+      >
+        <Image
+          src={"/assets/img/WhatsApp.png"}
+          alt=""
+          width={50}
+          height={50}
+          quality={100}
+          priority
+        />
+      </a>
     </>
   );
 }

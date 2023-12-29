@@ -35,7 +35,7 @@ export default function Home() {
                 &apos;Connecting People to Property and Prosperity&apos;
               </h1>
               <Link
-                className="bookingBtn w-auto py-2 px-4 rounded-pill"
+                className="btn-link d-block fs-5 py-2 px-4 rounded-pill w-50 text-center"
                 href="/booking"
               >
                 Booking

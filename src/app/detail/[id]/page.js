@@ -26,7 +26,7 @@ function Detail() {
                 <div className="w-100">
                   <p className="d-flex justify-content-between align-items-center mb-2 fw-bold">
                     Rs. {detail?.propertyDetails?.price}
-                    <span className="tag mb-2 tag-black">
+                    <span className="tag mb-2 tag-black text-capitalize">
                       {detail?.propertyDetails?.category}/
                       {detail?.propertyDetails?.propertyFor}
                     </span>
@@ -35,12 +35,14 @@ function Detail() {
                     {detail?.propertyDetails?.title} -{" "}
                     {detail?.propertyDetails?.pArea}
                   </h3>
-                  <h6 className="mb-2">
-                    Facing Direction:-{" "}
-                    <span className="text-capitalize fw-bold">
-                      {detail?.propertyDetails?.facingDirection}
-                    </span>
-                  </h6>
+                  {detail?.propertyDetails?.facingDirection && (
+                    <h6 className="mb-2">
+                      Facing Direction:-{" "}
+                      <span className="text-capitalize fw-bold">
+                        {detail?.propertyDetails?.facingDirection}
+                      </span>
+                    </h6>
+                  )}
 
                   <div className="mb-3">
                     <img src="/assets/img/Address.png" alt="" width="15px" />{" "}

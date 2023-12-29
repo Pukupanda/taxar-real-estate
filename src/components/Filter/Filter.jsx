@@ -4,6 +4,7 @@ import "./style.css";
 import MultiRangeSlider from "multi-range-slider-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { category, propertyFor, subCategory } from "@/Utils";
 
 function Filter(props) {
   const [loading, setloading] = useState(false);
@@ -73,67 +74,63 @@ function Filter(props) {
         </div>
         <div className="mb-3">
           <div className="radio-buttons">
-            <div className="form-group">
-              <input
-                type="radio"
-                id="Rent"
-                name="propertyFor"
-                value={"rent"}
-                checked={props.propertyFor === "rent" ? "checked" : ""}
-                onChange={(e) => {
-                  props.setpropertyFor(e.target.value);
-                }}
-              />
-              <label htmlFor="Rent">Rent</label>
-            </div>
-            <div className="form-group">
-              <input
-                type="radio"
-                id="Buy"
-                name="propertyFor"
-                value={"buy"}
-                checked={props.propertyFor === "buy" ? "checked" : ""}
-                onChange={(e) => {
-                  props.setpropertyFor(e.target.value);
-                }}
-              />
-              <label htmlFor="Buy">Buy</label>
-            </div>
+            {propertyFor?.map((item, i) => (
+              <div className="form-group" key={i}>
+                <input
+                  type="radio"
+                  id={item?.value}
+                  name="propertyFor"
+                  value={item?.value}
+                  checked={props.propertyFor === item?.value ? "checked" : ""}
+                  onChange={(e) => {
+                    props.setpropertyFor(e.target.value);
+                  }}
+                />
+                <label htmlFor={item?.value}>{item?.name}</label>
+              </div>
+            ))}
           </div>
         </div>
         <h6>CATEGORIES</h6>
         <div className="radio-buttons mb-3">
-          <div className="form-group">
-            <input
-              type="radio"
-              id="land"
-              name="category"
-              value={"land"}
-              checked={props.category === "land" ? "checked" : ""}
-              onChange={(e) => {
-                props.setcategory(e.target.value);
-              }}
-            />
-            <label htmlFor="land">land</label>
-          </div>
-          <div className="form-group">
-            <input
-              type="radio"
-              id="house"
-              name="category"
-              value={"house"}
-              checked={props.category === "house" ? "checked" : ""}
-              onChange={(e) => {
-                props.setcategory(e.target.value);
-              }}
-            />
-            <label htmlFor="house">house</label>
-          </div>
+          {category?.map((item, i) => (
+            <div className="form-group" key={i}>
+              <input
+                type="radio"
+                id={item?.value}
+                name="category"
+                value={item?.value}
+                checked={props.category === item?.value ? "checked" : ""}
+                onChange={(e) => {
+                  props.setcategory(e.target.value);
+                }}
+              />
+              <label htmlFor={item?.value}>{item?.name}</label>
+            </div>
+          ))}
         </div>
 
         {props.category !== "" && <h6>SUBCATEGORY</h6>}
         <div className="radio-buttons mb-3">
-          {props.category === "house" ? (
+          {subCategory
+            ?.filter((it) => it?.category === props.category)
+            ?.map((item, i) => (
+              <div className="form-group" key={i}>
+                <input
+                  type="radio"
+                  id={item?.value}
+                  name="subCategory"
+                  value={item?.value}
+                  checked={props.subCategory === item?.value ? "checked" : ""}
+                  onChange={(e) => {
+                    props.setsubCategory(e.target.value);
+                  }}
+                />
+                <label htmlFor={item?.value}>{item?.name}</label>
+              </div>
+            ))}
+
+          {/* {props.category === "house" ? (
             <>
               <div className="form-group">
                 <input
@@ -258,7 +255,7 @@ function Filter(props) {
                 <label htmlFor="commercial">commercial</label>
               </div>
             </>
-          ) : null}
+          ) : null} */}
         </div>
         <div className="form-floating mb-3">
           <input

@@ -78,19 +78,19 @@ function LikedProperty() {
                               : "/assets/img/dummyImage.png"
                           }
                           alt={item?.title}
-                          width={50}
-                          height={50}
+                          width={80}
+                          height={80}
                           className="rounded-3"
                           quality={100}
                           priority
                         />
                       </Td>
-                      <Td>{item?.title}</Td>
-                      <Td>{item?.category}</Td>
-                      <Td>{item?.subCategory}</Td>
-                      <Td>{item?.price}</Td>
-                      <Td>{item?.facingDirection}</Td>
-                      <Td>{item?.location}</Td>
+                      <Td>{item?.title || "NA"}</Td>
+                      <Td>{item?.category || "NA"}</Td>
+                      <Td>{item?.subCategory || "NA"}</Td>
+                      <Td>{item?.price || "NA"}</Td>
+                      <Td>{item?.facingDirection || "NA"}</Td>
+                      <Td>{item?.location || "NA"}</Td>
                       <Td>
                         <div className="d-flex align-items-center gap-2">
                           <Link href={`/detail/${item?._id}`}>
@@ -104,7 +104,7 @@ function LikedProperty() {
                             />
                           </Link>
                           <div
-                            className=""
+                            className="mt-1"
                             onClick={() => {
                               LikeUnlikeProperty(item?._id);
                             }}

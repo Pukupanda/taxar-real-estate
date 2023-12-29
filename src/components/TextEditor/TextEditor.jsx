@@ -19,6 +19,17 @@ Size.whitelist = [
   "24px",
 ];
 Quill.register(Size, true);
+const Font = Quill.import("formats/font");
+Font.whitelist = [
+  "arial",
+  "comic-sans",
+  "courier-new",
+  "georgia",
+  "helvetica",
+  "lucida",
+  "preeti",
+];
+Quill.register(Font, true);
 
 function TextEditor(props) {
   const quillRef = useRef();
@@ -30,16 +41,20 @@ function TextEditor(props) {
           [{ header: [1, 2, 3, 4, 5, 6, false] }],
           ["bold", "italic", "underline", "strike"],
           [{ size: Size.whitelist }],
+          ["blockquote", "code-block"],
           [
             { list: "ordered" },
             { list: "bullet" },
             { indent: "-1" },
             { indent: "+1" },
           ],
-          ["link"],
+          [{ script: "sub" }, { script: "super" }],
+          [{ direction: "rtl" }],
+          ["link", "image"],
           [{ color: [] }, { background: [] }],
-          [{ font: [] }],
+          [{ font: Font.whitelist }],
           [{ align: [] }],
+          ["clean"],
         ],
       },
     }),
