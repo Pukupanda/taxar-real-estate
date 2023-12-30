@@ -76,6 +76,12 @@ function Property() {
       setloading(false);
     });
   };
+  const ResetApi = () => {
+    setloading(true);
+    fetchProjectDetails(id, { page: page, limit: 10 }).then(() => {
+      setloading(false);
+    });
+  };
 
   return (
     <>
@@ -84,6 +90,7 @@ function Property() {
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-3 position-relative">
               <Filter
+                ResetApi={ResetApi}
                 apiCall={filterApi}
                 propertyFor={propertyFor}
                 setpropertyFor={setpropertyFor}

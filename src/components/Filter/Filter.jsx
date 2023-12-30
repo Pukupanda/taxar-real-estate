@@ -7,57 +7,26 @@ import * as Yup from "yup";
 import { category, propertyFor, subCategory } from "@/Utils";
 
 function Filter(props) {
-  const [loading, setloading] = useState(false);
-  const initialValues = {
-    search: "",
-    propertyFor: "",
-    city: "",
-    category: "",
-    subCategory: "",
-    budgetMin: 10,
-    budgetMax: 50000,
-    isFeatured: "",
-    location: "",
-  };
-  const formik = useFormik({
-    initialValues: initialValues,
-    validationSchema: Yup.object({
-      // category: Yup.string().required("Required"),
-      // subCategory: Yup.string().required("Required"),
-      // title: Yup.string().required("Required"),
-      // price: Yup.string().required("Required"),
-      // location: Yup.string().required("Required"),
-    }),
-    enableReinitialize: true,
-    onSubmit: (values, { isSubmitting, resetForm }) => {
-      setloading(true);
-
-      const payload = {
-        page: props.page,
-        limit: 10,
-        search: values.search,
-        propertyFor: values.propertyFor,
-        city: values.city,
-        category: values.category,
-        subCategory: values.subCategory,
-        budgetMin: values.budgetMin,
-        budgetMax: values.budgetMax,
-        location: values.location,
-        isFeatured: values.isFeatured,
-      };
-
-      console.log(payload, "dataPay");
-      props.apiCall(props.id, payload).then(() => {
-        setloading(false);
-      });
-    },
-  });
-
   return (
     <>
       <div className="bg-white shadow rounded p-3 prertyFilter">
         <div className="d-flex justify-content-between gap-2 mb-2">
           <h6>FILTER YOUR SEARCH</h6>
+          <span
+            onClick={() => {
+              props.setcity("");
+              props.setpropertyFor("");
+              props.setcategory("");
+              props.setbudgetMax("");
+              props.setbudgetMin("");
+              props.setlocation("");
+              props.setsubCategory("");
+              props.ResetApi();
+            }}
+            role="button"
+          >
+            Reset
+          </span>
         </div>
         <div className="form-floating mb-3">
           <input
@@ -129,133 +98,6 @@ function Filter(props) {
                 <label htmlFor={item?.value}>{item?.name}</label>
               </div>
             ))}
-
-          {/* {props.category === "house" ? (
-            <>
-              <div className="form-group">
-                <input
-                  type="radio"
-                  id="mansion"
-                  name="subCategory"
-                  value={"mansion"}
-                  checked={props.subCategory === "mansion" ? "checked" : ""}
-                  onChange={(e) => {
-                    props.setsubCategory(e.target.value);
-                  }}
-                />
-                <label htmlFor="mansion">mansion</label>
-              </div>
-              <div className="form-group">
-                <input
-                  type="radio"
-                  id="bungalow"
-                  name="subCategory"
-                  value={"bungalow"}
-                  checked={props.subCategory === "bungalow" ? "checked" : ""}
-                  onChange={(e) => {
-                    props.setsubCategory(e.target.value);
-                  }}
-                />
-                <label htmlFor="bungalow">bungalow</label>
-              </div>
-              <div className="form-group">
-                <input
-                  type="radio"
-                  id="triplex"
-                  name="subCategory"
-                  value={"triplex"}
-                  checked={props.subCategory === "triplex" ? "checked" : ""}
-                  onChange={(e) => {
-                    props.setsubCategory(e.target.value);
-                  }}
-                />
-                <label htmlFor="triplex">triplex</label>
-              </div>
-              <div className="form-group">
-                <input
-                  type="radio"
-                  id="duplex"
-                  name="subCategory"
-                  value={"duplex"}
-                  checked={props.subCategory === "duplex" ? "checked" : ""}
-                  onChange={(e) => {
-                    props.setsubCategory(e.target.value);
-                  }}
-                />
-                <label htmlFor="duplex">duplex</label>
-              </div>
-              <div className="form-group">
-                <input
-                  type="radio"
-                  id="villa"
-                  name="subCategory"
-                  value={"villa"}
-                  checked={props.subCategory === "villa" ? "checked" : ""}
-                  onChange={(e) => {
-                    props.setsubCategory(e.target.value);
-                  }}
-                />
-                <label htmlFor="villa">villa</label>
-              </div>
-              <div className="form-group">
-                <input
-                  type="radio"
-                  id="cottage"
-                  name="subCategory"
-                  value={"cottage"}
-                  checked={props.subCategory === "cottage" ? "checked" : ""}
-                  onChange={(e) => {
-                    props.setsubCategory(e.target.value);
-                  }}
-                />
-                <label htmlFor="cottage">cottage</label>
-              </div>
-            </>
-          ) : props.category === "land" ? (
-            <>
-              <div className="form-group">
-                <input
-                  type="radio"
-                  id="agricultural"
-                  name="subCategory"
-                  value={"agricultural"}
-                  checked={
-                    props.subCategory === "agricultural" ? "checked" : ""
-                  }
-                  onChange={(e) => {
-                    props.setsubCategory(e.target.value);
-                  }}
-                />
-                <label htmlFor="agricultural">agricultural</label>
-              </div>
-              <div className="form-group">
-                <input
-                  type="radio"
-                  id="residential"
-                  name="subCategory"
-                  value={"residential"}
-                  checked={props.subCategory === "residential" ? "checked" : ""}
-                  onChange={(e) => {
-                    props.setsubCategory(e.target.value);
-                  }}
-                />
-                <label htmlFor="residential">residential</label>
-              </div>
-              <div className="form-group">
-                <input
-                  type="radio"
-                  id="commercial"
-                  name="subCategory"
-                  value={"commercial"}
-                  checked={props.subCategory === "commercial" ? "checked" : ""}
-                  onChange={(e) => {
-                    props.setsubCategory(e.target.value);
-                  }}
-                />
-                <label htmlFor="commercial">commercial</label>
-              </div>
-            </>
-          ) : null} */}
         </div>
         <div className="form-floating mb-3">
           <input
