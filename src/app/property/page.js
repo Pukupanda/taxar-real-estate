@@ -70,7 +70,7 @@ function PropertyList() {
 
   const ResetApi = () => {
     setLoading(true);
-    fetchProjectDetails(id, { page: page, limit: 10 }).then(() => {
+    fetchpropertyList({ page: page, limit: 10 }).then(() => {
       setLoading(false);
     });
   };
