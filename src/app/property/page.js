@@ -34,7 +34,7 @@ function PropertyList() {
 
   const params = {
     page: page,
-    limit: 10,
+    limit: 12,
     propertyFor: propertyFor,
     city: city,
     category: category,
@@ -70,7 +70,7 @@ function PropertyList() {
 
   const ResetApi = () => {
     setLoading(true);
-    fetchpropertyList({ page: page, limit: 10 }).then(() => {
+    fetchpropertyList({ page: page, limit: 12 }).then(() => {
       setLoading(false);
     });
   };
