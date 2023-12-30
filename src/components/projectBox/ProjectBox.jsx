@@ -1,48 +1,38 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
+import ImageModal from "../modals/ImageModal";
 
 function ProjectBox(props) {
+  const [modalName, setmodalName] = useState("");
+  const [image, setImage] = useState("");
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
+  };
+
   return (
     <>
       <div className="property__card featured_card">
-        <Link href={`/property/${props.item?._id}`}>
-          <div className="property__card-media cursor-pointer">
-            <div>
-              <img
-                src={
-                  props.item?.image?.includes("http")
-                    ? props.item?.image
-                    : "/assets/img/dummyImage.png"
-                }
-                alt={props.item?.title}
-              />
-            </div>
-            <div className="property__card-media-widgets">
-              {/* <div className="tag tag-black">{props.item?.price}</div> */}
-              {/* <div
-                className="tag tag-black-heart tag-circ compare"
-              >
-                <div className="heartIconContainer">
-                  <svg
-                    stroke="currentColor"
-                    fill="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 24 24"
-                    className="heartIcon"
-                    height="18"
-                    width="18"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path d="M9.01 14H2v2h7.01v3L13 15l-3.99-4v3zm5.98-1v-3H22V8h-7.01V5L11 9l3.99 4z"></path>
-                  </svg>
-                </div>
-                <span className="tooltiptext">Add to Compare</span>
-              </div> */}
-            </div>
-          </div>
-        </Link>
+        <div className="property__card-media cursor-pointer">
+          <img
+            src={
+              props.item?.image?.includes("http")
+                ? props.item?.image
+                : "/assets/img/dummyImage.png"
+            }
+            alt={props.item?.title}
+            onClick={() => {
+              if (props.item?.image?.includes("http")) {
+                setmodalName("image modal");
+                setImage(props.item?.image);
+                handleShow();
+              }
+            }}
+            role="button"
+          />
+        </div>
         <div className="property__card-text cursor-pointer">
           <Link href={`/property/${props.item?._id}`}>
             <div className="property__card-header">
@@ -74,6 +64,9 @@ function ProjectBox(props) {
           </div>
         </div>
       </div>
+      {show && modalName === "image modal" && image && (
+        <ImageModal show={show} handleShow={handleShow} img={image} />
+      )}
     </>
   );
 }

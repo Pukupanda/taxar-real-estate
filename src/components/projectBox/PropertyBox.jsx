@@ -1,10 +1,18 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import "./style.css";
 import Link from "next/link";
 import Cookies from "js-cookie";
+import ImageModal from "../modals/ImageModal";
 
 function PropertyBox(props) {
   const token = Cookies.get("Taxar");
+  const [modalName, setmodalName] = useState("");
+  const [image, setImage] = useState("");
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   return (
     <>
@@ -27,22 +35,30 @@ function PropertyBox(props) {
             } fa-heart themeGrn`}
           ></i>
         </div>
-        <Link href={`/detail/${props.item?._id}`}>
-          <div className="property__card-media cursor-pointer">
-            <div className="">
-              <img
-                src={
-                  props.item?.displayImage?.includes("http")
-                    ? props.item?.displayImage
-                    : "/assets/img/dummyImage.png"
-                }
-                alt={props.item?.title}
-              />
-            </div>
-            <div className="property__card-media-widgets">
-              <div className="tag tag-black">Rs. {props.item?.price}</div>
-            </div>
+
+        <div className="property__card-media cursor-pointer">
+          <img
+            src={
+              props.item?.displayImage?.includes("http")
+                ? props.item?.displayImage
+                : "/assets/img/dummyImage.png"
+            }
+            alt={props.item?.title}
+            onClick={() => {
+              if (props.item?.displayImage?.includes("http")) {
+                setmodalName("image modal");
+                setImage(props.item?.displayImage);
+                handleShow();
+              }
+            }}
+            role="button"
+          />
+
+          <div className="property__card-media-widgets">
+            <div className="tag tag-black">Rs. {props.item?.price}</div>
           </div>
+        </div>
+        <Link href={`/detail/${props.item?._id}`}>
           <div className="px-3 pb-3">
             <div className="property__card-header">
               <div className=" d-flex justify-content-between text-capitalize align-items-center">
@@ -69,6 +85,9 @@ function PropertyBox(props) {
           </div>
         </Link>
       </div>
+      {show && modalName === "image modal" && image && (
+        <ImageModal show={show} handleShow={handleShow} img={image} />
+      )}
     </>
   );
 }

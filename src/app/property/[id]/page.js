@@ -4,6 +4,7 @@ import { useDataStore } from "@/api/store/store";
 import Filter from "@/components/Filter/Filter";
 import Loader from "@/components/Loader/Loader";
 import Paginations from "@/components/Paginations/Pagination";
+import ImageModal from "@/components/modals/ImageModal";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
@@ -22,6 +23,13 @@ function Property() {
     setpage(val);
   };
   const token = Cookies.get("Taxar");
+
+  const [modalName, setmodalName] = useState("");
+  const [image, setImage] = useState("");
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   const [propertyFor, setpropertyFor] = useState("");
   const [city, setcity] = useState("");
@@ -110,6 +118,14 @@ function Property() {
                         }
                         alt=""
                         className="propImg"
+                        onClick={() => {
+                          if (item?.displayImage.includes("http")) {
+                            setmodalName("image modal");
+                            setImage(item?.displayImage);
+                            handleShow();
+                          }
+                        }}
+                        role="button"
                       />
                     </div>
                     <div className="proprtyInfo w-100">
@@ -211,6 +227,9 @@ function Property() {
           )}
         </div>
       </section>
+      {show && modalName === "image modal" && image && (
+        <ImageModal show={show} handleShow={handleShow} img={image} />
+      )}
     </>
   );
 }
