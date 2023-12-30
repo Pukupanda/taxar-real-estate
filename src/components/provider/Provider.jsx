@@ -8,7 +8,7 @@ function Provider(props) {
     <>
       <Menu />
       <Bredthcred />
-      {props.children}
+      <div className="min-vh-50">{props.children}</div>
       <Footer />
     </>
   );

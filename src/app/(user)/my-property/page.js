@@ -105,6 +105,7 @@ function MyProperty() {
                   <Tr>
                     <Th>image</Th>
                     <Th>title</Th>
+                    <Th>property For</Th>
                     <Th>category</Th>
                     <Th>sub Category</Th>
                     <Th>price</Th>
@@ -139,6 +140,7 @@ function MyProperty() {
                           />
                         </Td>
                         <Td>{item?.title || "NA"}</Td>
+                        <Td>{item?.propertyFor || "NA"}</Td>
                         <Td>{item?.category || "NA"}</Td>
                         <Td>{item?.subCategory || "NA"}</Td>
                         <Td>{item?.price || "NA"}</Td>

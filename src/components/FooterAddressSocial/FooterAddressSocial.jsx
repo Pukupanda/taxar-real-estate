@@ -18,7 +18,21 @@ async function FooterAddressSocial() {
         <i className="fa-solid fa-envelope"></i> {data?.data?.email}
       </p>
       <p className="fs-3">
-        <Link
+        {data?.data?.socialMedia?.map((item, i) => (
+          <>
+            {item?.url?.includes("http") && (
+              <Link
+                key={i}
+                className="text-dark"
+                target="_black"
+                href={item?.url?.includes("http") ? item?.url : "#"}
+              >
+                <i className={`fa-brands ${item?.key}`}></i>
+              </Link>
+            )}{" "}
+          </>
+        ))}
+        {/* <Link
           className="text-dark"
           target="_black"
           href={
@@ -59,22 +73,27 @@ async function FooterAddressSocial() {
           }
         >
           <i className="fa-brands fa-square-twitter"></i>
-        </Link>{" "}
+        </Link>{" "} */}
       </p>
-      <a
-        href={`https://api.whatsapp.com/send?phone=${data?.data?.contactNumber}`}
-        target="_blank"
-        className="position-fixed fixedBotoRi"
-      >
-        <Image
-          src={"/assets/img/WhatsApp.png"}
-          alt=""
-          width={50}
-          height={50}
-          quality={100}
-          priority
-        />
-      </a>
+      {data?.data?.whatsappNumber && (
+        <a
+          href={`https://api.whatsapp.com/send?phone=${data?.data?.whatsappNumber
+            ?.replaceAll("+", "")
+            ?.replaceAll("-", "")
+            ?.replaceAll(" ", "")}`}
+          target="_blank"
+          className="position-fixed fixedBotoRi"
+        >
+          <Image
+            src={"/assets/img/WhatsApp.png"}
+            alt=""
+            width={50}
+            height={50}
+            quality={100}
+            priority
+          />
+        </a>
+      )}
     </>
   );
 }

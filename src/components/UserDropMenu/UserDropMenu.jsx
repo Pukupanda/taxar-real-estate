@@ -24,8 +24,21 @@ function UserDropMenu(props) {
 
   return (
     <>
-      <li className="nav-item position-relative showProfile">
-        <span className="nav-link loginBtn" role="button">
+      <li
+        className={
+          props.isTabletOrMobile
+            ? "nav-item position-relative showProfile pe-0"
+            : "nav-item position-relative showProfile"
+        }
+      >
+        <span
+          className={
+            props.isTabletOrMobile
+              ? "nav-link loginBtn px-2 mb-2 rounded"
+              : "nav-link loginBtn"
+          }
+          role="button"
+        >
           {props.detail?.userName}
         </span>
         <div className="profileDrop">
@@ -34,6 +47,9 @@ function UserDropMenu(props) {
             className={
               pathname?.includes("edit-profile") ? "themeOrg" : "themeGrn"
             }
+            onClick={() => {
+              props.handleClose();
+            }}
           >
             Edit Profile
           </Link>
@@ -42,6 +58,9 @@ function UserDropMenu(props) {
             className={
               pathname?.includes("my-property") ? "themeOrg" : "themeGrn"
             }
+            onClick={() => {
+              props.handleClose();
+            }}
           >
             my property
           </Link>
@@ -50,6 +69,9 @@ function UserDropMenu(props) {
             className={
               pathname?.includes("my-booking") ? "themeOrg" : "themeGrn"
             }
+            onClick={() => {
+              props.handleClose();
+            }}
           >
             my booking
           </Link>
@@ -58,6 +80,9 @@ function UserDropMenu(props) {
             className={
               pathname?.includes("liked-property") ? "themeOrg" : "themeGrn"
             }
+            onClick={() => {
+              props.handleClose();
+            }}
           >
             liked property
           </Link>
@@ -66,6 +91,9 @@ function UserDropMenu(props) {
             className={
               pathname?.includes("change-password") ? "themeOrg" : "themeGrn"
             }
+            onClick={() => {
+              props.handleClose();
+            }}
           >
             change password
           </Link>

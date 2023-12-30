@@ -67,6 +67,7 @@ export default function Home() {
                   <div className="p-4">
                     <h3>About Us</h3>
                     <div
+                      className="line9"
                       dangerouslySetInnerHTML={{ __html: data?.AboutUs }}
                     ></div>
                   </div>
@@ -165,8 +166,13 @@ export default function Home() {
       <section className="bg-white py-4">
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
+            <div className="col-sm-12 col-md-10 col-lg-10  mb-4">
               <h3 className="text-dark">Featured Projects</h3>
+            </div>
+            <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
+              <Link href={"/projects"} className="text-dark fw-bold">
+                View All
+              </Link>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-12">
               {data?.featuredProject?.length > 0 ? (

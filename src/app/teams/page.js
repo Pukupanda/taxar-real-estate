@@ -7,7 +7,7 @@ async function Teams() {
 
   return (
     <>
-      <section className="mt-5 pt-5">
+      <section className="mt-5">
         <div className="container">
           {list?.data?.Team?.length > 0 ? (
             <>

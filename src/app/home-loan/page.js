@@ -5,7 +5,7 @@ async function HomeLoan() {
   const detail = await homeLoanApi();
   return (
     <>
-      <section className="min-vh-50">
+      <section className="">
         <div className="container">
           <div className="">
             <div className="mt-3 bg-white p-3">

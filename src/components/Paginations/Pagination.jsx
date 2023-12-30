@@ -13,7 +13,7 @@ function Paginations({ handlePage, page, total }) {
   //console.log(total)
   return (
     <>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center mt-4">
         <Pagination
           itemClass="page-item"
           linkClass="page-link"

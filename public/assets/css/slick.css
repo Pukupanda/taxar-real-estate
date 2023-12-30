@@ -145,6 +145,7 @@
   border: none;
   outline: 0;
   background: 0 0;
+  z-index: 9;
 }
 .slick-next:focus,
 .slick-next:hover,
@@ -177,10 +178,10 @@
   background-size: contain;
 }
 .slick-prev {
-  left: -25px;
+  left: 0;
 }
 [dir="rtl"] .slick-prev {
-  right: -25px;
+  right: 0;
   left: auto;
 }
 .slick-prev:before {
@@ -193,11 +194,11 @@
   background-image: url("/assets/img/ArrowRight.png");
 }
 .slick-next {
-  right: -25px;
+  right: 0;
 }
 [dir="rtl"] .slick-next {
   right: auto;
-  left: -25px;
+  left: 0;
 }
 [dir="rtl"] .slick-next:before {
   content: "←";

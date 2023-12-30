@@ -71,7 +71,7 @@ function Property() {
 
   return (
     <>
-      <section className="pt-5 mt-4">
+      <section className="pt-5">
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-3 position-relative">

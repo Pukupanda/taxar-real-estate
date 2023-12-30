@@ -22,7 +22,7 @@ function Publication() {
   }, []);
   return (
     <>
-      <section className="pt-5 mt-4">
+      <section className="pt-5">
         <div className="container">
           <div className="row">
             {loading ? (
@@ -44,7 +44,7 @@ function Publication() {
                     </div>
                     <div className="proprtyInfo w-100">
                       <h5 className="text-capitalize">{item?.title}</h5>
-                      <p>{item?.description}</p>
+                      <p className="line7">{item?.description}</p>
                       <Link
                         href={`/publication/detail/${item?._id}`}
                         className="loginBtn btn deailViewAbsula"

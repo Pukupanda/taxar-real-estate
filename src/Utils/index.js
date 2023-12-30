@@ -30,7 +30,7 @@ export const ThreeSlideSettings = {
       breakpoint: 768,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         initialSlide: 1,
       },
     },
@@ -38,21 +38,24 @@ export const ThreeSlideSettings = {
       breakpoint: 590,
       settings: {
         slidesToShow: 1,
-        arrows: false,
+        slidesToScroll: 1,
+        arrows: true,
       },
     },
     {
       breakpoint: 575,
       settings: {
         slidesToShow: 1,
-        arrows: false,
+        slidesToScroll: 1,
+        arrows: true,
       },
     },
     {
       breakpoint: 400,
       settings: {
         slidesToShow: 1,
-        arrows: false,
+        slidesToScroll: 1,
+        arrows: true,
       },
     },
   ],
@@ -89,7 +92,7 @@ export const FourSlideSettings = {
       breakpoint: 768,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         initialSlide: 1,
       },
     },
@@ -97,21 +100,24 @@ export const FourSlideSettings = {
       breakpoint: 590,
       settings: {
         slidesToShow: 1,
-        arrows: false,
+        arrows: true,
+        slidesToScroll: 1,
       },
     },
     {
       breakpoint: 575,
       settings: {
         slidesToShow: 1,
-        arrows: false,
+        arrows: true,
+        slidesToScroll: 1,
       },
     },
     {
       breakpoint: 400,
       settings: {
         slidesToShow: 1,
-        arrows: false,
+        arrows: true,
+        slidesToScroll: 1,
       },
     },
   ],
@@ -157,21 +163,21 @@ export const SingleImageCarouselsettings = {
       breakpoint: 590,
       settings: {
         slidesToShow: 1,
-        arrows: false,
+        arrows: true,
       },
     },
     {
       breakpoint: 575,
       settings: {
         slidesToShow: 1,
-        arrows: false,
+        arrows: true,
       },
     },
     {
       breakpoint: 400,
       settings: {
         slidesToShow: 1,
-        arrows: false,
+        arrows: true,
       },
     },
   ],
@@ -179,7 +185,8 @@ export const SingleImageCarouselsettings = {
 
 export const propertyFor = [
   { name: "rent", value: "Rent" },
-  { name: "buy", value: "Buy" },
+  { name: "sale", value: "sale" },
+  // { name: "buy", value: "buy" },
 ];
 export const category = [
   { name: "house", value: "house" },

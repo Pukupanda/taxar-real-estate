@@ -30,7 +30,7 @@ function Career() {
   }, [page]);
   return (
     <>
-      <section className="pt-5 mt-4">
+      <section className="pt-5">
         <div className="container">
           <div className="row">
             {loading ? (
@@ -53,7 +53,7 @@ function Career() {
                     <div className="proprtyInfo w-100">
                       <h5 className="text-capitalize">{item?.title}</h5>
                       <h6>{item?.experience}</h6>
-                      <p>{item?.description}</p>
+                      <p className="line6">{item?.description}</p>
                       <div
                         className="loginBtn btn deailViewAbsula"
                         role="button"

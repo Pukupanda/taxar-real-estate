@@ -28,8 +28,8 @@
   color: #000;
 }
 
-.navFixed .nav-link.active {
-  color: #ee6922;
+.navbar-nav .nav-link.active {
+  color: #ee6922 !important;
 }
 .nav-item {
   padding-right: 10px;
@@ -62,4 +62,9 @@
     ); */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-position: 0 0;
+}
+@media (max-width: 1199.9px) {
+  .navFixed .nav-link {
+    padding: 5px 9px 2px !important;
+  }
 }

@@ -32,7 +32,7 @@ function MyBookingsList() {
 
   return (
     <>
-      <section className="pt-5 mt-4">
+      <section className="mt-4">
         <div className="container">
           <div className="row">
             <Table className="table table-borderless text-capitalize table-striped">

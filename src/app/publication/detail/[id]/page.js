@@ -25,24 +25,26 @@ function PublicationDetail() {
       {loading ? (
         <Loader />
       ) : (
-        <section className="pt-5 mt-4">
+        <section className="pt-5">
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-sm-12 col-md-12 col-lg-8">
-                <div className="propertyImgBox mb-4">
-                  <Image
-                    src={
-                      detail?.Blog?.image?.includes("http")
-                        ? detail?.Blog?.image
-                        : "/assets/img/dummyImage.png"
-                    }
-                    alt=""
-                    className="w-100 position-static"
-                    fill
-                    quality={100}
-                    priority
-                  />
-                </div>
+                {detail?.Blog?.image?.includes("http") && (
+                  <div className="propertyImgBox mb-4">
+                    <Image
+                      src={
+                        detail?.Blog?.image?.includes("http")
+                          ? detail?.Blog?.image
+                          : "/assets/img/dummyImage.png"
+                      }
+                      alt=""
+                      className="w-100 position-static"
+                      fill
+                      quality={100}
+                      priority
+                    />
+                  </div>
+                )}
                 <h5 className="text-capitalize">{detail?.Blog?.title}</h5>
                 <small>{detail?.Blog?.category}</small>
                 <div

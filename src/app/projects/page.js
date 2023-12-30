@@ -23,7 +23,7 @@ function Projects() {
   }, [page]);
   return (
     <>
-      <section className="pt-5 mt-4">
+      <section className="pt-5">
         <div className="container">
           <div className="row">
             {loading ? (

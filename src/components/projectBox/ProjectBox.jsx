@@ -53,7 +53,7 @@ function ProjectBox(props) {
                 <span tabindex="0">{props.item?.title}</span>
               </h3>
               {
-                <p className="property__card-location text-truncat">
+                <p className="property__card-location text-truncat text-capitalize">
                   {props.item?.location && props.item?.location}
                 </p>
               }
@@ -63,7 +63,7 @@ function ProjectBox(props) {
           <div className="property__card-footer">
             <div className="property__card-author align-items-center">
               {props.item?.propertyCount > 0 && (
-                <span className="tag tag-gray2 fw-bold">
+                <span className="tag tag-gray2 fw-bold ps-0">
                   {props.item?.propertyCount || 0}&nbsp; Properties
                 </span>
               )}

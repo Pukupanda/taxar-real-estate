@@ -61,7 +61,7 @@ function PropertyBox(props) {
                 <span tabindex="0">{props.item?.title}</span>
               </h3>
               {props.item?.location && (
-                <p className="property__card-location">
+                <p className="property__card-location text-capitalize">
                   {props.item?.location}
                 </p>
               )}

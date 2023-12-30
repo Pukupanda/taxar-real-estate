@@ -499,12 +499,24 @@ tr {
   content: attr(data-value) !important;
 }
 /*================ Responsive ================ */
+
+@media (max-width: 1199.9px) {
+  .serviceBg {
+    padding: 50px 1rem;
+  }
+}
 @media (max-width: 991.9px) {
   .homeSlider .bannerImg {
     height: auto;
   }
-  .slick-arrow {
-    display: none !important;
+
+  .aboutFixedBg {
+    padding: 30px 8px;
+  }
+}
+@media (max-width: 768.9px) {
+  .homeSlider {
+    padding: 8rem 0 4rem;
   }
 }
 @media (max-width: 575.9px) {

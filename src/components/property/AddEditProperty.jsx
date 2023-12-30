@@ -26,6 +26,7 @@ function AddEditProperty() {
     fetchPropertyDetail({ id: id });
   }, [id]);
 
+  const [otherFeaturesArr, setotherFeaturesArr] = useState(null);
   const FeatureList = useDataStore((store) => store.propertyFeatureList);
   const { fetchpropertyFeatureList } = useDataStore();
   useEffect(() => {
@@ -53,8 +54,6 @@ function AddEditProperty() {
       checked: false,
     };
   });
-
-  const [otherFeaturesArr, setotherFeaturesArr] = useState(null);
 
   const initialValues = {
     images: id
@@ -100,7 +99,7 @@ function AddEditProperty() {
           })
         : Feature
       : Feature,
-    otherFeatures: otherFeaturesArr,
+    otherFeatures: detail?.propertyDetails?.otherFeatures || "",
     shortDetails: id ? detail?.propertyDetails?.shortDescription : "",
     details: id ? detail?.propertyDetails?.details : "",
     pArea: id ? detail?.propertyDetails?.pArea : "",
@@ -169,6 +168,12 @@ function AddEditProperty() {
         isFeatured: values.isFeatured,
         shortDescription: values.shortDetails,
         facingDirection: values.facingDirection,
+        otherFeatures: values.otherFeatures?.map((item) => {
+          return {
+            label: item?.label,
+            value: item?.value,
+          };
+        }),
       };
 
       const Editpayload = {
@@ -198,6 +203,12 @@ function AddEditProperty() {
         isFeatured: values.isFeatured,
         shortDescription: values.shortDetails,
         facingDirection: values.facingDirection,
+        otherFeatures: values.otherFeatures?.map((item) => {
+          return {
+            label: item?.label,
+            value: item?.value,
+          };
+        }),
       };
 
       console.log(id ? Editpayload : payload, "dataPay");
@@ -646,11 +657,12 @@ function AddEditProperty() {
                   <h5>Other Features</h5>
                   <div className="">
                     <CreatableSelect
-                      // inputValue={inputValue}
+                      value={formik.values.otherFeatures}
                       isClearable
                       isMulti
                       onChange={(newValue) => {
                         setotherFeaturesArr(newValue);
+                        formik.setFieldValue("otherFeatures", newValue);
                       }}
                       placeholder="Type Other Features and press enter..."
                     />
