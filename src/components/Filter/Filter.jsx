@@ -9,7 +9,7 @@ import { category, propertyFor, subCategory } from "@/Utils";
 function Filter(props) {
   return (
     <>
-      <div className="bg-white shadow rounded p-3 prertyFilter">
+      <div className="bg-white shadow rounded p-3 prertyFilter mb-4">
         <div className="d-flex justify-content-between gap-2 mb-2">
           <h6>FILTER YOUR SEARCH</h6>
           <span
