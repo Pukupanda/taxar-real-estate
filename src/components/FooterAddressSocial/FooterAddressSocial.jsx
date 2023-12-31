@@ -12,7 +12,12 @@ async function FooterAddressSocial() {
         <i className="fa-solid fa-location-dot"></i> {data?.data?.address}
       </p>
       <p>
-        <i className="fa-solid fa-phone"></i> {data?.data?.contactNumber}
+        <i className="fa-solid fa-phone"></i>{" "}
+        {data?.data?.contactNumber
+          ?.map((item) => {
+            return item?.mobileNumber;
+          })
+          .join(", ")}
       </p>
       <p>
         <i className="fa-solid fa-envelope"></i> {data?.data?.email}

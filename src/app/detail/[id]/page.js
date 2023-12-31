@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { useDataStore } from "@/api/store/store";
 import ImageSliderWithThumnail from "@/components/ImageSliderWithThumnail/ImageSliderWithThumnail";
 import moment from "moment";
+import Image from "next/image";
 
 function Detail() {
   const { id } = useParams();
@@ -21,7 +22,7 @@ function Detail() {
       <section className="mt-3">
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-12 col-lg-12">
+            <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
               <div className="properyList">
                 <div className="w-100">
                   <p className="d-flex justify-content-between align-items-center mb-2 fw-bold text-capitalize">
@@ -68,7 +69,12 @@ function Detail() {
                       displayImage={detail?.propertyDetails?.displayImage}
                     />
                   </div>
-
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-12 col-lg-9">
+              <div className="properyList">
+                <div className="w-100">
                   <div className="bg-white p-2 mt-4">
                     <h5 className="">Features</h5>
                     <ul className="m-0 p-0 list-unstyled">
@@ -186,6 +192,24 @@ function Detail() {
                     ></iframe>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-12 col-lg-3 position-relative">
+              <div className="properyList d-block position-sticky top-0 text-center">
+                {detail?.UserDetail?.profilePicture?.includes("http") && (
+                  <Image
+                    src={detail?.UserDetail?.profilePicture}
+                    alt=""
+                    width={70}
+                    height={70}
+                    className="rounded-circle m-auto mb-4"
+                    quality={100}
+                    priority
+                  />
+                )}
+                <h4>{detail?.UserDetail?.userName}</h4>
+                <h5>{detail?.UserDetail?.email}</h5>
+                <h6>{detail?.UserDetail?.mobileNumber}</h6>
               </div>
             </div>
           </div>
