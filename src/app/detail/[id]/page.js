@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { FourSlideSettings } from "@/Utils";
 import SliderComponent from "@/components/sliderComponent/SliderComponent";
-import ProjectBox from "@/components/projectBox/ProjectBox";
+import PropertyBox from "@/components/projectBox/PropertyBox";
 import { useParams } from "next/navigation";
 import { useDataStore } from "@/api/store/store";
 import ImageSliderWithThumnail from "@/components/ImageSliderWithThumnail/ImageSliderWithThumnail";
@@ -50,6 +50,14 @@ function Detail() {
                     {detail?.propertyDetails?.title} -{" "}
                     {detail?.propertyDetails?.pArea}
                   </h3>
+                  {detail?.projectDetail?.title && (
+                    <h6 className="text-capitalize">
+                      By:{" "}
+                      <span className="themeOrg">
+                        {detail?.projectDetail?.title}
+                      </span>
+                    </h6>
+                  )}
                   {detail?.propertyDetails?.facingDirection && (
                     <h6 className="mb-2">
                       Facing Direction:-{" "}
@@ -195,7 +203,9 @@ function Detail() {
               </div>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-3 position-relative">
-              <div className="properyList d-block position-sticky top-0 text-center">
+              <div className="properyList d-block position-sticky top-85 text-center">
+                <h3 className="text-start">Contact Sellers </h3>
+                <hr />
                 {detail?.UserDetail?.profilePicture?.includes("http") && (
                   <Image
                     src={detail?.UserDetail?.profilePicture}
@@ -209,7 +219,11 @@ function Detail() {
                 )}
                 <h4>{detail?.UserDetail?.userName}</h4>
                 <h5>{detail?.UserDetail?.email}</h5>
-                <h6>{detail?.UserDetail?.mobileNumber}</h6>
+                <h6>
+                  {detail?.UserDetail?.mobileNumber?.[0]?.mobileNumber
+                    ? detail?.UserDetail?.mobileNumber?.[0]?.mobileNumber
+                    : detail?.UserDetail?.mobileNumber}
+                </h6>
               </div>
             </div>
           </div>
@@ -225,7 +239,7 @@ function Detail() {
               <SliderComponent setting={FourSlideSettings}>
                 {detail?.otherProperties?.map((item, i) => (
                   <div key={i}>
-                    <ProjectBox item={item} />
+                    <PropertyBox item={item} />
                   </div>
                 ))}
               </SliderComponent>

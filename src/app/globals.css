@@ -143,3 +143,6 @@
 .hideHetFid:first-child .overLayText {
   display: none;
 }
+.top-85 {
+  top: 85px !important;
+}

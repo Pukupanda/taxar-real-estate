@@ -1,31 +1,23 @@
 "use client";
 import React, { useState } from "react";
-import ImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
 import "./style.css";
 import Image from "next/image";
 import { SlideshowLightbox } from "lightbox.js-react";
 import "lightbox.js-react/dist/index.css";
+import ImageSliderModal from "@/components/modals/ImageSliderModal";
 
 function ImageSliderWithThumnail(props) {
-  let [isOpen, setIsOpen] = useState(false);
-  const images = props.images?.map((item) => {
-    return {
-      src: item?.image?.includes("http")
-        ? item?.image
-        : "/assets/img/dummyImage.png",
-      alt: item?.image?.includes("http")
-        ? item?.image
-        : "/assets/img/dummyImage.png",
-    };
-  });
+  let [show, setshow] = useState(false);
+  const handleShow = () => {
+    setshow(!show);
+  };
 
   return (
     <>
       <div
         className="row"
         onClick={() => {
-          setIsOpen(true);
+          handleShow();
         }}
       >
         <div
@@ -93,6 +85,13 @@ function ImageSliderWithThumnail(props) {
           setIsOpen(false);
         }}
       ></SlideshowLightbox> */}
+      {show && (
+        <ImageSliderModal
+          show={show}
+          handleShow={handleShow}
+          images={props.images}
+        />
+      )}
     </>
   );
 }
