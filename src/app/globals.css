@@ -105,3 +105,41 @@
 .rotete.faqToggle::after {
   transform: rotate(90deg);
 }
+.bigImage {
+  width: 100% !important;
+  height: 350px !important;
+  object-fit: cover;
+}
+.smallImage {
+  width: 100% !important;
+  height: 171px !important;
+  object-fit: cover;
+}
+.overLayBg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.overLayText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  z-index: 99;
+}
+.hideHetFid:first-child .overLayBg::after,
+.hideHetFid:first-child .overLayText {
+  display: none;
+}

@@ -6,7 +6,7 @@ import ProjectBox from "@/components/projectBox/ProjectBox";
 import { useParams } from "next/navigation";
 import { useDataStore } from "@/api/store/store";
 import ImageSliderWithThumnail from "@/components/ImageSliderWithThumnail/ImageSliderWithThumnail";
-import { userPropertyDeleteApi } from "@/api/apiCall";
+import moment from "moment";
 
 function Detail() {
   const { id } = useParams();
@@ -24,14 +24,28 @@ function Detail() {
             <div className="col-sm-12 col-md-12 col-lg-12">
               <div className="properyList">
                 <div className="w-100">
-                  <p className="d-flex justify-content-between align-items-center mb-2 fw-bold">
-                    Rs. {detail?.propertyDetails?.price}
-                    <span className="tag mb-2 tag-black text-capitalize">
-                      {detail?.propertyDetails?.category}/
-                      {detail?.propertyDetails?.propertyFor}
+                  <p className="d-flex justify-content-between align-items-center mb-2 fw-bold text-capitalize">
+                    <span className="fs-5 fw-bold">
+                      Rs. {detail?.propertyDetails?.price}
+                      <p className="mb-0 fw-normal">
+                        {detail?.propertyDetails?.priceInWords}
+                      </p>
                     </span>
+                    <div className="text-end small">
+                      <div>
+                        Last updated:{" "}
+                        {detail?.propertyDetails?.updatedAt &&
+                          moment(detail?.propertyDetails?.updatedAt).format(
+                            "ll"
+                          )}
+                      </div>
+                      <span className="tag mb-2 tag-black text-capitalize">
+                        {detail?.propertyDetails?.category}/
+                        {detail?.propertyDetails?.propertyFor}
+                      </span>
+                    </div>
                   </p>
-                  <h3 className="text-capitalize">
+                  <h3 className="text-capitalize fw-bold">
                     {detail?.propertyDetails?.title} -{" "}
                     {detail?.propertyDetails?.pArea}
                   </h3>
@@ -44,17 +58,16 @@ function Detail() {
                     </h6>
                   )}
 
-                  <div className="mb-3">
+                  <div className="mb-3 text-capitalize">
                     <img src="/assets/img/Address.png" alt="" width="15px" />{" "}
                     {detail?.propertyDetails?.location}
                   </div>
-                  {detail?.propertyDetails?.images?.length > 0 && (
-                    <div className="slideGallery">
-                      <ImageSliderWithThumnail
-                        images={detail?.propertyDetails?.images}
-                      />
-                    </div>
-                  )}
+                  <div className="slideGallery">
+                    <ImageSliderWithThumnail
+                      images={detail?.propertyDetails?.images}
+                      displayImage={detail?.propertyDetails?.displayImage}
+                    />
+                  </div>
 
                   <div className="bg-white p-2 mt-4">
                     <h5 className="">Features</h5>

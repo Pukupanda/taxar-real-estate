@@ -141,7 +141,7 @@ function Property() {
                       )}
                       <p>Rs. {item?.price}</p>
                       <h5 className="text-capitalize">{item?.title}</h5>
-                      <div className="mb-2">
+                      <div className="mb-2 text-capitalize">
                         <img
                           src="/assets/img/Address.png"
                           alt=""
