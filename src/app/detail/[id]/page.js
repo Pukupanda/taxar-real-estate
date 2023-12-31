@@ -83,7 +83,7 @@ function Detail() {
             <div className="col-sm-12 col-md-12 col-lg-9">
               <div className="properyList">
                 <div className="w-100">
-                  <div className="bg-white p-2 mt-4">
+                  <div className="bg-white p-3">
                     <h5 className="">Features</h5>
                     <ul className="m-0 p-0 list-unstyled">
                       {detail?.propertyDetails?.features?.map((item, i) => (
@@ -106,93 +106,57 @@ function Detail() {
                       ))}
                     </ul>
                   </div>
-                  <div className="bg-white p-3 mt-3">
+                  <div
+                    className={
+                      detail?.propertyDetails?.otherFeatures?.length > 0
+                        ? "bg-white p-2 mt-4"
+                        : "d-none"
+                    }
+                  >
+                    <h5 className="">Other Features</h5>
+                    <ul className="m-0 p-0 list-unstyled">
+                      {detail?.propertyDetails?.otherFeatures?.map(
+                        (item, i) => (
+                          <li className="d-inline-block p-3" key={i}>
+                            <div className="d-flex gap-2 align-items-center fs12 text-capitalize">
+                              <img
+                                src={
+                                  item?.icon?.includes("http")
+                                    ? item?.icon
+                                    : "/assets/img/land_area-svg.png"
+                                }
+                                alt=""
+                                width="20px"
+                              />
+                              {item?.label}
+                            </div>
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="properyList">
+                <div className="w-100">
+                  <div className="p-3">
                     <h5>Description</h5>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: detail?.propertyDetails?.details,
                       }}
                     ></div>
-                    {/* <h5>Amenities</h5>
-                    <ul className="list-unstyled p-0 m-0">
-                      <li className="d-inline-block p-3 AmenitBox">
-                        <div className="categoryCard shadow">
-                          <div className="CateIconBg">
-                            <img
-                              src="/assets/img/home.png"
-                              alt=""
-                              className="CategoryIcon"
-                            />
-                          </div>
-                          <h6 className="text-black pt-3">Marbel</h6>
-                        </div>
-                      </li>
-                      <li className="d-inline-block p-3 AmenitBox">
-                        <div className="categoryCard shadow">
-                          <div className="CateIconBg">
-                            <img
-                              src="/assets/img/home.png"
-                              alt=""
-                              className="CategoryIcon"
-                            />
-                          </div>
-                          <h6 className="text-black pt-3">Marbel</h6>
-                        </div>
-                      </li>
-                      <li className="d-inline-block p-3 AmenitBox">
-                        <div className="categoryCard shadow">
-                          <div className="CateIconBg">
-                            <img
-                              src="/assets/img/home.png"
-                              alt=""
-                              className="CategoryIcon"
-                            />
-                          </div>
-                          <h6 className="text-black pt-3">Marbel</h6>
-                        </div>
-                      </li>
-                      <li className="d-inline-block p-3 AmenitBox">
-                        <div className="categoryCard shadow">
-                          <div className="CateIconBg">
-                            <img
-                              src="/assets/img/home.png"
-                              alt=""
-                              className="CategoryIcon"
-                            />
-                          </div>
-                          <h6 className="text-black pt-3">Marbel</h6>
-                        </div>
-                      </li>
-                      <li className="d-inline-block p-3 AmenitBox">
-                        <div className="categoryCard shadow">
-                          <div className="CateIconBg">
-                            <img
-                              src="/assets/img/home.png"
-                              alt=""
-                              className="CategoryIcon"
-                            />
-                          </div>
-                          <h6 className="text-black pt-3">Marbel</h6>
-                        </div>
-                      </li>
-                      <li className="d-inline-block p-3 AmenitBox">
-                        <div className="categoryCard shadow">
-                          <div className="CateIconBg">
-                            <img
-                              src="/assets/img/home.png"
-                              alt=""
-                              className="CategoryIcon"
-                            />
-                          </div>
-                          <h6 className="text-black pt-3">Marbel</h6>
-                        </div>
-                      </li>
-                    </ul> */}
+                  </div>
+                </div>
+              </div>
+              <div className="properyList">
+                <div className="w-100">
+                  <div className="p-3">
                     <h5 className="mt4">View on Map</h5>
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d226043.19554893387!2d85.346119!3d27.719604!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198369ce3755%3A0x1574350fc8f521ef!2sSukedhara!5e0!3m2!1sen!2snp!4v1700904854722!5m2!1sen!2snp"
                       width="100%"
-                      height="450"
+                      height="300"
                       className="border-0"
                       allowfullscreen=""
                       loading="lazy"
