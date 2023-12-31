@@ -81,9 +81,33 @@ function Detail() {
               </div>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-9">
+              <div className="properyList d-block text-capitalize">
+                <div className="row">
+                  <div className="col-sm-6 col-md-4 col-lg-3 mb-3">
+                    <h6 className="fw-bold">Area</h6>
+                    <p className="mb-0">
+                      {detail?.propertyDetails?.area}/
+                      {detail?.propertyDetails?.unit}
+                    </p>
+                  </div>
+                  <div className="col-sm-6 col-md-4 col-lg-3 mb-3">
+                    <h6 className="fw-bold">Property Code</h6>
+                    <p className="mb-0">
+                      {detail?.propertyDetails?.propertyCode}
+                    </p>
+                  </div>
+                  <div className="col-sm-6 col-md-4 col-lg-3 mb-3">
+                    <h6 className="fw-bold">Property</h6>
+                    <p className="mb-0">
+                      {detail?.propertyDetails?.category}/
+                      {detail?.propertyDetails?.subCategory}
+                    </p>
+                  </div>
+                </div>
+              </div>
               <div className="properyList">
                 <div className="w-100">
-                  <div className="bg-white p-3">
+                  <div className="">
                     <h5 className="">Features</h5>
                     <ul className="m-0 p-0 list-unstyled">
                       {detail?.propertyDetails?.features?.map((item, i) => (
@@ -139,7 +163,7 @@ function Detail() {
               </div>
               <div className="properyList">
                 <div className="w-100">
-                  <div className="p-3">
+                  <div className="">
                     <h5>Description</h5>
                     <div
                       dangerouslySetInnerHTML={{
@@ -151,7 +175,7 @@ function Detail() {
               </div>
               <div className="properyList">
                 <div className="w-100">
-                  <div className="p-3">
+                  <div className="">
                     <h5 className="mt4">View on Map</h5>
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d226043.19554893387!2d85.346119!3d27.719604!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198369ce3755%3A0x1574350fc8f521ef!2sSukedhara!5e0!3m2!1sen!2snp!4v1700904854722!5m2!1sen!2snp"
