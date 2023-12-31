@@ -63,7 +63,7 @@ function PropertyBox(props) {
             <div className="property__card-header">
               <div className=" d-flex justify-content-between text-capitalize align-items-center">
                 <span className="property__card-type" tabindex="0">
-                  {props.item?.category}
+                  {props.item?.category}/{props.item?.propertyFor}
                 </span>
                 {props.item?.facingDirection && (
                   <span className="property__card-type" tabindex="0">

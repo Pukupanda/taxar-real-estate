@@ -9,7 +9,6 @@ import {
   postRawData,
   postRawDataforURL,
   putRawData,
-  putRawDataForURL,
 } from "./index";
 
 export const LoginApi = async (payload) => {
@@ -206,6 +205,11 @@ export const homeLoanApi = async (payload) => {
 };
 export const emiCalculatorApi = async (payload) => {
   return postRawData("emiCalculator", payload).then((data) => {
+    return data;
+  });
+};
+export const faqsListApi = async (payload) => {
+  return getData("faqs", payload).then((data) => {
     return data;
   });
 };

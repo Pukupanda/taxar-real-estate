@@ -10,6 +10,7 @@ import {
   bookingsListApi,
   careerListApi,
   emiCalculatorApi,
+  faqsListApi,
   getAboutApi,
   getDetailApi,
   getprivacyPolicyApi,
@@ -116,6 +117,12 @@ export const useDataStore = create((set) => ({
   fetchpropertyFeatureList: async (data) => {
     const res = await propertyFeatureListApi(data);
     set({ propertyFeatureList: await res?.data });
+  },
+
+  faqsList: {},
+  fetchfaqsList: async (data) => {
+    const res = await faqsListApi(data);
+    set({ faqsList: await res?.data });
   },
 
   about: {},

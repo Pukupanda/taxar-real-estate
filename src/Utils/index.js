@@ -185,7 +185,7 @@ export const SingleImageCarouselsettings = {
 
 export const propertyFor = [
   { name: "rent", value: "Rent" },
-  { name: "sale", value: "sale" },
+  { name: "sale", value: "Sale" },
   // { name: "buy", value: "buy" },
 ];
 export const category = [

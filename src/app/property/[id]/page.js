@@ -169,11 +169,13 @@ function Property() {
                         ))}
                       </div>
                       <div className="compare-view">
-                        <div className="tag tag-black">
+                        {/* <div className="tag tag-black">
                           <span>26</span>
                           <span style={{ fontWeight: "normal" }}>views</span>
+                        </div> */}
+                        <div className="tag tag-black">
+                          {item?.category}/{item?.propertyFor}
                         </div>
-
                         <div
                           id="search-favorite-unauth-0"
                           className="search_heart_div cursor-pointer"

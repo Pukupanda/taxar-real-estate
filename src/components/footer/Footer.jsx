@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 import FooterAddressSocial from "../FooterAddressSocial/FooterAddressSocial";
 import moment from "moment";
-import Image from "next/image";
 
 function Footer() {
   return (
@@ -48,6 +47,11 @@ function Footer() {
                 <li className="">
                   <Link href="/term-condition" className="text-dark">
                     Terms & Conditions
+                  </Link>
+                </li>
+                <li className="">
+                  <Link href="/faq" className="text-dark">
+                    FAQ&apos;s
                   </Link>
                 </li>
               </ul>

@@ -23,14 +23,21 @@ function AddEditProperty() {
   const detail = useDataStore((store) => store.propertyDetail);
   const { fetchPropertyDetail } = useDataStore();
   useEffect(() => {
-    fetchPropertyDetail({ id: id });
+    if (id) {
+      fetchPropertyDetail({ id: id });
+    }
   }, [id]);
 
-  const [otherFeaturesArr, setotherFeaturesArr] = useState(null);
   const FeatureList = useDataStore((store) => store.propertyFeatureList);
   const { fetchpropertyFeatureList } = useDataStore();
   useEffect(() => {
     fetchpropertyFeatureList();
+  }, [id]);
+
+  const ProjectList = useDataStore((store) => store.ProjectList);
+  const { fetchProjectList } = useDataStore();
+  useEffect(() => {
+    fetchProjectList();
   }, [id]);
 
   const mob1 = id && detail?.propertyDetails?.contactNo?.split(" ");
@@ -105,6 +112,7 @@ function AddEditProperty() {
     pArea: id ? detail?.propertyDetails?.pArea : "",
     isFeatured: id ? detail?.propertyDetails?.isFeatured : false,
     facingDirection: id ? detail?.propertyDetails?.facingDirection : "",
+    projectId: id ? detail?.propertyDetails?.projectId : "",
   };
 
   const formik = useFormik({
@@ -143,7 +151,7 @@ function AddEditProperty() {
 
       const payload = {
         propertyId: "",
-        projectId: null,
+        projectId: values.projectId || null,
         title: values.title,
         propertyCode: values.propertyCode,
         propertyFor: values.propertyFor,
@@ -168,17 +176,20 @@ function AddEditProperty() {
         isFeatured: values.isFeatured,
         shortDescription: values.shortDetails,
         facingDirection: values.facingDirection,
-        otherFeatures: values.otherFeatures?.map((item) => {
-          return {
-            label: item?.label,
-            value: item?.value,
-          };
-        }),
+        otherFeatures:
+          values.otherFeatures?.length > 0
+            ? values.otherFeatures?.map((item) => {
+                return {
+                  label: item?.label,
+                  value: item?.value,
+                };
+              })
+            : [],
       };
 
       const Editpayload = {
         propertyId: id,
-        projectId: null,
+        projectId: values.projectId || null,
         title: values.title,
         propertyCode: values.propertyCode,
         propertyFor: values.propertyFor,
@@ -203,15 +214,18 @@ function AddEditProperty() {
         isFeatured: values.isFeatured,
         shortDescription: values.shortDetails,
         facingDirection: values.facingDirection,
-        otherFeatures: values.otherFeatures?.map((item) => {
-          return {
-            label: item?.label,
-            value: item?.value,
-          };
-        }),
+        otherFeatures:
+          values.otherFeatures?.length > 0
+            ? values.otherFeatures?.map((item) => {
+                return {
+                  label: item?.label,
+                  value: item?.value,
+                };
+              })
+            : [],
       };
 
-      console.log(id ? Editpayload : payload, "dataPay");
+      // console.log(id ? Editpayload : payload, "dataPay");
 
       if (id) {
         AddPropertyApi(Editpayload).then((data) => {
@@ -391,6 +405,29 @@ function AddEditProperty() {
                         {formik.errors.propertyCode}
                       </div>
                     )}
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <div className="form-group">
+                    <div className="input-container">
+                      <select
+                        className="form-control form-select text-capitalize"
+                        {...formik.getFieldProps("projectId")}
+                      >
+                        <option value="">Select Project</option>
+                        {ProjectList?.Project?.map((item, i) => (
+                          <option value={item?._id} key={i}>
+                            {item?.title}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  {formik.errors.projectId && formik.touched.projectId && (
+                    <div className="text-danger">
+                      {" "}
+                      {formik.errors.projectId}
+                    </div>
+                  )}
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
                   <div className="form-group">
@@ -661,7 +698,7 @@ function AddEditProperty() {
                       isClearable
                       isMulti
                       onChange={(newValue) => {
-                        setotherFeaturesArr(newValue);
+                        // setotherFeaturesArr(newValue);
                         formik.setFieldValue("otherFeatures", newValue);
                       }}
                       placeholder="Type Other Features and press enter..."

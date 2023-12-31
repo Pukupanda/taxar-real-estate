@@ -54,8 +54,8 @@
 .tag-black {
   color: #fff;
   background: #277150;
-  background-size: 250%;
-  font-size: 12px;
+  font-weight: 700;
+  font-size: 13px;
   transition: 0.3s ease-in-out;
 }
 .property__card:not(:hover)
