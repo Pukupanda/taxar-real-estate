@@ -24,11 +24,12 @@ function Filter(props) {
               props.ResetApi();
             }}
             role="button"
+            className="themeOrg"
           >
             Reset
           </span>
         </div>
-        <div className="form-floating mb-3">
+        <div className="form-floating mb-2">
           <input
             type="text"
             className="form-control"
@@ -61,7 +62,7 @@ function Filter(props) {
           </div>
         </div>
         <h6>CATEGORIES</h6>
-        <div className="radio-buttons mb-3">
+        <div className="radio-buttons mb-2">
           {category?.map((item, i) => (
             <div className="form-group" key={i}>
               <input
@@ -80,7 +81,7 @@ function Filter(props) {
         </div>
 
         {props.category !== "" && <h6>SUBCATEGORY</h6>}
-        <div className="radio-buttons mb-3">
+        <div className="radio-buttons mb-2">
           {subCategory
             ?.filter((it) => it?.category === props.category)
             ?.map((item, i) => (
@@ -99,7 +100,7 @@ function Filter(props) {
               </div>
             ))}
         </div>
-        <div className="form-floating mb-3">
+        <div className="form-floating mb-2">
           <input
             type="text"
             className="form-control"
@@ -112,7 +113,7 @@ function Filter(props) {
           />
           <label htmlFor="Location">Location</label>
         </div>
-        <div className="form-floating mb-3">
+        <div className="form-floating mb-2">
           <h6>Price</h6>
           <div className="">
             <MultiRangeSlider
