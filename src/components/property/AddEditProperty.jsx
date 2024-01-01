@@ -113,7 +113,7 @@ function AddEditProperty() {
     isFeatured: id ? detail?.propertyDetails?.isFeatured : false,
     facingDirection: id ? detail?.propertyDetails?.facingDirection : "",
     projectId: id ? detail?.propertyDetails?.projectId : "",
-    faqs: [{ question: "", answer: "" }],
+    faqs: id ? detail?.propertyDetails?.faqs : [{ question: "", answer: "" }],
   };
 
   const formik = useFormik({
