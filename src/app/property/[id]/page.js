@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 function Property() {
   const { id } = useParams();
@@ -117,14 +118,17 @@ function Property() {
                 list?.properties?.map((item, i) => (
                   <div className="properyList" key={i}>
                     <div className="propertyImgBox">
-                      <img
+                      <Image
                         src={
                           item?.displayImage?.includes("http")
                             ? item?.displayImage
                             : "/assets/img/dummyImage.png"
                         }
                         alt=""
-                        className="propImg"
+                        className="propImg position-static"
+                        fill
+                        quality={100}
+                        priority
                         onClick={() => {
                           if (item?.displayImage.includes("http")) {
                             setmodalName("image modal");
@@ -139,8 +143,8 @@ function Property() {
                       {item?.isFeatured && (
                         <span className="tag mb-2 tag-black">{"Featured"}</span>
                       )}
-                      <p>Rs. {item?.price}</p>
-                      <h5 className="text-capitalize">{item?.title}</h5>
+                      <p className="fw-bold">रु{item?.price}</p>
+                      <h5 className="text-capitalize fw-bold">{item?.title}</h5>
                       <div className="mb-2 text-capitalize">
                         <img
                           src="/assets/img/Address.png"
@@ -149,8 +153,8 @@ function Property() {
                         />{" "}
                         {item?.location}
                       </div>
-                      <div className="fs12">
-                        {item?.features?.map((fst, i) => (
+                      <div className="fs12 text-capitalize">
+                        {item?.features?.slice(0, 7)?.map((fst, i) => (
                           <>
                             <span key={i}>
                               <img
@@ -162,9 +166,8 @@ function Property() {
                                 alt=""
                                 width="15px"
                               />{" "}
-                              {fst?.label}
+                              {fst?.label}{" "}
                             </span>
-                            {"  "}
                           </>
                         ))}
                       </div>

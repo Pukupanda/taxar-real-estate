@@ -113,6 +113,7 @@ function AddEditProperty() {
     isFeatured: id ? detail?.propertyDetails?.isFeatured : false,
     facingDirection: id ? detail?.propertyDetails?.facingDirection : "",
     projectId: id ? detail?.propertyDetails?.projectId : "",
+    faqs: [{ question: "", answer: "" }],
   };
 
   const formik = useFormik({
@@ -661,7 +662,32 @@ function AddEditProperty() {
                       </div>
                     )}
                 </div>
-
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <div className="form-group">
+                    <div className="radio-buttons">
+                      <div className="form-group">
+                        <input
+                          type="checkbox"
+                          id={"featured"}
+                          name={`isFeatured`}
+                          checked={formik.values?.isFeatured}
+                          onChange={(e) => {
+                            let checked = e.target.checked;
+                            formik.setFieldValue(`isFeatured`, checked);
+                          }}
+                        />
+                        Your Property{" "}
+                        <label htmlFor={"featured"}>isFeatured</label>
+                      </div>
+                    </div>
+                  </div>
+                  {formik.errors.isFeatured && formik.touched.isFeatured && (
+                    <div className="text-danger">
+                      {" "}
+                      {formik.errors.isFeatured}
+                    </div>
+                  )}
+                </div>
                 <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
                   <h5>Features</h5>
                   <div className="">
@@ -681,7 +707,9 @@ function AddEditProperty() {
                               );
                             }}
                           />
-                          <label htmlFor={item?._id}>{item?.label}</label>
+                          <label htmlFor={item?._id}>
+                            {item?.label}/{item?.value}
+                          </label>
                         </div>
                       ))}
                     </div>
@@ -702,6 +730,7 @@ function AddEditProperty() {
                         formik.setFieldValue("otherFeatures", newValue);
                       }}
                       placeholder="Type Other Features and press enter..."
+                      className=""
                     />
                   </div>
                   {formik.errors.features && formik.touched.features && (
@@ -783,6 +812,67 @@ function AddEditProperty() {
                   {formik.errors.details && formik.touched.details && (
                     <div className="text-danger"> {formik.errors.details}</div>
                   )}
+                </div>
+                <FormikProvider value={formik}>
+                  <FieldArray
+                    name="faqs"
+                    render={(arrayHelpers) => (
+                      <>
+                        {formik.values?.faqs?.map((item, i) => (
+                          <>
+                            <div
+                              className="col-sm-12 col-md-6 mb-4 position-relative"
+                              key={i}
+                            >
+                              <div className="form-group text-center">
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  name={`faqs.${i}.question`}
+                                  {...formik.getFieldProps(
+                                    `faqs.${i}.question`
+                                  )}
+                                  placeholder="Question"
+                                />
+                              </div>
+                            </div>
+                            <div
+                              className="col-sm-12 col-md-6 mb-4 position-relative"
+                              key={i}
+                            >
+                              <div className="form-group text-center"></div>
+                              <div
+                                className="remove arr"
+                                onClick={() => {
+                                  let arr = [...formik.values?.faqs];
+                                  arr.splice(i, 1);
+                                  formik.setFormikState("faqs", arr);
+                                }}
+                              >
+                                <img src="/assets/img/delete.png" alt="" />
+                              </div>
+                            </div>
+                          </>
+                        ))}
+                      </>
+                    )}
+                  />
+                </FormikProvider>
+
+                <div className="col-sm-12 col-md-12 mb-4">
+                  <div className="form-group text-end">
+                    <h6
+                      className="textColor d-inline-block cursor-pointer AddtoList"
+                      onClick={() => {
+                        let arr = [...formik.values?.faqs];
+                        arr.push({ question: "", answer: "" });
+                        formik.setFormikState("faqs", arr);
+                      }}
+                      role="button"
+                    >
+                      + Add More FAQs
+                    </h6>
+                  </div>
                 </div>
                 <div className="col-sm-12 col-md-12 text-center mb-5">
                   <button type="submit" className="btn btn-save w-50">

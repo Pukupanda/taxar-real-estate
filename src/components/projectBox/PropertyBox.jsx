@@ -55,7 +55,7 @@ function PropertyBox(props) {
           />
 
           <div className="property__card-media-widgets">
-            <div className="tag tag-black">Rs. {props.item?.price}</div>
+            <div className="tag tag-black">रु{props.item?.price}</div>
           </div>
         </div>
         <Link href={`/detail/${props.item?._id}`}>

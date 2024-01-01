@@ -2,6 +2,13 @@
   position: sticky;
   top: 6rem;
 }
+.filterIconStyle {
+  border: 1px solid #e6e4e4;
+  border-radius: 5px;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
 .radio-buttons label {
   cursor: pointer;
   position: relative;

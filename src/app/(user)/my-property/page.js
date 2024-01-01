@@ -143,7 +143,7 @@ function MyProperty() {
                         <Td>{item?.propertyFor || "NA"}</Td>
                         <Td>{item?.category || "NA"}</Td>
                         <Td>{item?.subCategory || "NA"}</Td>
-                        <Td>{item?.price || "NA"}</Td>
+                        <Td>रु{item?.price || "NA"}</Td>
                         <Td>{item?.facingDirection || "NA"}</Td>
                         <Td>{item?.location || "NA"}</Td>
                         <Td>

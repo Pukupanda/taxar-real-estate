@@ -37,7 +37,7 @@ function Detail() {
                     <div className="w-100">
                       <p className="d-flex justify-content-between align-items-center mb-2 fw-bold text-capitalize">
                         <span className="fs-5 fw-bold">
-                          Rs. {detail?.propertyDetails?.price}
+                          रु{detail?.propertyDetails?.price}
                           <p className="mb-0 fw-normal">
                             {detail?.propertyDetails?.priceInWords}
                           </p>

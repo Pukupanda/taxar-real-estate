@@ -76,7 +76,7 @@ function MyBookingsList() {
                       <Td>{item?.property?.title || "NA"}</Td>
                       <Td>{item?.property?.category || "NA"}</Td>
                       <Td>{item?.property?.subCategory || "NA"}</Td>
-                      <Td>{item?.property?.price || "NA"}</Td>
+                      <Td>रु{item?.property?.price || "NA"}</Td>
                       <Td>{item?.property?.facingDirection || "NA"}</Td>
                       <Td>{item?.property?.location || "NA"}</Td>
                       <Td>

@@ -63,7 +63,7 @@ function Menu() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <Offcanvas
-            show={show}
+            show={ModalName === "canvas" && show}
             onHide={handleClose}
             responsive="lg"
             placement="end"
