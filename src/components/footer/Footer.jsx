@@ -1,9 +1,7 @@
-"use client";
 import Link from "next/link";
 import React from "react";
 import FooterAddressSocial from "../FooterAddressSocial/FooterAddressSocial";
 import moment from "moment";
-import { FacebookProvider, CustomChat } from "react-facebook";
 
 function Footer() {
   return (
@@ -77,9 +75,6 @@ function Footer() {
         appId="618857576984764"
         htmlRef="hello"
       /> */}
-      <FacebookProvider appId="618857576984764" chatSupport>
-        <CustomChat pageId="61554939940537" minimized={false} />
-      </FacebookProvider>
     </>
   );
 }
