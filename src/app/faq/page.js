@@ -29,7 +29,7 @@ function FAQ() {
                 >
                   {item?.question}
                 </h3>
-                {show === item?._id && <p>{item?.answer}</p>}
+                {show === item?._id && <p className="mb-0">{item?.answer}</p>}
               </div>
             </div>
           ))}

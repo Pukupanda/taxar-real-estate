@@ -186,6 +186,7 @@ function AddEditProperty() {
                 };
               })
             : [],
+        faqs: values.faqs,
       };
 
       const Editpayload = {
@@ -224,6 +225,7 @@ function AddEditProperty() {
                 };
               })
             : [],
+        faqs: values.faqs,
       };
 
       // console.log(id ? Editpayload : payload, "dataPay");
@@ -799,7 +801,7 @@ function AddEditProperty() {
                               className="col-sm-12 col-md-6 mb-4 position-relative"
                               key={i}
                             >
-                              <div className="form-group text-center">
+                              <div className="form-group">
                                 <input
                                   type="text"
                                   className="form-control"
@@ -815,13 +817,30 @@ function AddEditProperty() {
                               className="col-sm-12 col-md-6 mb-4 position-relative"
                               key={i}
                             >
-                              <div className="form-group text-center"></div>
+                              <div className="form-group">
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  name={`faqs.${i}.answer`}
+                                  {...formik.getFieldProps(`faqs.${i}.answer`)}
+                                  placeholder="Answer"
+                                />
+                              </div>
                               <div
                                 className="remove arr"
                                 onClick={() => {
                                   let arr = [...formik.values?.faqs];
                                   arr.splice(i, 1);
-                                  formik.setFormikState("faqs", arr);
+                                  formik.setFormikState((prev) => {
+                                    //console.log(prev);
+                                    return {
+                                      ...prev,
+                                      values: {
+                                        ...prev.values,
+                                        faqs: arr,
+                                      },
+                                    };
+                                  });
                                 }}
                               >
                                 <img src="/assets/img/delete.png" alt="" />
@@ -841,7 +860,16 @@ function AddEditProperty() {
                       onClick={() => {
                         let arr = [...formik.values?.faqs];
                         arr.push({ question: "", answer: "" });
-                        formik.setFormikState("faqs", arr);
+                        formik.setFormikState((prev) => {
+                          //console.log(prev);
+                          return {
+                            ...prev,
+                            values: {
+                              ...prev.values,
+                              faqs: arr,
+                            },
+                          };
+                        });
                       }}
                       role="button"
                     >

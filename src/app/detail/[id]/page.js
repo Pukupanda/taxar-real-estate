@@ -13,6 +13,7 @@ import Loader from "@/components/Loader/Loader";
 
 function Detail() {
   const { id } = useParams();
+  const [show, setShow] = useState("");
   const [loading, setLoading] = useState(false);
   const detail = useDataStore((store) => store.propertyDetail);
   const { fetchPropertyDetail } = useDataStore();
@@ -202,6 +203,35 @@ function Detail() {
                       </div>
                     </div>
                   </div>
+                  {detail?.propertyDetails?.faqs?.length > 0 && (
+                    <div className="properyList">
+                      <div className="w-100">
+                        <div className="">
+                          <h5>Faqs</h5>
+                          {detail?.propertyDetails?.faqs?.map((item, i) => (
+                            <div className="mb-3 bg-white shadow p-3" key={i}>
+                              <div className="">
+                                <h5
+                                  className={`position-relative faqToggle text-capitalize ${
+                                    show === item?._id && "rotete"
+                                  }`}
+                                  onClick={() => {
+                                    setShow(item?._id);
+                                  }}
+                                  role="button"
+                                >
+                                  {item?.question}
+                                </h5>
+                                {show === item?._id && (
+                                  <p className="mb-0">{item?.answer}</p>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   <div className="properyList">
                     <div className="w-100">
                       <div className="">

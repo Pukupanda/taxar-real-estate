@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "preeti";
+  src: url("/assets/fonts/preeti.otf");
+}
+
+.ql-font-preeti {
+  font-family: "preeti" !important;
+}
 .line4 {
   text-overflow: ellipsis;
   overflow: hidden;

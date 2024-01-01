@@ -10,7 +10,7 @@ function BlogComments(props) {
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-8">
-              <h4>Comments</h4>
+              {props.comments?.length > 0 && <h4>Comments</h4>}
               {props.comments?.map((item, i) => (
                 <div
                   class="properyList position-relative ps-5 py-3 pe-3 mb-4"
