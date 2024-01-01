@@ -92,8 +92,8 @@ async function FooterAddressSocial() {
           <Image
             src={"/assets/img/WhatsApp.png"}
             alt=""
-            width={50}
-            height={50}
+            width={65}
+            height={65}
             quality={100}
             priority
           />
