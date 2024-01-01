@@ -662,32 +662,7 @@ function AddEditProperty() {
                       </div>
                     )}
                 </div>
-                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
-                  <div className="form-group">
-                    <div className="radio-buttons">
-                      <div className="form-group">
-                        <input
-                          type="checkbox"
-                          id={"featured"}
-                          name={`isFeatured`}
-                          checked={formik.values?.isFeatured}
-                          onChange={(e) => {
-                            let checked = e.target.checked;
-                            formik.setFieldValue(`isFeatured`, checked);
-                          }}
-                        />
-                        Your Property{" "}
-                        <label htmlFor={"featured"}>isFeatured</label>
-                      </div>
-                    </div>
-                  </div>
-                  {formik.errors.isFeatured && formik.touched.isFeatured && (
-                    <div className="text-danger">
-                      {" "}
-                      {formik.errors.isFeatured}
-                    </div>
-                  )}
-                </div>
+
                 <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
                   <h5>Features</h5>
                   <div className="">
