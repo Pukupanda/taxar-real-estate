@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <>
       <FacebookProvider appId="618857576984764" chatSupport>
-        <CustomChat pageId="61554939940537" minimized={false} />
+        <CustomChat pageId="61554939940537" minimized={true} />
       </FacebookProvider>
       <section className="homeSlider">
         <div className="container">
