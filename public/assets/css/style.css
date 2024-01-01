@@ -398,6 +398,14 @@ footer {
   position: absolute;
   right: 15px;
   top: 10px;
+  text-transform: capitalize;
+}
+.search_heart_div {
+  background: #fff;
+  padding: 4px 4px 4px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 4px;
 }
 /*================ Detail Style ================ */
 .fs12 {
@@ -521,7 +529,7 @@ tr {
 }
 @media (max-width: 575.9px) {
   .compare-view {
-    position: static;
+    top: 15px;
   }
   .properyList {
     display: grid;

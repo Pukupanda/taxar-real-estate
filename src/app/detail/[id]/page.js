@@ -100,7 +100,7 @@ function Detail() {
                       <div className="col-sm-6 col-md-4 col-lg-3 mb-3">
                         <h6 className="fw-bold">Area</h6>
                         <p className="mb-0">
-                          {detail?.propertyDetails?.area}/
+                          {detail?.propertyDetails?.area}
                           {detail?.propertyDetails?.unit}
                         </p>
                       </div>
@@ -119,6 +119,20 @@ function Detail() {
                       </div>
                     </div>
                   </div>
+                  {detail?.propertyDetails?.shortDescription && (
+                    <div className="properyList">
+                      <div className="w-100">
+                        <div className="">
+                          <h5>Overview</h5>
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: detail?.propertyDetails?.shortDescription,
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   <div className="properyList">
                     <div className="w-100">
                       <div className="">
@@ -175,6 +189,7 @@ function Detail() {
                       </div>
                     </div>
                   </div>
+
                   <div className="properyList">
                     <div className="w-100">
                       <div className="">
@@ -250,10 +265,10 @@ function Detail() {
               </div>
             </div>
           </section>
-          <section>
+          <section className="mt-4">
             <div className="container">
               <div className="row">
-                <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
+                <div className="col-sm-12 col-md-12 col-lg-12">
                   <h3 className="">More Properties</h3>
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-12">

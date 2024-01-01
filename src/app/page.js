@@ -38,7 +38,7 @@ export default function Home() {
                 className="btn-link d-block fs-5 py-2 px-4 rounded-pill w-50 text-center"
                 href="/booking"
               >
-                Booking
+                Booking Now
               </Link>
             </div>
             <div className="col-sm-12 col-md-6 col-lg-6 mb-3">

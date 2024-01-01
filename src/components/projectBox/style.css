@@ -189,6 +189,11 @@
 .LikeUnlike {
   position: absolute;
   right: 5px;
-  top: 0;
+  top: 3px;
   z-index: 9;
+  background: #fff;
+  padding: 4px 4px 4px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 4px;
 }
