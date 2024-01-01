@@ -70,11 +70,6 @@ function Footer() {
           </div>
         </div>
       </footer>
-      {/* <MessengerCustomerChat
-        pageId="61554939940537"
-        appId="618857576984764"
-        htmlRef="hello"
-      /> */}
     </>
   );
 }

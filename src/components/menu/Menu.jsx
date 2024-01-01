@@ -8,6 +8,7 @@ import { useDataStore } from "@/api/store/store";
 import { usePathname, useRouter } from "next/navigation";
 import { useMediaQuery } from "react-responsive";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { FacebookProvider, CustomChat } from "react-facebook";
 
 function Menu() {
   const [stickyClass, setStickyClass] = useState("");
@@ -248,129 +249,11 @@ function Menu() {
               </ul>
             </Offcanvas.Body>
           </Offcanvas>
-          {/* <div
-            className={
-              isTabletOrMobile
-                ? "collapse navbar-collapse bg-white shadow p-3"
-                : "collapse navbar-collapse"
-            }
-            id="navbarNavDropdown"
-          >
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link
-                  className={pathname === "/" ? "nav-link active" : "nav-link"}
-                  href="/"
-                >
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className={
-                    pathname?.includes("/about-us")
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  href="/about-us"
-                >
-                  about us
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className={
-                    pathname?.includes("/projects")
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  href="/projects"
-                >
-                  projects
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className={
-                    pathname?.includes("/teams")
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  href="/teams"
-                >
-                  teams
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className={
-                    pathname?.includes("/publication")
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  href="/publication"
-                >
-                  Publication
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className={
-                    pathname?.includes("/career")
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  href="/career"
-                >
-                  Career
-                </Link>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDarkDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  tool
-                </a>
-                <ul
-                  className="dropdown-menu dropdown-menu-light"
-                  aria-labelledby="navbarDarkDropdownMenuLink"
-                >
-                  <li>
-                    <Link className="dropdown-item" href="/emi-calculator">
-                      EMI Calculator
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" href="/home-loan">
-                      Home Loan
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-
-              {detail?.userName ? (
-                <UserDropMenu detail={detail} fetchgetDetail={fetchgetDetail} />
-              ) : (
-                <li className="nav-item">
-                  <Link className="nav-link loginBtn" href="/login">
-                    login
-                  </Link>
-                </li>
-              )}
-              <li className="nav-item">
-                <Link className="nav-link bookingBtn" href="/booking">
-                  booking
-                </Link>
-              </li>
-            </ul>
-          </div> */}
         </div>
       </nav>
+      <FacebookProvider appId="344501761707817" chatSupport>
+        <CustomChat pageId="167697663102613" minimized={true} />
+      </FacebookProvider>
     </>
   );
 }

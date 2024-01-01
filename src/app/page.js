@@ -10,7 +10,6 @@ import { LikeUnlikePropertyApi } from "@/api/apiCall";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader/Loader";
-import { FacebookProvider, CustomChat } from "react-facebook";
 
 export default function Home() {
   const { push } = useRouter();
@@ -28,9 +27,6 @@ export default function Home() {
   };
   return (
     <>
-      <FacebookProvider appId="344501761707817" chatSupport>
-        <CustomChat pageId="167697663102613" minimized={true} />
-      </FacebookProvider>
       <section className="homeSlider">
         <div className="container">
           <div className="row align-items-center">
