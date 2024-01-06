@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import "./style.css";
 import ImageModal from "../modals/ImageModal";
+import Image from "next/image";
 
 function ProjectBox(props) {
   const [modalName, setmodalName] = useState("");
@@ -14,9 +15,14 @@ function ProjectBox(props) {
 
   return (
     <>
-      <div className="property__card featured_card">
+      <div className="property__card featured_card position-relative">
+        {props.item?.isFeatured && (
+          <div class="ribbon ribbon-top-left">
+            <span className="tag tag-black">{"Featured"}</span>
+          </div>
+        )}
         <div className="property__card-media cursor-pointer">
-          <img
+          <Image
             src={
               props.item?.image?.includes("http")
                 ? props.item?.image
@@ -30,7 +36,11 @@ function ProjectBox(props) {
                 handleShow();
               }
             }}
+            fill
+            quality={100}
+            priority
             role="button"
+            className="position-static"
           />
         </div>
         <div className="property__card-text cursor-pointer">
@@ -39,8 +49,11 @@ function ProjectBox(props) {
               <span className="property__card-type" tabindex="0">
                 {props.item?.propertyType}
               </span>
-              <h3 className="property__card-title text-truncate">
-                <span tabindex="0">{props.item?.title}</span>
+              <h3
+                className="property__card-title text-truncate"
+                title={props.item?.title}
+              >
+                <span tabindex="0">{props.item?.title}</span> efer
               </h3>
               {
                 <p className="property__card-location text-truncat text-capitalize">

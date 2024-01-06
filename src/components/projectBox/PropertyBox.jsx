@@ -17,6 +17,11 @@ function PropertyBox(props) {
   return (
     <>
       <div className="property__card featured_card position-relative">
+        {props.item?.isFeatured && (
+          <div class="ribbon ribbon-top-left">
+            <span className="tag tag-black">{"Featured"}</span>
+          </div>
+        )}
         <div
           className="LikeUnlike"
           onClick={() => {
@@ -72,9 +77,12 @@ function PropertyBox(props) {
                 )}
               </div>
 
-              <h3 className="property__card-title text-truncate">
-                <span>{props.item?.pArea} - </span>{" "}
-                <span tabindex="0">{props.item?.title}</span>
+              <h3
+                className="property__card-title text-truncate"
+                title={`${props.item?.title} - ${props.item?.pArea}`}
+              >
+                <span tabindex="0">{props.item?.title} - </span>
+                <span>{props.item?.pArea}</span>
               </h3>
               {props.item?.location && (
                 <p className="property__card-location text-capitalize">

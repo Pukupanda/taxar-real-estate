@@ -31,7 +31,7 @@ async function Teams() {
                     />
                   </div>
                   <div className="col-sm-12 col-md-8 col-lg-9 mb-3">
-                    <h4 className="mt-3">{item?.fullName}</h4>
+                    <h4 className="mt-3 text-capitalize">{item?.fullName}</h4>
                     <h6>
                       <i>{item?.designation}</i>
                     </h6>
@@ -57,7 +57,9 @@ async function Teams() {
                           height={100}
                           className="rounded-circle m-auto ob-cover"
                         />
-                        <h4 className="mt-3">{item?.fullName}</h4>
+                        <h4 className="mt-3 text-capitalize">
+                          {item?.fullName}
+                        </h4>
                         <h6>
                           <i>{item?.designation}</i>
                         </h6>

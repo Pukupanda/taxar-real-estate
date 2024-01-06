@@ -10,7 +10,7 @@ function ImageModal(props) {
         <Modal.Title>Confirmation</Modal.Title>
       </Modal.Header> */}
 
-      <Modal.Body className="p-5 text-center">
+      <Modal.Body className="p-0 text-center">
         <Image
           src={props.img}
           alt=""

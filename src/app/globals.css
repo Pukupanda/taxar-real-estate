@@ -154,3 +154,57 @@
 .top-85 {
   top: 85px !important;
 }
+.shadow {
+  box-shadow: 0 5px 9px 4px #ee692257 !important;
+}
+.ribbon {
+  width: 140px;
+  height: 96px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 225px;
+  padding: 6px 0;
+  background-color: #277150;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-size: 13px;
+  text-shadow: 0 5px 9px 4px #ee692257;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* top left*/
+.ribbon-top-left {
+  top: 0px;
+  left: 0px;
+}
+
+.ribbon-top-left span {
+  right: -9px;
+  top: 21px;
+  transform: rotate(-45deg);
+}
+.input-container {
+  position: relative;
+}
+.form-control.InputSpace {
+  padding-left: 6rem;
+}
+.InputText {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: fit-content;
+}
+.tableCellVerMiddle {
+  display: table-cell;
+  vertical-align: middle;
+}

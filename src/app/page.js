@@ -214,7 +214,9 @@ export default function Home() {
                           height="100px"
                           className="rounded-circle m-auto ob-cover"
                         />
-                        <h4 className="mt-3">{item?.fullName}</h4>
+                        <h4 className="mt-3 text-capitalize">
+                          {item?.fullName}
+                        </h4>
                         <h6>
                           <i>{item?.designation}</i>
                         </h6>

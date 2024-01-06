@@ -27,7 +27,11 @@ function Detail() {
   return (
     <>
       {loading ? (
-        <Loader />
+        <div className="d-table min-vh-50 w-100">
+          <div className="tableCellVerMiddle">
+            <Loader />
+          </div>
+        </div>
       ) : (
         <>
           <section className="mt-3">

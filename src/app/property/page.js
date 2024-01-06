@@ -105,7 +105,11 @@ function PropertyList() {
             <div className="col-sm-12 col-md-12 col-lg-9">
               <div className="row align-items-center">
                 {loading ? (
-                  <Loader />
+                  <div className="d-table min-vh-50 w-100">
+                    <div className="tableCellVerMiddle">
+                      <Loader />
+                    </div>
+                  </div>
                 ) : list?.properties?.length > 0 ? (
                   list?.properties?.map((item, i) => (
                     <div className="col-sm-6 col-md-4 col-lg-4 mb-3" key={i}>

@@ -30,7 +30,7 @@ function Filter(props) {
         show={ModalName === "filter" && show}
         onHide={handleClose}
         responsive="lg"
-        placement="end"
+        placement="end prertyFilter"
       >
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
@@ -38,7 +38,7 @@ function Filter(props) {
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="d-block">
-          <div className="bg-white shadow rounded p-3 prertyFilter mb-4">
+          <div className="bg-white shadow rounded p-3  mb-4">
             <div className="d-flex justify-content-between gap-2 mb-2">
               <h6>FILTER YOUR SEARCH</h6>
               <span

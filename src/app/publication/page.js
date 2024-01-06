@@ -26,7 +26,11 @@ function Publication() {
         <div className="container">
           <div className="row">
             {loading ? (
-              <Loader />
+              <div className="d-table min-vh-50 w-100">
+                <div className="tableCellVerMiddle">
+                  <Loader />
+                </div>
+              </div>
             ) : list?.Blog?.length > 0 ? (
               list?.Blog?.map((item, i) => (
                 <div className="col-sm-12 col-md-12 col-lg-6" key={i}>

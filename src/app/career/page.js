@@ -2,7 +2,6 @@
 import { useDataStore } from "@/api/store/store";
 import Paginations from "@/components/Paginations/Pagination";
 import Loader from "@/components/Loader/Loader";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import ApplyNowModal from "@/components/modals/ApplyNowModal";
 import SuccessModal from "@/components/modals/SuccessModal";
@@ -34,7 +33,11 @@ function Career() {
         <div className="container">
           <div className="row">
             {loading ? (
-              <Loader />
+              <div className="d-table min-vh-50 w-100">
+                <div className="tableCellVerMiddle">
+                  <Loader />
+                </div>
+              </div>
             ) : list?.Career?.length > 0 ? (
               list?.Career?.map((item, i) => (
                 <div className="col-sm-12 col-md-12 col-lg-6" key={i}>

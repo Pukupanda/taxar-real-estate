@@ -113,10 +113,19 @@ function Property() {
             </div>
             <div className="col-sm-12 col-md-12 col-lg-9">
               {loading ? (
-                <Loader />
+                <div className="d-table min-vh-50 w-100">
+                  <div className="tableCellVerMiddle">
+                    <Loader />
+                  </div>
+                </div>
               ) : list?.properties?.length > 0 ? (
                 list?.properties?.map((item, i) => (
                   <div className="properyList" key={i}>
+                    {item?.isFeatured && (
+                      <div class="ribbon ribbon-top-left">
+                        <span className="tag tag-black">{"Featured"}</span>
+                      </div>
+                    )}
                     <div className="propertyImgBox">
                       <Image
                         src={
@@ -140,9 +149,6 @@ function Property() {
                       />
                     </div>
                     <div className="proprtyInfo w-100">
-                      {item?.isFeatured && (
-                        <span className="tag mb-2 tag-black">{"Featured"}</span>
-                      )}
                       <p className="fw-bold">रु{item?.price}</p>
                       <h5 className="text-capitalize fw-bold">{item?.title}</h5>
                       <div className="mb-2 text-capitalize">
@@ -153,22 +159,23 @@ function Property() {
                         />{" "}
                         {item?.location}
                       </div>
-                      <div className="fs12 text-capitalize">
+                      <div className="fs12 text-capitalize text-truncate">
                         {item?.features?.slice(0, 7)?.map((fst, i) => (
-                          <>
-                            <span key={i}>
-                              <img
-                                src={
-                                  fst?.icon?.includes("http")
-                                    ? fst?.icon
-                                    : "/assets/img/land_area-svg.png"
-                                }
-                                alt=""
-                                width="15px"
-                              />{" "}
-                              {fst?.label}{" "}
-                            </span>
-                          </>
+                          <span key={i}>
+                            <Image
+                              src={
+                                fst?.icon?.includes("http")
+                                  ? fst?.icon
+                                  : "/assets/img/land_area-svg.png"
+                              }
+                              alt={fst?.label}
+                              width={15}
+                              height={15}
+                              quality={100}
+                              priority
+                            />{" "}
+                            {fst?.label}{" "}
+                          </span>
                         ))}
                       </div>
                       <div className="compare-view">

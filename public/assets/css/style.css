@@ -55,7 +55,7 @@ input:focus {
   text-align: center;
   padding: 10px 5px;
   border-radius: 30px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 5px 9px 4px #ee692257;
 }
 /*=============== Slider style ============*/
 .homeSlider {
@@ -169,7 +169,7 @@ input:focus {
   padding: 4px 16px;
 }
 .categoryCard:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 5px 9px 4px #ee692257;
   background-position: 0 0;
 }
 .categoryCard .CateIconBg {
@@ -307,7 +307,7 @@ input:focus {
 }
 .btn-save:hover {
   color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 5px 9px 4px #ee692257;
 }
 .singleBoxStyle {
   background-color: #fff;
@@ -320,7 +320,7 @@ input:focus {
   right: 0;
   top: 0;
   bottom: 0;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 5px 9px 4px #ee692257;
   border-radius: 10px;
 }
 .pass-view:before {
@@ -389,7 +389,7 @@ footer {
 .propImg,
 .propertyImgBox {
   width: 330px !important;
-  height: 250px !important;
+  height: 205px !important;
   border-radius: 10px;
   object-fit: cover;
 }
@@ -440,7 +440,7 @@ footer {
   padding: 6px 15px;
   border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 5px 9px 4px #ee692257;
 }
 .radio-buttons .form-group {
   display: inline-block;
@@ -495,7 +495,7 @@ tr {
   height: 10px;
   border-radius: 50%;
   background: #aaa;
-  box-shadow: 0 1px 2px rgb(44 44 44 / 20%);
+  /* box-shadow: 0 5px 9px 4px #ee692257; */
   transition: all 0.2s cubic-bezier(0.5, 0.1, 0.75, 1.35);
 }
 .fixedBotoRi {

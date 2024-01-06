@@ -27,7 +27,11 @@ function Projects() {
         <div className="container">
           <div className="row">
             {loading ? (
-              <Loader />
+              <div className="d-table min-vh-50 w-100">
+                <div className="tableCellVerMiddle">
+                  <Loader />
+                </div>
+              </div>
             ) : list?.Project?.length > 0 ? (
               list?.Project?.map((item, i) => (
                 <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={i}>

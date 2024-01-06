@@ -13,7 +13,7 @@ import TextEditor from "@/components/TextEditor/TextEditor";
 import { AddPropertyApi } from "@/api/apiCall";
 import { useDataStore } from "@/api/store/store";
 import CreatableSelect from "react-select/creatable";
-import { category, propertyFor, subCategory } from "@/Utils";
+import { MyCode, category, propertyFor, subCategory } from "@/Utils";
 
 function AddEditProperty() {
   const { id } = useParams();
@@ -30,15 +30,9 @@ function AddEditProperty() {
 
   const FeatureList = useDataStore((store) => store.propertyFeatureList);
   const { fetchpropertyFeatureList } = useDataStore();
-  useEffect(() => {
-    fetchpropertyFeatureList();
-  }, [id]);
 
   const ProjectList = useDataStore((store) => store.ProjectList);
   const { fetchProjectList } = useDataStore();
-  useEffect(() => {
-    fetchProjectList();
-  }, [id]);
 
   const mob1 = id && detail?.propertyDetails?.contactNo?.split(" ");
 
@@ -49,6 +43,9 @@ function AddEditProperty() {
 
   const secondarycountryCode = mob2?.[0];
   const secondaryContactNo = mob2?.[1];
+
+  const code = id && detail?.propertyDetails?.propertyCode?.split(MyCode);
+  const propertyCode = code?.[1];
 
   // console.log(mob1, "mob1");
 
@@ -63,6 +60,7 @@ function AddEditProperty() {
   });
 
   const initialValues = {
+    shortCode: MyCode,
     images: id
       ? detail?.propertyDetails?.images?.map((item) => {
           return {
@@ -71,7 +69,11 @@ function AddEditProperty() {
         })
       : [],
     title: id ? detail?.propertyDetails?.title : "",
-    propertyCode: id ? detail?.propertyDetails?.propertyCode : "",
+    propertyCode: id
+      ? propertyCode
+        ? propertyCode
+        : detail?.propertyDetails?.propertyCode
+      : "",
     propertyFor: id ? detail?.propertyDetails?.propertyFor : "",
     category: id ? detail?.propertyDetails?.category : "",
     subCategory: id ? detail?.propertyDetails?.subCategory : "",
@@ -154,7 +156,7 @@ function AddEditProperty() {
         propertyId: "",
         projectId: values.projectId || null,
         title: values.title,
-        propertyCode: values.propertyCode,
+        propertyCode: `${values.shortCode}${values.propertyCode}`,
         propertyFor: values.propertyFor,
         category: values.category,
         subCategory: values.subCategory,
@@ -193,7 +195,7 @@ function AddEditProperty() {
         propertyId: id,
         projectId: values.projectId || null,
         title: values.title,
-        propertyCode: values.propertyCode,
+        propertyCode: `${values.shortCode}${values.propertyCode}`,
         propertyFor: values.propertyFor,
         category: values.category,
         subCategory: values.subCategory,
@@ -260,15 +262,21 @@ function AddEditProperty() {
     },
   });
 
+  useEffect(() => {
+    fetchProjectList();
+  }, [id]);
+
+  const getFeatures = (val) => {
+    fetchpropertyFeatureList({ featureType: val });
+  };
+
   return (
     <>
       <div className="container mb-4">
         <div className="row justify-content-center">
           <div className="col-sm-12 col-md-10 col-lg-8">
             <div className="text-center mt-3">
-              <h2 className="offcanvas-title mb-3">
-                {id ? "Edit" : "Add"} Property
-              </h2>
+              <h2 className="themeGrn mb-3">{id ? "Edit" : "Add"} Property</h2>
             </div>
             <form
               className="p-3 px-sm-5 formStyle shadow"
@@ -395,10 +403,13 @@ function AddEditProperty() {
                     <div className="input-container">
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control InputSpace"
                         placeholder="Property Code"
                         {...formik.getFieldProps("propertyCode")}
                       />
+                      <span className="InputText">
+                        {formik.values.shortCode}
+                      </span>
                     </div>
                   </div>
                   {formik.errors.propertyCode &&
@@ -460,7 +471,12 @@ function AddEditProperty() {
                     <div className="input-container">
                       <select
                         className="form-control form-select text-capitalize"
-                        {...formik.getFieldProps("category")}
+                        value={formik.values.category}
+                        onBlur={formik.handleBlur}
+                        onChange={(e) => {
+                          formik.setFieldValue("category", e.target.value);
+                          getFeatures(e.target.value);
+                        }}
                       >
                         <option value="">Select Catagory</option>
                         {category?.map((item, i) => (
@@ -665,7 +681,13 @@ function AddEditProperty() {
                     )}
                 </div>
 
-                <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
+                <div
+                  className={
+                    formik?.values?.features?.length > 0
+                      ? "col-sm-12 col-md-12 col-lg-12 mb-4"
+                      : "d-none"
+                  }
+                >
                   <h5>Features</h5>
                   <div className="">
                     <div className="radio-buttons mb-3">
@@ -790,6 +812,7 @@ function AddEditProperty() {
                     <div className="text-danger"> {formik.errors.details}</div>
                   )}
                 </div>
+                <h6>FAQs</h6>
                 <FormikProvider value={formik}>
                   <FieldArray
                     name="faqs"
