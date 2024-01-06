@@ -149,6 +149,9 @@ function Property() {
                       />
                     </div>
                     <div className="proprtyInfo w-100">
+                      <div className="tag tag-black text-capitalize">
+                        {item?.category}
+                      </div>
                       <p className="fw-bold">रु{item?.price}</p>
                       <h5 className="text-capitalize fw-bold">{item?.title}</h5>
                       <div className="mb-2 text-capitalize">
@@ -159,7 +162,7 @@ function Property() {
                         />{" "}
                         {item?.location}
                       </div>
-                      <div className="fs12 text-capitalize text-truncate">
+                      <div className="fs12 text-capitalize">
                         {item?.features?.slice(0, 7)?.map((fst, i) => (
                           <span key={i}>
                             <Image
@@ -184,7 +187,7 @@ function Property() {
                           <span style={{ fontWeight: "normal" }}>views</span>
                         </div> */}
                         <div className="tag tag-black">
-                          {item?.category}/{item?.propertyFor}
+                          {item?.subCategory}/{item?.propertyFor}
                         </div>
                         <div
                           id="search-favorite-unauth-0"

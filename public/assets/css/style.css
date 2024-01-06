@@ -389,7 +389,7 @@ footer {
 .propImg,
 .propertyImgBox {
   width: 330px !important;
-  height: 205px !important;
+  height: 210px !important;
   border-radius: 10px;
   object-fit: cover;
 }
