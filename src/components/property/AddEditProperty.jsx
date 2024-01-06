@@ -10,7 +10,7 @@ import Loader from "../Loader/Loader";
 import ImageUploadInput from "../ImageUploadInput/ImageUploadInput";
 import MobileInput from "@/components/PhoneInput/MobileInput";
 import TextEditor from "@/components/TextEditor/TextEditor";
-import { AddPropertyApi } from "@/api/apiCall";
+import { AddPropertyApi, propertyFeatureListApi } from "@/api/apiCall";
 import { useDataStore } from "@/api/store/store";
 import CreatableSelect from "react-select/creatable";
 import { MyCode, category, propertyFor, subCategory } from "@/Utils";
@@ -265,9 +265,25 @@ function AddEditProperty() {
   useEffect(() => {
     fetchProjectList();
   }, [id]);
+  useEffect(() => {
+    fetchpropertyFeatureList();
+  }, []);
 
   const getFeatures = (val) => {
-    fetchpropertyFeatureList({ featureType: val });
+    propertyFeatureListApi({ featureType: val }).then((res) => {
+      formik.setFieldValue(
+        "features",
+        res?.data?.Feature?.map((item) => {
+          return {
+            label: item?.label,
+            value: item?.value,
+            icon: item?.icon,
+            _id: item?._id,
+            checked: false,
+          };
+        })
+      );
+    });
   };
 
   return (
