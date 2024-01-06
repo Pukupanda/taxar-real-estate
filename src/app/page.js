@@ -58,7 +58,11 @@ export default function Home() {
               <div className="row">
                 <div className="col-sm-12 col-md-6 col-lg-4">
                   <img
-                    src="assets/img/dummyImage.png"
+                    src={
+                      data?.AboutUs?.aboutImage?.includes("http")
+                        ? data?.AboutUs?.aboutImage
+                        : "assets/img/dummyImage.png"
+                    }
                     alt=""
                     className="img-fluid"
                   />
@@ -68,7 +72,9 @@ export default function Home() {
                     <h3>About Us</h3>
                     <div
                       className="line9"
-                      dangerouslySetInnerHTML={{ __html: data?.AboutUs }}
+                      dangerouslySetInnerHTML={{
+                        __html: data?.AboutUs?.aboutUs,
+                      }}
                     ></div>
                   </div>
                 </div>
