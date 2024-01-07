@@ -28,6 +28,7 @@ function Booking() {
 
   const initialValues = {
     userName: detail?.userName ? detail?.userName : "",
+    project: "",
     property: "",
     countryCode: "",
     mobile: detail?.mobileNumber ? detail?.mobileNumber : "",
@@ -40,6 +41,7 @@ function Booking() {
       userName: Yup.string().required("Required"),
       mobile: Yup.string().required("Required"),
       email: Yup.string().required("Required"),
+      project: Yup.string().required("Required"),
       property: Yup.string().required("Required"),
     }),
     enableReinitialize: true,
@@ -70,14 +72,16 @@ function Booking() {
     fetchProjectList();
   }, []);
   useEffect(() => {
-    fetchProjectDetails(projectId);
+    if (projectId) {
+      fetchProjectDetails(projectId);
+    }
   }, [projectId]);
 
   return (
     <>
       <section className="">
         <div className="singleBoxBg">
-          <div className="singleBoxStyle">
+          <div className="singleBoxStyle p-3">
             <form onSubmit={formik.handleSubmit}>
               {/* <div className="text-center">
                 <h3>Booking</h3>
@@ -122,13 +126,15 @@ function Booking() {
               </div>
               <div className="form-floating mb-3">
                 <select
-                  className="form-control form-select"
+                  className="form-control form-select text-capitalize"
                   placeholder=""
                   id="project"
                   onChange={(e) => {
                     setProjectId(e.target.value);
+                    formik.setFieldValue("project", e.target.value);
+                    formik.setFieldValue("property", "");
                   }}
-                  // {...formik.getFieldProps("project")}
+                  onBlur={formik.handleBlur}
                 >
                   <option>Select Project</option>
                   {projectList?.Project?.map((item, i) => (
@@ -152,7 +158,8 @@ function Booking() {
                   <option>Select Property</option>
                   {propertyList?.properties?.map((item, i) => (
                     <option value={item?._id} key={i}>
-                      {item?.title}
+                      {item?.propertyCode}, Area-{item?.area}
+                      {item?.unit}, Price-{item?.price}
                     </option>
                   ))}
                 </select>

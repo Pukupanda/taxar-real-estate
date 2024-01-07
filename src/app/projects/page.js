@@ -27,8 +27,8 @@ function Projects() {
       <section className="pt-5">
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-12 col-lg-12 mb-3">
-              <div className="nav gap-2">
+            <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
+              <div className="nav gap-2 justify-content-center">
                 <div
                   className={status === "0" ? "tabStyle loginBtn" : "tabStyle"}
                   role="button"

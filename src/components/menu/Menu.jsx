@@ -189,7 +189,7 @@ function Menu() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    articals
+                    articles
                   </a>
                   <ul
                     className="dropdown-menu dropdown-menu-light"
@@ -321,7 +321,7 @@ function Menu() {
                       className={
                         isTabletOrMobile
                           ? "nav-link loginBtn px-2 mb-2 rounded"
-                          : "nav-link loginBtn"
+                          : "nav-link loginBtn px-3 py-1"
                       }
                       onClick={() => {
                         handleClose();
@@ -337,7 +337,7 @@ function Menu() {
                     className={
                       isTabletOrMobile
                         ? "nav-link loginBtn px-2 mb-2 rounded"
-                        : "nav-link loginBtn"
+                        : "nav-link loginBtn px-3 py-1"
                     }
                     onClick={() => {
                       handleClose();

@@ -16,11 +16,11 @@ function ProjectBox(props) {
   return (
     <>
       <div className="property__card featured_card position-relative">
-        {props.item?.isFeatured && (
+        {/* {props.item?.isFeatured && (
           <div class="ribbon ribbon-top-left">
             <span className="tag tag-black">{"Featured"}</span>
           </div>
-        )}
+        )} */}
         <div className="property__card-media cursor-pointer">
           <Image
             src={
