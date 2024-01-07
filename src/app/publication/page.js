@@ -4,76 +4,91 @@ import Paginations from "@/components/Paginations/Pagination";
 import Loader from "@/components/Loader/Loader";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 function Publication() {
-  const [loading, setloading] = useState(false);
-  const [page, setpage] = useState(1);
-  const list = useDataStore((store) => store.blogsList);
-  const { fetchblogsList } = useDataStore();
-  const handlePage = (val) => {
-    setpage(val);
-  };
-
-  useEffect(() => {
-    setloading(true);
-    fetchblogsList({ page: page, limit: 10 }).then(() => {
-      setloading(false);
-    });
-  }, []);
+  const [loading, setLoading] = useState(false);
   return (
     <>
-      <section className="pt-5">
+      <section className="mt-4">
         <div className="container">
           <div className="row">
-            {loading ? (
-              <div className="d-table min-vh-50 w-100">
-                <div className="tableCellVerMiddle">
-                  <Loader />
-                </div>
-              </div>
-            ) : list?.Blog?.length > 0 ? (
-              list?.Blog?.map((item, i) => (
-                <div className="col-sm-12 col-md-12 col-lg-6" key={i}>
-                  <div className="properyList">
-                    <div className="propertyImgBox">
-                      <img
-                        src={
-                          item?.image?.includes("http")
-                            ? item?.image
-                            : "/assets/img/dummyImage.png"
-                        }
-                        alt=""
-                        className="propImg"
-                      />
-                    </div>
-                    <div className="proprtyInfo w-100">
-                      <h5 className="text-capitalize">{item?.title}</h5>
-                      <p className="line7">{item?.description}</p>
-                      <Link
-                        href={`/publication/detail/${item?._id}`}
-                        className="loginBtn btn deailViewAbsula"
-                      >
-                        View Details
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-sm-12 col-md-12 col-lg-12 text-center">
-                No Publication Found
-              </div>
-            )}
-          </div>
-          {!loading && list?.Blog?.length > 0 && (
-            <div className="">
-              <Paginations
-                handlePage={handlePage}
-                page={page}
-                total={list?.total}
-              />
+            <Table className="table table-borderless text-capitalize table-striped">
+              <Thead>
+                <Tr>
+                  <Th>title</Th>
+                  <Th>file</Th>
+                  {/* <Th>action</Th> */}
+                </Tr>
+              </Thead>
+              <Tbody>
+                {loading ? (
+                  <Tr className="text-center">
+                    <Td colSpan={10}>
+                      <Loader />
+                    </Td>
+                  </Tr>
+                ) : Array(10)?.length > 0 ? (
+                  Array(10)
+                    ?.fill()
+                    ?.map((item, i) => (
+                      <Tr key={i}>
+                        <Td>{item?.title || "NA"}</Td>
+                        <Td>{item?.category || "NA"}</Td>
+                        {/* <Td>
+                        <div className="d-flex align-items-center gap-2">
+                          <Link href={`/detail/${item?._id}`}>
+                            <Image
+                              src={"/assets/img/view.png"}
+                              alt=""
+                              width={19}
+                              height={15}
+                              quality={100}
+                              priority
+                            />
+                          </Link>
+                          <div
+                            className="mt-1"
+                            onClick={() => {
+                              LikeUnlikeProperty(item?._id);
+                            }}
+                            role="button"
+                          >
+                            <i
+                              class={`fa-${
+                                item?.isLiked === 0 ? "regular" : "solid"
+                              } fa-heart themeGrn`}
+                            ></i>
+                          </div>
+                        </div>
+                      </Td> */}
+                      </Tr>
+                    ))
+                ) : (
+                  <Tr className="text-center">
+                    <Td colSpan={10}>No Properties Found</Td>
+                  </Tr>
+                )}
+              </Tbody>
+            </Table>
+            {/* {loading ? (
+          <Loader />
+        ) : list?.properties?.length > 0 ? (
+          list?.bookings?.map((item, i) => (
+            <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={i}>
+              <PropertyBox item={item?.property} />
             </div>
-          )}
+          ))
+        ) : (
+          "No Booking Found"
+        )} */}
+          </div>
+          {/* {!loading && list?.properties?.length > 0 && (
+            <div className="">
+              <Paginations page={page} handlePage={handlePage} total={30} />
+            </div>
+          )} */}
         </div>
       </section>
     </>

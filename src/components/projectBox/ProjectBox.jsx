@@ -71,9 +71,13 @@ function ProjectBox(props) {
                 </span>
               )}
             </div>
-            <Link href={`/property/${props.item?._id}`}>
-              <div className="btn btn-link">View Details</div>
-            </Link>
+            {props.status && props.status === "0" ? (
+              <Link href={`/property/${props.item?._id}`}>
+                <div className="btn btn-link">View Details</div>
+              </Link>
+            ) : (
+              <div className="btn-link">Completed</div>
+            )}
           </div>
         </div>
       </div>

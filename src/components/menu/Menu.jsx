@@ -76,34 +76,91 @@ function Menu() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <ul className="navbar-nav ms-auto text-capitalize">
-                <li className="nav-item">
-                  <Link
+                <li className="nav-item dropdown">
+                  <a
                     className={
-                      pathname === "/" ? "nav-link active" : "nav-link"
+                      pathname === "/"
+                        ? "nav-link  dropdown-toggle active"
+                        : "nav-link  dropdown-toggle"
                     }
                     onClick={() => {
                       handleClose();
                     }}
-                    href="/"
+                    href="#"
+                    id="navbarDarkDropdownMenuLink"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
                   >
                     Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className={
-                      pathname?.includes("/about-us")
-                        ? "nav-link active"
-                        : "nav-link"
-                    }
-                    onClick={() => {
-                      handleClose();
-                    }}
-                    href="/about-us"
+                  </a>
+                  <ul
+                    className="dropdown-menu dropdown-menu-light"
+                    aria-labelledby="navbarDarkDropdownMenuLink"
                   >
-                    about us
-                  </Link>
+                    <li>
+                      <Link
+                        className={
+                          pathname?.includes("/about-us")
+                            ? "dropdown-item active"
+                            : "dropdown-item"
+                        }
+                        onClick={() => {
+                          handleClose();
+                        }}
+                        href="/about-us"
+                      >
+                        about us
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={
+                          pathname?.includes("/teams")
+                            ? "dropdown-item active"
+                            : "dropdown-item"
+                        }
+                        onClick={() => {
+                          handleClose();
+                        }}
+                        href="/teams"
+                      >
+                        teams
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={
+                          pathname?.includes("/company-structure")
+                            ? "dropdown-item active"
+                            : "dropdown-item"
+                        }
+                        onClick={() => {
+                          handleClose();
+                        }}
+                        href="/company-structure"
+                      >
+                        company structure
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={
+                          pathname?.includes("/messages")
+                            ? "dropdown-item active"
+                            : "dropdown-item"
+                        }
+                        onClick={() => {
+                          handleClose();
+                        }}
+                        href="/messages"
+                      >
+                        messages
+                      </Link>
+                    </li>
+                  </ul>
                 </li>
+
                 <li className="nav-item">
                   <Link
                     className={
@@ -119,50 +176,86 @@ function Menu() {
                     projects
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link
-                    className={
-                      pathname?.includes("/teams")
-                        ? "nav-link active"
-                        : "nav-link"
-                    }
+
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
                     onClick={() => {
                       handleClose();
                     }}
-                    href="/teams"
+                    href="#"
+                    id="navbarDarkDropdownMenuLink"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
                   >
-                    teams
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className={
-                      pathname?.includes("/publication")
-                        ? "nav-link active"
-                        : "nav-link"
-                    }
-                    onClick={() => {
-                      handleClose();
-                    }}
-                    href="/publication"
+                    articals
+                  </a>
+                  <ul
+                    className="dropdown-menu dropdown-menu-light"
+                    aria-labelledby="navbarDarkDropdownMenuLink"
                   >
-                    Publication
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className={
-                      pathname?.includes("/career")
-                        ? "nav-link active"
-                        : "nav-link"
-                    }
-                    onClick={() => {
-                      handleClose();
-                    }}
-                    href="/career"
-                  >
-                    Career
-                  </Link>
+                    <li>
+                      <Link
+                        className={
+                          pathname?.includes("/publication")
+                            ? "dropdown-item active"
+                            : "dropdown-item"
+                        }
+                        onClick={() => {
+                          handleClose();
+                        }}
+                        href="/publication"
+                      >
+                        publication
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={
+                          pathname?.includes("/blog")
+                            ? "dropdown-item active"
+                            : "dropdown-item"
+                        }
+                        onClick={() => {
+                          handleClose();
+                        }}
+                        href="/blog"
+                      >
+                        blog
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={
+                          pathname?.includes("/career")
+                            ? "dropdown-item active"
+                            : "dropdown-item"
+                        }
+                        onClick={() => {
+                          handleClose();
+                        }}
+                        href="/career"
+                      >
+                        career
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={
+                          pathname?.includes("/news-event")
+                            ? "dropdown-item active"
+                            : "dropdown-item"
+                        }
+                        onClick={() => {
+                          handleClose();
+                        }}
+                        href="/news-event"
+                      >
+                        news & event
+                      </Link>
+                    </li>
+                  </ul>
                 </li>
                 <li className="nav-item dropdown">
                   <a
@@ -184,7 +277,11 @@ function Menu() {
                   >
                     <li>
                       <Link
-                        className="dropdown-item"
+                        className={
+                          pathname?.includes("/emi-calculator")
+                            ? "dropdown-item active"
+                            : "dropdown-item"
+                        }
                         onClick={() => {
                           handleClose();
                         }}
@@ -195,7 +292,11 @@ function Menu() {
                     </li>
                     <li>
                       <Link
-                        className="dropdown-item"
+                        className={
+                          pathname?.includes("/home-loan")
+                            ? "dropdown-item active"
+                            : "dropdown-item"
+                        }
                         onClick={() => {
                           handleClose();
                         }}

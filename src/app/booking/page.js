@@ -13,12 +13,16 @@ function Booking() {
   const [loading, setLoading] = useState(false);
   const [show, setshow] = useState(false);
   const [modalName, setmodalName] = useState("");
+  const [projectId, setProjectId] = useState("");
   const handleShow = () => {
     setshow(!show);
   };
 
-  const propertyList = useDataStore((store) => store.propertyList);
-  const { fetchpropertyList } = useDataStore();
+  const projectList = useDataStore((store) => store.ProjectList);
+  const { fetchProjectList } = useDataStore();
+
+  const propertyList = useDataStore((store) => store.ProjectDetails);
+  const { fetchProjectDetails } = useDataStore();
 
   const detail = useDataStore((store) => store.getDetail);
 
@@ -63,8 +67,11 @@ function Booking() {
   });
 
   useEffect(() => {
-    fetchpropertyList({ budgetMax: "", isFeatured: "" });
+    fetchProjectList();
   }, []);
+  useEffect(() => {
+    fetchProjectDetails(projectId);
+  }, [projectId]);
 
   return (
     <>
@@ -111,6 +118,28 @@ function Booking() {
                 />
                 {formik.errors.mobile && formik.touched.mobile && (
                   <div className="text-danger"> {formik.errors.mobile}</div>
+                )}
+              </div>
+              <div className="form-floating mb-3">
+                <select
+                  className="form-control form-select"
+                  placeholder=""
+                  id="project"
+                  onChange={(e) => {
+                    setProjectId(e.target.value);
+                  }}
+                  // {...formik.getFieldProps("project")}
+                >
+                  <option>Select Project</option>
+                  {projectList?.Project?.map((item, i) => (
+                    <option value={item?._id} key={i}>
+                      {item?.title}
+                    </option>
+                  ))}
+                </select>
+                <label for="project">Project</label>
+                {formik.errors.project && formik.touched.project && (
+                  <div className="text-danger"> {formik.errors.project}</div>
                 )}
               </div>
               <div className="form-floating mb-3">

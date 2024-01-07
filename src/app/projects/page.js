@@ -7,6 +7,7 @@ import Paginations from "@/components/Paginations/Pagination";
 
 function Projects() {
   const [loading, setloading] = useState(false);
+  const [status, setstatus] = useState("0");
   const [page, setpage] = useState(1);
   const list = useDataStore((store) => store.ProjectList);
   const { fetchProjectList } = useDataStore();
@@ -17,15 +18,39 @@ function Projects() {
 
   useEffect(() => {
     setloading(true);
-    fetchProjectList({ page: page, limit: 12 }).then(() => {
+    fetchProjectList({ page: page, limit: 12, status: status }).then(() => {
       setloading(false);
     });
-  }, [page]);
+  }, [page, status]);
   return (
     <>
       <section className="pt-5">
         <div className="container">
           <div className="row">
+            <div className="col-sm-12 col-md-12 col-lg-12 mb-3">
+              <div className="nav gap-2">
+                <div
+                  className={status === "0" ? "tabStyle loginBtn" : "tabStyle"}
+                  role="button"
+                  onClick={() => {
+                    setstatus("0");
+                    setpage("1");
+                  }}
+                >
+                  On-Going
+                </div>
+                <div
+                  className={status === "1" ? "tabStyle loginBtn" : "tabStyle"}
+                  role="button"
+                  onClick={() => {
+                    setstatus("1");
+                    setpage("1");
+                  }}
+                >
+                  Completed
+                </div>
+              </div>
+            </div>
             {loading ? (
               <div className="d-table min-vh-50 w-100">
                 <div className="tableCellVerMiddle">
@@ -35,7 +60,7 @@ function Projects() {
             ) : list?.Project?.length > 0 ? (
               list?.Project?.map((item, i) => (
                 <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={i}>
-                  <ProjectBox item={item} />
+                  <ProjectBox item={item} status={status} />
                 </div>
               ))
             ) : (
