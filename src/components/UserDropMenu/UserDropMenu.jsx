@@ -35,7 +35,7 @@ function UserDropMenu(props) {
           className={
             props.isTabletOrMobile
               ? "nav-link loginBtn px-2 mb-2 rounded"
-              : "nav-link loginBtn"
+              : "nav-link loginBtn px-3 py-1"
           }
           role="button"
         >

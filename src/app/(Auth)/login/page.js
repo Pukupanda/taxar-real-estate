@@ -121,7 +121,10 @@ function Login() {
                 </button>
               </div>
               <div className="text-center mb-3">
-                Don&apos;t have an account? <Link href="/signup">Sign up</Link>
+                Don&apos;t have an account?{" "}
+                <Link href="/signup" className="themeOrg">
+                  Sign up
+                </Link>
               </div>
             </form>
           </div>

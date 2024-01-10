@@ -20,6 +20,7 @@ import {
   propertyDetailApi,
   propertyFeatureListApi,
   propertyListApi,
+  publicationListApi,
   teamsListApi,
   userPropertyListApi,
 } from "../apiCall";
@@ -99,6 +100,12 @@ export const useDataStore = create((set) => ({
   fetchcareerList: async (data) => {
     const res = await careerListApi(data);
     set({ careerList: await res?.data });
+  },
+
+  publicationList: {},
+  fetchpublicationList: async (data) => {
+    const res = await publicationListApi(data);
+    set({ publicationList: await res?.data });
   },
 
   homeScreen: {},

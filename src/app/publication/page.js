@@ -9,6 +9,22 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 function Publication() {
   const [loading, setLoading] = useState(false);
+  const [page, setpage] = useState(1);
+
+  const handlePage = (val) => {
+    setpage(val);
+  };
+
+  const list = useDataStore((store) => store.publicationList);
+  const { fetchpublicationList } = useDataStore();
+
+  useEffect(() => {
+    setLoading(true);
+    fetchpublicationList({ limit: 10, page: page }).then(() => {
+      setLoading(false);
+    });
+  }, []);
+
   return (
     <>
       <section className="mt-4">
@@ -29,14 +45,14 @@ function Publication() {
                       <Loader />
                     </Td>
                   </Tr>
-                ) : Array(10)?.length > 0 ? (
-                  Array(10)
-                    ?.fill()
-                    ?.map((item, i) => (
-                      <Tr key={i}>
-                        <Td>{item?.title || "NA"}</Td>
-                        <Td>{item?.category || "NA"}</Td>
-                        {/* <Td>
+                ) : list?.Publication?.length > 0 ? (
+                  list?.Publication?.map((item, i) => (
+                    <Tr key={i}>
+                      <Td>{item?.title || "NA"}</Td>
+                      <Td>
+                        {item?.fileUrl?.includes("http") ? item?.fileUrl : "NA"}
+                      </Td>
+                      {/* <Td>
                         <div className="d-flex align-items-center gap-2">
                           <Link href={`/detail/${item?._id}`}>
                             <Image
@@ -63,8 +79,8 @@ function Publication() {
                           </div>
                         </div>
                       </Td> */}
-                      </Tr>
-                    ))
+                    </Tr>
+                  ))
                 ) : (
                   <Tr className="text-center">
                     <Td colSpan={10}>No Properties Found</Td>
@@ -72,23 +88,16 @@ function Publication() {
                 )}
               </Tbody>
             </Table>
-            {/* {loading ? (
-          <Loader />
-        ) : list?.properties?.length > 0 ? (
-          list?.bookings?.map((item, i) => (
-            <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={i}>
-              <PropertyBox item={item?.property} />
-            </div>
-          ))
-        ) : (
-          "No Booking Found"
-        )} */}
           </div>
-          {/* {!loading && list?.properties?.length > 0 && (
+          {!loading && list?.Publication?.length > 0 && (
             <div className="">
-              <Paginations page={page} handlePage={handlePage} total={30} />
+              <Paginations
+                page={page}
+                handlePage={handlePage}
+                total={list?.total}
+              />
             </div>
-          )} */}
+          )}
         </div>
       </section>
     </>

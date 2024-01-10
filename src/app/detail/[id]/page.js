@@ -59,6 +59,7 @@ function Detail() {
                             {detail?.propertyDetails?.category}/
                             {detail?.propertyDetails?.propertyFor}
                           </span>
+                          <div>Plot No- {detail?.propertyDetails?.plotNo}</div>
                         </div>
                       </p>
                       <h3 className="text-capitalize fw-bold">
@@ -120,6 +121,12 @@ function Detail() {
                         <p className="mb-0">
                           {detail?.propertyDetails?.category}/
                           {detail?.propertyDetails?.subCategory}
+                        </p>
+                      </div>
+                      <div className="col-sm-6 col-md-4 col-lg-3 mb-3">
+                        <h6 className="fw-bold">Plot No.</h6>
+                        <p className="mb-0">
+                          {detail?.propertyDetails?.plotNo}
                         </p>
                       </div>
                     </div>
@@ -186,6 +193,26 @@ function Detail() {
                                     width="20px"
                                   />
                                   {item?.label}
+                                </div>
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                      <div
+                        className={
+                          detail?.propertyDetails?.measurement?.length > 0
+                            ? "bg-white p-2 mt-4"
+                            : "d-none"
+                        }
+                      >
+                        <h5 className="">Measurement</h5>
+                        <ul className="m-0 p-0 list-unstyled">
+                          {detail?.propertyDetails?.measurement?.map(
+                            (item, i) => (
+                              <li className="d-inline-block p-3" key={i}>
+                                <div className="d-flex gap-2 align-items-center fs12 text-capitalize">
+                                  {item?.side} - {item?.value}
                                 </div>
                               </li>
                             )

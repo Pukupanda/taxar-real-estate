@@ -213,3 +213,8 @@ export const faqsListApi = async (payload) => {
     return data;
   });
 };
+export const publicationListApi = async (payload) => {
+  return getData("publicationList", payload).then((data) => {
+    return data;
+  });
+};

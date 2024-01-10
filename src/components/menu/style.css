@@ -70,8 +70,8 @@
   color: #fff !important;
   transition: all 0.5s ease-in-out;
 }
-.loginBtn:hover,
-.bookingBtn:hover {
+.navbar-nav .nav-link.loginBtn:hover,
+.navbar-nav .nav-link.bookingBtn:hover {
   background: #277150;
   /* background: linear-gradient(
       274deg,
@@ -82,6 +82,7 @@
     ); */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-position: 0 0;
+  color: #fff !important;
 }
 @media (max-width: 1199.9px) {
   .navFixed .nav-link {

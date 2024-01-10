@@ -75,7 +75,7 @@ function Menu() {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <ul className="navbar-nav ms-auto text-capitalize">
+              <ul className="navbar-nav ms-auto align-items-center text-capitalize">
                 <li className="nav-item dropdown">
                   <a
                     className={

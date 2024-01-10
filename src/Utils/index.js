@@ -183,7 +183,7 @@ export const SingleImageCarouselsettings = {
   ],
 };
 
-export const MyCode = "TKS_USR_";
+export const MyCode = "TKSR_USR_";
 
 export const propertyFor = [
   { name: "rent", value: "Rent" },

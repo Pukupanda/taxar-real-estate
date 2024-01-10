@@ -44,6 +44,11 @@ function AddEditProperty() {
   const secondarycountryCode = mob2?.[0];
   const secondaryContactNo = mob2?.[1];
 
+  const mob3 = id && detail?.propertyDetails?.contactNoTwo?.split(" ");
+
+  const contactNoTwocountryCode = mob3?.[0];
+  const contactNoTwo = mob3?.[1];
+
   const code = id && detail?.propertyDetails?.propertyCode?.split(MyCode);
   const propertyCode = code?.[1];
 
@@ -86,6 +91,10 @@ function AddEditProperty() {
     contactNo: id ? contactNo : "",
     secondaryCountryCode: id ? secondarycountryCode : "",
     secondaryContactNo: id ? secondaryContactNo : "",
+
+    contactNoTwoCountryCode: id ? contactNoTwocountryCode : "",
+    contactNoTwo: id ? contactNoTwo : "",
+    landline: id ? detail?.propertyDetails?.landline : "",
     location: id ? detail?.propertyDetails?.location : "",
     city: id ? detail?.propertyDetails?.city : "",
     lat: id ? detail?.propertyDetails?.lat : "76.47564",
@@ -116,6 +125,10 @@ function AddEditProperty() {
     facingDirection: id ? detail?.propertyDetails?.facingDirection : "",
     projectId: id ? detail?.propertyDetails?.projectId : "",
     faqs: id ? detail?.propertyDetails?.faqs : [{ question: "", answer: "" }],
+    plotNo: id ? detail?.propertyDetails?.plotNo : "",
+    measurement: id
+      ? detail?.propertyDetails?.measurement
+      : [{ side: "", value: "" }],
   };
 
   const formik = useFormik({
@@ -136,6 +149,7 @@ function AddEditProperty() {
       shortDetails: Yup.string().required("Required"),
       displayImage: Yup.string().required("Required"),
       contactNo: Yup.string().required("Required"),
+      plotNo: Yup.string().required("Required"),
     }),
     enableReinitialize: true,
     onSubmit: (values, { isSubmitting, resetForm }) => {
@@ -166,8 +180,10 @@ function AddEditProperty() {
         priceInWords: values.priceInWords,
         area: parseInt(values.area),
         unit: values.unit,
+        landline: values.landline,
         contactNo: `${values.countryCode} ${values.contactNo}`,
         secondaryContactNo: `${values.secondaryCountryCode} ${values.secondaryContactNo}`,
+        contactNoTwo: `${values.contactNoTwoCountryCode} ${values.contactNoTwo}`,
         location: values.location,
         city: values.city,
         lat: values.lat,
@@ -175,7 +191,8 @@ function AddEditProperty() {
         features: arr,
         details: values.details,
         pArea: values.pArea,
-        noOfProperty: "",
+        plotNo: values.plotNo,
+        // noOfProperty: "",
         isFeatured: values.isFeatured,
         shortDescription: values.shortDetails,
         facingDirection: values.facingDirection,
@@ -189,6 +206,7 @@ function AddEditProperty() {
               })
             : [],
         faqs: values.faqs,
+        measurement: values.measurement,
       };
 
       const Editpayload = {
@@ -205,8 +223,10 @@ function AddEditProperty() {
         priceInWords: values.priceInWords,
         area: parseInt(values.area),
         unit: values.unit,
+        landline: values.landline,
         contactNo: `${values.countryCode} ${values.contactNo}`,
         secondaryContactNo: `${values.secondaryCountryCode} ${values.secondaryContactNo}`,
+        contactNoTwo: `${values.contactNoTwoCountryCode} ${values.contactNoTwo}`,
         location: values.location,
         city: values.city,
         lat: values.lat,
@@ -214,7 +234,8 @@ function AddEditProperty() {
         features: arr,
         details: values.details,
         pArea: values.pArea,
-        noOfProperty: "",
+        plotNo: values.plotNo,
+        // noOfProperty: "",
         isFeatured: values.isFeatured,
         shortDescription: values.shortDetails,
         facingDirection: values.facingDirection,
@@ -228,6 +249,7 @@ function AddEditProperty() {
               })
             : [],
         faqs: values.faqs,
+        measurement: values.measurement,
       };
 
       // console.log(id ? Editpayload : payload, "dataPay");
@@ -672,6 +694,21 @@ function AddEditProperty() {
                 <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
                   <div className="form-group">
                     <div className="input-container">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Plot No"
+                        {...formik.getFieldProps("plotNo")}
+                      />
+                    </div>
+                  </div>
+                  {formik.errors.plotNo && formik.touched.plotNo && (
+                    <div className="text-danger"> {formik.errors.plotNo}</div>
+                  )}
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <div className="form-group">
+                    <div className="input-container">
                       <select
                         className="form-control form-select"
                         {...formik.getFieldProps("facingDirection")}
@@ -792,6 +829,133 @@ function AddEditProperty() {
                         {formik.errors.secondaryContactNo}
                       </div>
                     )}
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <h6>Other Contact No</h6>
+                  <div className="form-group">
+                    <div className="input-container">
+                      <MobileInput
+                        mobile="contactNoTwo"
+                        countryCode="contactNoTwoCountryCode"
+                        valueMobile={formik.values.contactNoTwo}
+                        valueCountryCode={formik.values.secondaryCountryCode}
+                        formik={formik}
+                      />
+                    </div>
+                  </div>
+                  {formik.errors.contactNoTwo &&
+                    formik.touched.contactNoTwo && (
+                      <div className="text-danger">
+                        {" "}
+                        {formik.errors.contactNoTwo}
+                      </div>
+                    )}
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-6 mb-4">
+                  <h6>Landline No</h6>
+                  <div className="form-group">
+                    <div className="input-container">
+                      <input
+                        type="number"
+                        className="form-control"
+                        placeholder="Landline No."
+                        {...formik.getFieldProps("landline")}
+                      />
+                    </div>
+                  </div>
+                  {formik.errors.landline && formik.touched.landline && (
+                    <div className="text-danger"> {formik.errors.landline}</div>
+                  )}
+                </div>
+                <h6>Measurement</h6>
+                <FormikProvider value={formik}>
+                  <FieldArray
+                    name="measurement"
+                    render={(arrayHelpers) => (
+                      <>
+                        {formik.values?.measurement?.map((item, i) => (
+                          <>
+                            <div
+                              className="col-sm-12 col-md-6 mb-4 position-relative"
+                              key={i}
+                            >
+                              <div className="form-group">
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  name={`measurement.${i}.side`}
+                                  {...formik.getFieldProps(
+                                    `measurement.${i}.side`
+                                  )}
+                                  placeholder="Side"
+                                />
+                              </div>
+                            </div>
+                            <div
+                              className="col-sm-12 col-md-6 mb-4 position-relative"
+                              key={i}
+                            >
+                              <div className="form-group">
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  name={`measurement.${i}.value`}
+                                  {...formik.getFieldProps(
+                                    `measurement.${i}.value`
+                                  )}
+                                  placeholder="Value"
+                                />
+                              </div>
+                              <div
+                                className="remove arr"
+                                onClick={() => {
+                                  let arr = [...formik.values?.measurement];
+                                  arr.splice(i, 1);
+                                  formik.setFormikState((prev) => {
+                                    //console.log(prev);
+                                    return {
+                                      ...prev,
+                                      values: {
+                                        ...prev.values,
+                                        measurement: arr,
+                                      },
+                                    };
+                                  });
+                                }}
+                              >
+                                <img src="/assets/img/delete.png" alt="" />
+                              </div>
+                            </div>
+                          </>
+                        ))}
+                      </>
+                    )}
+                  />
+                </FormikProvider>
+
+                <div className="col-sm-12 col-md-12 mb-4">
+                  <div className="form-group text-end">
+                    <h6
+                      className="textColor d-inline-block cursor-pointer AddtoList"
+                      onClick={() => {
+                        let arr = [...formik.values?.measurement];
+                        arr.push({ side: "", value: "" });
+                        formik.setFormikState((prev) => {
+                          //console.log(prev);
+                          return {
+                            ...prev,
+                            values: {
+                              ...prev.values,
+                              measurement: arr,
+                            },
+                          };
+                        });
+                      }}
+                      role="button"
+                    >
+                      + Add More measurement
+                    </h6>
+                  </div>
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
                   <div className="">

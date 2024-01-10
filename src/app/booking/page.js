@@ -159,7 +159,7 @@ function Booking() {
                   {propertyList?.properties?.map((item, i) => (
                     <option value={item?._id} key={i}>
                       {item?.propertyCode}, Area-{item?.area}
-                      {item?.unit}, Price-{item?.price}
+                      {item?.unit}, Price-{item?.price}, Plot No-{item?.plotNo}
                     </option>
                   ))}
                 </select>
