@@ -6,6 +6,20 @@
 .ql-font-preeti {
   font-family: "preeti" !important;
 }
+.line2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.line3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
 .line4 {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -207,4 +221,110 @@
 .tableCellVerMiddle {
   display: table-cell;
   vertical-align: middle;
+}
+
+/* Styling the links of 
+the events section */
+/* section .events ul {
+  padding: 40px;
+  box-sizing: border-box;
+} */
+
+/* Styling the lists of the event section */
+section .events .eventCard {
+  list-style: none;
+  background: #fff;
+  box-sizing: border-box;
+  height: 200px;
+  margin: 15px 0;
+  box-shadow: 0 5px 9px 4px #ee692257;
+}
+
+/* Styling the time class of events section */
+section .events .eventCard .time {
+  position: relative;
+  padding: 20px;
+  background: #277150;
+  box-sizing: border-box;
+  width: 30%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  transition: 0.5s;
+}
+
+/* Styling the hover effect
+  of events section */
+section .events .eventCard:hover .time {
+  background: #fc9934;
+}
+
+/* Styling the header of time 
+  class of events section */
+section .events .eventCard .time h2 {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 60px;
+  /* line-height: 30px; */
+  height: fit-content;
+  display: grid;
+}
+
+/* Styling the texts of time 
+class of events section */
+section .events .eventCard .time h2 span {
+  font-size: 20px;
+}
+
+/* Styling the details 
+class of events section */
+section .events .eventCard .details {
+  padding: 20px;
+  background: #fff;
+  box-sizing: border-box;
+  width: 70%;
+  height: 100%;
+  float: left;
+}
+
+/* Styling the header of the 
+details class of events section */
+section .events .eventCard .details h3 {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+}
+
+/* Styling the lists of details 
+class of events section */
+section .events .eventCard .details p {
+  position: relative;
+  margin: 10px 0 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+/* Styling the links of details
+class of events section */
+section .events .eventCard .details a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 15px;
+  border: 1.5px solid #277150;
+  margin-top: 8px;
+  font-size: 18px;
+  transition: 0.5s;
+}
+
+/* Styling the details class's hover effect */
+section .events .eventCard .details a:hover {
+  background: #fc9934;
+  color: #fff;
+  border-color: #fc9934;
 }

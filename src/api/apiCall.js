@@ -218,3 +218,13 @@ export const publicationListApi = async (payload) => {
     return data;
   });
 };
+export const newsEventListApi = async (payload) => {
+  return getData("newsEventList", payload).then((data) => {
+    return data;
+  });
+};
+export const newsEventDetailApi = async (payload) => {
+  return getDataforUrl("newsEvent", payload).then((data) => {
+    return data;
+  });
+};

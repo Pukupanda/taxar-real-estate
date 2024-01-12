@@ -3,7 +3,6 @@ import Image from "next/image";
 import DescriptionModal from "../../components/modals/DescriptionModal";
 import { useEffect, useState } from "react";
 import { useDataStore } from "../../api/store/store";
-export const dynamic = true;
 
 function Teams() {
   const [show, setshow] = useState(false);
@@ -49,7 +48,10 @@ function Teams() {
                     <h6>
                       <i>{item?.designation}</i>
                     </h6>
-                    <p>{item?.description}</p>
+                  <div
+                        className="line2"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                   </div>
                 </div>
               ))} */}
@@ -88,7 +90,10 @@ function Teams() {
                           </h6>
                         </div>
                       </div>
-                      <p>{item?.description}</p>
+                      <div
+                        className="line2"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                     </div>
                   </div>
                 ))}
@@ -121,7 +126,10 @@ function Teams() {
                     <h6>
                       <i>{item?.designation}</i>
                     </h6>
-                    <p>{item?.description}</p>
+                  <div
+                        className="line2"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                   </div>
                 </div>
               ))} */}
@@ -153,7 +161,10 @@ function Teams() {
                           </h6>
                         </div>
                       </div>
-                      <p>{item?.description}</p>
+                      <div
+                        className="line2"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                     </div>
                   </div>
                 ))}
@@ -186,7 +197,10 @@ function Teams() {
                     <h6>
                       <i>{item?.designation}</i>
                     </h6>
-                    <p>{item?.description}</p>
+                  <div
+                        className="line2"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                   </div>
                 </div>
               ))} */}
@@ -218,7 +232,10 @@ function Teams() {
                           </h6>
                         </div>
                       </div>
-                      <p>{item?.description}</p>
+                      <div
+                        className="line2"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                     </div>
                   </div>
                 ))}
@@ -251,7 +268,10 @@ function Teams() {
                     <h6>
                       <i>{item?.designation}</i>
                     </h6>
-                    <p>{item?.description}</p>
+                  <div
+                        className="line2"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                   </div>
                 </div>
               ))} */}
@@ -283,7 +303,10 @@ function Teams() {
                           </h6>
                         </div>
                       </div>
-                      <p>{item?.description}</p>
+                      <div
+                        className="line2"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                     </div>
                   </div>
                 ))}

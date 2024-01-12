@@ -50,7 +50,13 @@ function Publication() {
                     <Tr key={i}>
                       <Td>{item?.title || "NA"}</Td>
                       <Td>
-                        {item?.fileUrl?.includes("http") ? item?.fileUrl : "NA"}
+                        {item?.fileUrl?.includes("http") ? (
+                          <Link href={item?.fileUrl} target="_black">
+                            Download
+                          </Link>
+                        ) : (
+                          "NA"
+                        )}
                       </Td>
                       {/* <Td>
                         <div className="d-flex align-items-center gap-2">

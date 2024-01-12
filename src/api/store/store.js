@@ -17,6 +17,8 @@ import {
   gettermAndConditionApi,
   homeScreenApi,
   likedPropertyApi,
+  newsEventDetailApi,
+  newsEventListApi,
   propertyDetailApi,
   propertyFeatureListApi,
   propertyListApi,
@@ -94,6 +96,17 @@ export const useDataStore = create((set) => ({
   fetchBlogDetails: async (data) => {
     const res = await blogsDetailApi(data);
     set({ BlogDetails: await res?.data });
+  },
+
+  newsEventList: {},
+  newsEventDetail: {},
+  fetchnewsEventList: async (data) => {
+    const res = await newsEventListApi(data);
+    set({ newsEventList: await res?.data });
+  },
+  fetchnewsEventDetail: async (data) => {
+    const res = await newsEventDetailApi(data);
+    set({ newsEventDetail: await res?.data });
   },
 
   careerList: {},

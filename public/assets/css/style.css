@@ -411,7 +411,7 @@ footer {
 }
 /*================ Detail Style ================ */
 .fs12 {
-  font-size: 12px;
+  font-size: 12px !important;
 }
 
 /*================ Blogs ================ */

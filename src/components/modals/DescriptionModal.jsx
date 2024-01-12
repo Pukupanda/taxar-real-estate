@@ -9,7 +9,7 @@ function DescriptionModal(props) {
       </Modal.Header> */}
 
       <Modal.Body className="p-5">
-        <div>{props.data}</div>
+        <div dangerouslySetInnerHTML={{ __html: props.data }}></div>
       </Modal.Body>
     </Modal>
   );

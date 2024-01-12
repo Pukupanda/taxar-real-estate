@@ -59,7 +59,7 @@
 }
 .loginBtn,
 .bookingBtn {
-  background: #277150;
+  background: #277150 !important;
   /* background: linear-gradient(
       153deg,
       #ef6b23,
