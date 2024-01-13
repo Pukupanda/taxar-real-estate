@@ -1,29 +1,33 @@
 "use client";
+import Image from "next/image";
 import React, { useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 
-function Confirmation(props) {
-  // console.log(props.keyName, "otem");
+function PaymentModal(props) {
   return (
-    <Modal show={props.show} onHide={props.handleShow} centered size="lg">
+    <Modal show={props.show} onHide={props.handleShow} centered size="md">
       <Modal.Header>
-        <Modal.Title>Confirmation</Modal.Title>
+        <Modal.Title>Booking Payment</Modal.Title>
       </Modal.Header>
 
-      <Modal.Body className="p-5">
-        <p>
-          Are you sure you want to{" "}
-          {props.modalName === "delete modal"
-            ? "delete"
-            : props.isActive === "0"
-            ? "inactive"
-            : props.isActive === "1"
-            ? "active"
-            : ""}{" "}
-          this {props.page}?
+      <Modal.Body className="px-4">
+        <p className="text-center">
+          As per the company policy, in order to book a property, you need to
+          make an initial down payment. Kindly make the payment using below QR
+          code.
         </p>
+        <div className="position-relative">
+          <Image
+            src="/assets/img/paymentQR.jpeg"
+            alt=""
+            quality={100}
+            fill
+            priority
+            className="w-100 h-auto position-static"
+          />
+        </div>
       </Modal.Body>
-      <Modal.Footer>
+      {/* <Modal.Footer>
         <Button variant="secondary" onClick={props.handleShow}>
           Cancel
         </Button>
@@ -55,9 +59,9 @@ function Confirmation(props) {
               : ""}
           </Button>
         )}
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 }
 
-export default Confirmation;
+export default PaymentModal;

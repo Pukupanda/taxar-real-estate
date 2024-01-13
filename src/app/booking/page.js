@@ -7,6 +7,7 @@ import Loader from "@/components/Loader/Loader";
 import MobileInput from "@/components/PhoneInput/MobileInput";
 import { createBookingApi } from "@/api/apiCall";
 import SuccessModal from "@/components/modals/SuccessModal";
+import PaymentModal from "@/components/modals/PaymentModal";
 import { useDataStore } from "@/api/store/store";
 
 function Booking() {
@@ -54,19 +55,38 @@ function Booking() {
         contactNumber: `${values.countryCode} ${values.mobile}`,
       };
 
-      createBookingApi(payload).then((data) => {
-        setLoading(false);
-        if (data?.code === 1) {
-          // toast.success(data.message);
-          setmodalName("success");
-          handleShow();
-        } else {
-          setLoading(false);
-          toast.error(data.message);
-        }
-      });
+      setmodalName("payment");
+      handleShow();
+
+      // createBookingApi(payload).then((data) => {
+      //   setLoading(false);
+      //   if (data?.code === 1) {
+      //     // toast.success(data.message);
+      //     // setmodalName("success");
+      //     setmodalName("payment");
+      //     handleShow();
+      //   } else {
+      //     setLoading(false);
+      //     toast.error(data.message);
+      //   }
+      // });
     },
   });
+
+  const BookingPayment = () => {
+    createBookingApi(payload).then((data) => {
+      setLoading(false);
+      if (data?.code === 1) {
+        toast.success(data.message);
+        // setmodalName("success");
+        setmodalName("payment");
+        handleShow();
+      } else {
+        setLoading(false);
+        toast.error(data.message);
+      }
+    });
+  };
 
   useEffect(() => {
     fetchProjectList();
@@ -183,6 +203,9 @@ function Booking() {
       </section>
       {show && modalName === "success" && (
         <SuccessModal show={show} handleShow={handleShow} />
+      )}
+      {show && modalName === "payment" && (
+        <PaymentModal show={show} handleShow={handleShow} />
       )}
     </>
   );
