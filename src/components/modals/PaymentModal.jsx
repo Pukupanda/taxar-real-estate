@@ -1,9 +1,46 @@
 "use client";
+import { uploadImageApi } from "@/api/apiCall";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import { Progress } from "react-sweet-progress";
+import "react-sweet-progress/lib/style.css";
 
 function PaymentModal(props) {
+  const [progressBar, setProgressBar] = useState(false);
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    let interval;
+    if (progressBar && time < 100) {
+      interval = setInterval(() => {
+        // if (time < 100)
+        setTime((seconds) => (seconds < 99 ? seconds + 1 : seconds));
+      }, 10);
+    }
+    return () => clearInterval(interval);
+  }, [progressBar, time]);
+
+  const handleImage = (val) => {
+    setTime(100);
+    setProgressBar(true);
+    uploadImageApi({
+      image: val,
+      isCloudinary: 1,
+    }).then((res) => {
+      if (res?.code === 1) {
+        // console.log(res?.data?.webpUrl, "res");
+        props.formik.setFieldValue(props.inputKey, res?.data?.webpUrl);
+        setTime(0);
+        setProgressBar(false);
+        // toast.success(res.message);
+      } else {
+        // toast.error(res.message);
+        setTime(0);
+        setProgressBar(false);
+      }
+    });
+  };
   return (
     <Modal show={props.show} onHide={props.handleShow} centered size="md">
       <Modal.Header>
@@ -16,50 +53,44 @@ function PaymentModal(props) {
           make an initial down payment. Kindly make the payment using below QR
           code.
         </p>
-        <div className="position-relative">
+        <div className="text-center">
           <Image
-            src="/assets/img/paymentQR.jpeg"
+            src="/assets/img/paymentQR.png"
             alt=""
             quality={100}
             fill
             priority
-            className="w-100 h-auto position-static"
+            className="PaymentQRStyle position-static"
           />
         </div>
-      </Modal.Body>
-      {/* <Modal.Footer>
-        <Button variant="secondary" onClick={props.handleShow}>
-          Cancel
-        </Button>
-        {props.modalName === "delete modal" ? (
-          <Button
-            variant="danger"
-            onClick={() => {
-              props.confirmDelete({ [props.keyName]: props.itemId });
-              props.handleShow();
+        <div className="single shadow p-3 mt-2">
+          <h6>upload Payment Sceenshot</h6>
+          <input
+            type="file"
+            accept="image/*"
+            // name={props.inputKey}
+            onChange={(e) => {
+              handleImage(e.target.files[0]);
             }}
-          >
-            Delete
-          </Button>
-        ) : (
+          />
+        </div>
+        {time > 0 && progressBar && (
+          <Progress type="line" width={100} percent={time} />
+        )}
+        <div className="mt-4 text-center">
           <Button
             variant="success"
             onClick={() => {
-              props.UpdateStatus({
-                [props.keyName]: props.itemId,
-                // [props.keyisActive]: props.isActive,
-              });
-              props.handleShow();
+              props.BookingPayment();
+              if (props.imageValue) {
+                props.handleShow();
+              }
             }}
           >
-            {props.isActive === "0"
-              ? "Inactive"
-              : props.isActive === "1"
-              ? "Active"
-              : ""}
+            Book Now
           </Button>
-        )}
-      </Modal.Footer> */}
+        </div>
+      </Modal.Body>
     </Modal>
   );
 }

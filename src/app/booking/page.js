@@ -34,6 +34,7 @@ function Booking() {
     countryCode: "",
     mobile: detail?.mobileNumber ? detail?.mobileNumber : "",
     email: detail?.email ? detail?.email : "",
+    paymentSlip: "",
   };
 
   const formik = useFormik({
@@ -74,18 +75,26 @@ function Booking() {
   });
 
   const BookingPayment = () => {
-    createBookingApi(payload).then((data) => {
-      setLoading(false);
-      if (data?.code === 1) {
-        toast.success(data.message);
-        // setmodalName("success");
-        setmodalName("payment");
-        handleShow();
-      } else {
-        setLoading(false);
-        toast.error(data.message);
-      }
-    });
+    console.log(formik.values, "jshfrjbv f,dzhbg ");
+    if (formik.values?.paymentSlip) {
+      setmodalName("success");
+      handleShow();
+    } else {
+      toast.error("Please upload Payment Sceenshot.");
+    }
+
+    // createBookingApi(payload).then((data) => {
+    //   setLoading(false);
+    //   if (data?.code === 1) {
+    //     toast.success(data.message);
+    //     // setmodalName("success");
+    //     setmodalName("payment");
+    //     handleShow();
+    //   } else {
+    //     setLoading(false);
+    //     toast.error(data.message);
+    //   }
+    // });
   };
 
   useEffect(() => {
@@ -170,7 +179,7 @@ function Booking() {
               </div>
               <div className="form-floating mb-3">
                 <select
-                  className="form-control form-select"
+                  className="form-control form-select text-wrap h-auto"
                   placeholder=""
                   id="Property"
                   {...formik.getFieldProps("property")}
@@ -178,8 +187,14 @@ function Booking() {
                   <option>Select Property</option>
                   {propertyList?.properties?.map((item, i) => (
                     <option value={item?._id} key={i}>
-                      {item?.propertyCode}, Area-{item?.area}
-                      {item?.unit}, Price-{item?.price}, Plot No-{item?.plotNo}
+                      <div className="d-grid">
+                        <span>
+                          Area-{item?.area}/{item?.unit}, Price-{item?.price},{" "}
+                        </span>
+                        <span>
+                          Plot No-{item?.plotNo}, Facing {item?.facingDirection}
+                        </span>
+                      </div>
                     </option>
                   ))}
                 </select>
@@ -192,9 +207,9 @@ function Booking() {
                 <button
                   type="submit"
                   className="btn btn-save w-50 fs-4"
-                  disabled={loading ? "disabled" : ""}
+                  // disabled={loading ? "disabled" : ""}
                 >
-                  {loading ? <Loader /> : "Book Now"}
+                  {loading ? <Loader /> : "Payment"}
                 </button>
               </div>
             </form>
@@ -205,7 +220,14 @@ function Booking() {
         <SuccessModal show={show} handleShow={handleShow} />
       )}
       {show && modalName === "payment" && (
-        <PaymentModal show={show} handleShow={handleShow} />
+        <PaymentModal
+          show={show}
+          handleShow={handleShow}
+          formik={formik}
+          inputKey="paymentSlip"
+          BookingPayment={BookingPayment}
+          imageValue={formik.values?.paymentSlip}
+        />
       )}
     </>
   );
