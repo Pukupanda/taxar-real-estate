@@ -3,16 +3,24 @@ import { FourSlideSettings, SingleImageCarouselsettings } from "@/Utils";
 import SliderComponent from "@/components/sliderComponent/SliderComponent";
 import ProjectBox from "@/components/projectBox/ProjectBox";
 import { useDataStore } from "@/api/store/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PropertyBox from "@/components/projectBox/PropertyBox";
 import Link from "next/link";
 import { LikeUnlikePropertyApi } from "@/api/apiCall";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader/Loader";
+import NotificationModal from "@/components/modals/NotificationModal";
 
 export default function Home() {
   const { push } = useRouter();
+
+  const [show, setshow] = useState(true);
+
+  const handleShow = () => {
+    setshow(!show);
+  };
+
   const data = useDataStore((store) => store.homeScreen);
   const { fetchhomeScreen } = useDataStore();
   useEffect(() => {
@@ -238,6 +246,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* {show && <NotificationModal show={show} handleShow={handleShow} />} */}
     </>
   );
 }

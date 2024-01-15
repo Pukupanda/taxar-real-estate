@@ -22,297 +22,62 @@ function Teams() {
     <>
       <section className="mt-5">
         <div className="container">
-          {list?.Team?.length > 0 ? (
-            <>
-              {/* {list?.Team?.slice(0, 2)?.map((item, i) => (
-                <div
-                  className="row align-items-center colReverse shadow mb-5"
-                  key={i}
-                >
-                  <div className="col-sm-12 col-md-4 col-lg-3 mb-3 pt-3">
-                    <Image
-                      src={
-                        item?.profilePicture?.includes("http")
-                          ? item?.profilePicture
-                          : "/assets/img/dummyImage.png"
-                      }
-                      alt=""
-                      className="teamImg position-relative"
-                      fill
-                      quality={100}
-                      priority
-                    />
-                  </div>
-                  <div className="col-sm-12 col-md-8 col-lg-9 mb-3">
-                    <h4 className="mt-3 text-capitalize">{item?.fullName}</h4>
-                    <h6>
-                      <i>{item?.designation}</i>
-                    </h6>
+          {list?.Team?.length > 0
+            ? list?.Team?.map((tm, i) => (
+                <>
                   <div
-                        className="line2"
-                        dangerouslySetInnerHTML={{ __html: item?.description }}
-                      ></div>
-                  </div>
-                </div>
-              ))} */}
-              <div className="row align-items-center justify-content-center">
-                <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
-                  <h3>Board of Member</h3>
-                </div>
-                {list?.Team?.map((item, i) => (
-                  <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={i}>
-                    <div
-                      className="bg-white shadow rounded p-3"
-                      onClick={() => {
-                        setdescription(item?.designation);
-                        handleShow();
-                      }}
-                      role="button"
-                    >
-                      <div className="d-flex gap-3">
-                        <Image
-                          src={
-                            item?.profilePicture?.includes("http")
-                              ? item?.profilePicture
-                              : "/assets/img/dummyImage.png"
-                          }
-                          alt=""
-                          quality={100}
-                          priority
-                          width={50}
-                          height={50}
-                          className="rounded-circle ob-cover"
-                        />
-                        <div>
-                          <h5 className="text-capitalize">{item?.fullName}</h5>
-                          <h6>
-                            <i>{item?.designation}</i>
-                          </h6>
+                    className="row align-items-center justify-content-center"
+                    key={i}
+                  >
+                    <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
+                      <h3>{tm?._id}</h3>
+                    </div>
+                    {tm?.teams?.map((item, ii) => (
+                      <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={ii}>
+                        <div
+                          className="bg-white shadow rounded p-3"
+                          onClick={() => {
+                            setdescription(item?.description);
+                            handleShow();
+                          }}
+                          role="button"
+                        >
+                          <div className="d-flex gap-3">
+                            <Image
+                              src={
+                                item?.profilePicture?.includes("http")
+                                  ? item?.profilePicture
+                                  : "/assets/img/dummyImage.png"
+                              }
+                              alt=""
+                              quality={100}
+                              priority
+                              width={50}
+                              height={50}
+                              className="rounded-circle ob-cover"
+                            />
+                            <div>
+                              <h5 className="text-capitalize">
+                                {item?.fullName}
+                              </h5>
+                              <h6>
+                                <i>{item?.designation}</i>
+                              </h6>
+                            </div>
+                          </div>
+                          <div
+                            className="line2"
+                            dangerouslySetInnerHTML={{
+                              __html: item?.description,
+                            }}
+                          ></div>
                         </div>
                       </div>
-                      <div
-                        className="line2"
-                        dangerouslySetInnerHTML={{ __html: item?.description }}
-                      ></div>
-                    </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </>
-          ) : null}
-          {list?.Team?.length > 0 ? (
-            <>
-              {/* {list?.Team?.slice(0, 2)?.map((item, i) => (
-                <div
-                  className="row align-items-center colReverse shadow mb-5"
-                  key={i}
-                >
-                  <div className="col-sm-12 col-md-4 col-lg-3 mb-3 pt-3">
-                    <Image
-                      src={
-                        item?.profilePicture?.includes("http")
-                          ? item?.profilePicture
-                          : "/assets/img/dummyImage.png"
-                      }
-                      alt=""
-                      className="teamImg position-relative"
-                      fill
-                      quality={100}
-                      priority
-                    />
-                  </div>
-                  <div className="col-sm-12 col-md-8 col-lg-9 mb-3">
-                    <h4 className="mt-3 text-capitalize">{item?.fullName}</h4>
-                    <h6>
-                      <i>{item?.designation}</i>
-                    </h6>
-                  <div
-                        className="line2"
-                        dangerouslySetInnerHTML={{ __html: item?.description }}
-                      ></div>
-                  </div>
-                </div>
-              ))} */}
-              <div className="row align-items-center justify-content-center">
-                <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
-                  <h3>Sub Committee</h3>
-                </div>
-                {list?.Team?.map((item, i) => (
-                  <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={i}>
-                    <div className="bg-white shadow rounded p-3">
-                      <div className="d-flex gap-3">
-                        <Image
-                          src={
-                            item?.profilePicture?.includes("http")
-                              ? item?.profilePicture
-                              : "/assets/img/dummyImage.png"
-                          }
-                          alt=""
-                          quality={100}
-                          priority
-                          width={50}
-                          height={50}
-                          className="rounded-circle ob-cover"
-                        />
-                        <div>
-                          <h5 className="text-capitalize">{item?.fullName}</h5>
-                          <h6>
-                            <i>{item?.designation}</i>
-                          </h6>
-                        </div>
-                      </div>
-                      <div
-                        className="line2"
-                        dangerouslySetInnerHTML={{ __html: item?.description }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : null}
-          {list?.Team?.length > 0 ? (
-            <>
-              {/* {list?.Team?.slice(0, 2)?.map((item, i) => (
-                <div
-                  className="row align-items-center colReverse shadow mb-5"
-                  key={i}
-                >
-                  <div className="col-sm-12 col-md-4 col-lg-3 mb-3 pt-3">
-                    <Image
-                      src={
-                        item?.profilePicture?.includes("http")
-                          ? item?.profilePicture
-                          : "/assets/img/dummyImage.png"
-                      }
-                      alt=""
-                      className="teamImg position-relative"
-                      fill
-                      quality={100}
-                      priority
-                    />
-                  </div>
-                  <div className="col-sm-12 col-md-8 col-lg-9 mb-3">
-                    <h4 className="mt-3 text-capitalize">{item?.fullName}</h4>
-                    <h6>
-                      <i>{item?.designation}</i>
-                    </h6>
-                  <div
-                        className="line2"
-                        dangerouslySetInnerHTML={{ __html: item?.description }}
-                      ></div>
-                  </div>
-                </div>
-              ))} */}
-              <div className="row align-items-center justify-content-center">
-                <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
-                  <h3>Staff</h3>
-                </div>
-                {list?.Team?.map((item, i) => (
-                  <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={i}>
-                    <div className="bg-white shadow rounded p-3">
-                      <div className="d-flex gap-3">
-                        <Image
-                          src={
-                            item?.profilePicture?.includes("http")
-                              ? item?.profilePicture
-                              : "/assets/img/dummyImage.png"
-                          }
-                          alt=""
-                          quality={100}
-                          priority
-                          width={50}
-                          height={50}
-                          className="rounded-circle ob-cover"
-                        />
-                        <div>
-                          <h5 className="text-capitalize">{item?.fullName}</h5>
-                          <h6>
-                            <i>{item?.designation}</i>
-                          </h6>
-                        </div>
-                      </div>
-                      <div
-                        className="line2"
-                        dangerouslySetInnerHTML={{ __html: item?.description }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : null}
-          {list?.Team?.length > 0 ? (
-            <>
-              {/* {list?.Team?.slice(0, 2)?.map((item, i) => (
-                <div
-                  className="row align-items-center colReverse shadow mb-5"
-                  key={i}
-                >
-                  <div className="col-sm-12 col-md-4 col-lg-3 mb-3 pt-3">
-                    <Image
-                      src={
-                        item?.profilePicture?.includes("http")
-                          ? item?.profilePicture
-                          : "/assets/img/dummyImage.png"
-                      }
-                      alt=""
-                      className="teamImg position-relative"
-                      fill
-                      quality={100}
-                      priority
-                    />
-                  </div>
-                  <div className="col-sm-12 col-md-8 col-lg-9 mb-3">
-                    <h4 className="mt-3 text-capitalize">{item?.fullName}</h4>
-                    <h6>
-                      <i>{item?.designation}</i>
-                    </h6>
-                  <div
-                        className="line2"
-                        dangerouslySetInnerHTML={{ __html: item?.description }}
-                      ></div>
-                  </div>
-                </div>
-              ))} */}
-              <div className="row align-items-center justify-content-center">
-                <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
-                  <h3>Stakeholders</h3>
-                </div>
-                {list?.Team?.map((item, i) => (
-                  <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={i}>
-                    <div className="bg-white shadow rounded p-3">
-                      <div className="d-flex gap-3">
-                        <Image
-                          src={
-                            item?.profilePicture?.includes("http")
-                              ? item?.profilePicture
-                              : "/assets/img/dummyImage.png"
-                          }
-                          alt=""
-                          quality={100}
-                          priority
-                          width={50}
-                          height={50}
-                          className="rounded-circle ob-cover"
-                        />
-                        <div>
-                          <h5 className="text-capitalize">{item?.fullName}</h5>
-                          <h6>
-                            <i>{item?.designation}</i>
-                          </h6>
-                        </div>
-                      </div>
-                      <div
-                        className="line2"
-                        dangerouslySetInnerHTML={{ __html: item?.description }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : null}
+                </>
+              ))
+            : null}
         </div>
       </section>
       {show && (

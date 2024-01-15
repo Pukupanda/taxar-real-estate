@@ -19,6 +19,7 @@ import {
   likedPropertyApi,
   newsEventDetailApi,
   newsEventListApi,
+  priorityMessageApi,
   propertyDetailApi,
   propertyFeatureListApi,
   propertyListApi,
@@ -143,6 +144,12 @@ export const useDataStore = create((set) => ({
   fetchfaqsList: async (data) => {
     const res = await faqsListApi(data);
     set({ faqsList: await res?.data });
+  },
+
+  priorityMessage: {},
+  fetchpriorityMessage: async (data) => {
+    const res = await priorityMessageApi(data);
+    set({ priorityMessage: await res?.data });
   },
 
   about: {},

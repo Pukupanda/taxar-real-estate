@@ -228,3 +228,8 @@ export const newsEventDetailApi = async (payload) => {
     return data;
   });
 };
+export const priorityMessageApi = async (payload) => {
+  return getData("priorityMessage", payload).then((data) => {
+    return data;
+  });
+};

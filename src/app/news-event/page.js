@@ -25,7 +25,7 @@ function NewsEvent() {
   return (
     <>
       <section>
-        <div class="events container">
+        <div class="events container mt-3">
           <div className="row">
             {loading ? (
               <div className="d-table min-vh-50 w-100">
