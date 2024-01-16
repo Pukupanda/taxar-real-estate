@@ -46,7 +46,7 @@ function ProjectBox(props) {
         <div className="property__card-text cursor-pointer">
           <Link
             href={
-              props.status && props.status === "0"
+              props.status && props.status === "1"
                 ? `/property/${props.item?._id}`
                 : ""
             }
@@ -77,7 +77,7 @@ function ProjectBox(props) {
                 </span>
               )}
             </div>
-            {props.status && props.status === "0" ? (
+            {props.status && props.status === "1" ? (
               <Link href={`/property/${props.item?._id}`}>
                 <div className="btn btn-link">View Details</div>
               </Link>

@@ -7,7 +7,7 @@ import Paginations from "@/components/Paginations/Pagination";
 
 function Projects() {
   const [loading, setloading] = useState(false);
-  const [status, setstatus] = useState("0");
+  const [status, setstatus] = useState("1");
   const [page, setpage] = useState(1);
   const list = useDataStore((store) => store.ProjectList);
   const { fetchProjectList } = useDataStore();
@@ -30,20 +30,20 @@ function Projects() {
             <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
               <div className="nav gap-2 justify-content-center">
                 <div
-                  className={status === "0" ? "tabStyle loginBtn" : "tabStyle"}
+                  className={status === "1" ? "tabStyle loginBtn" : "tabStyle"}
                   role="button"
                   onClick={() => {
-                    setstatus("0");
+                    setstatus("1");
                     setpage("1");
                   }}
                 >
                   On-Going
                 </div>
                 <div
-                  className={status === "1" ? "tabStyle loginBtn" : "tabStyle"}
+                  className={status === "2" ? "tabStyle loginBtn" : "tabStyle"}
                   role="button"
                   onClick={() => {
-                    setstatus("1");
+                    setstatus("2");
                     setpage("1");
                   }}
                 >
