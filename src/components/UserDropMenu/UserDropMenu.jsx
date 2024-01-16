@@ -16,6 +16,8 @@ function UserDropMenu(props) {
       if (res?.code === 1) {
         toast.success(res?.massege);
         Cookies.remove("Taxar");
+        Cookies.remove("property");
+        Cookies.remove("project");
         props.fetchgetDetail();
         push("/");
       }

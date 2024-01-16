@@ -9,6 +9,7 @@ import { createBookingApi } from "@/api/apiCall";
 import SuccessModal from "@/components/modals/SuccessModal";
 import PaymentModal from "@/components/modals/PaymentModal";
 import { useDataStore } from "@/api/store/store";
+import Cookies from "js-cookie";
 
 function Booking() {
   const [loading, setLoading] = useState(false);
@@ -18,6 +19,9 @@ function Booking() {
   const handleShow = () => {
     setshow(!show);
   };
+
+  const projectID = Cookies.get("project");
+  const propertyID = Cookies.get("property");
 
   const projectList = useDataStore((store) => store.ProjectList);
   const { fetchProjectList } = useDataStore();
@@ -29,8 +33,8 @@ function Booking() {
 
   const initialValues = {
     userName: detail?.userName ? detail?.userName : "",
-    project: "",
-    property: "",
+    project: projectID ? projectID : "",
+    property: propertyID ? propertyID : "",
     countryCode: "",
     mobile: detail?.mobileNumber ? detail?.mobileNumber : "",
     email: detail?.email ? detail?.email : "",
@@ -103,8 +107,10 @@ function Booking() {
   useEffect(() => {
     if (projectId) {
       fetchProjectDetails(projectId);
+    } else if (projectID) {
+      fetchProjectDetails(projectID);
     }
-  }, [projectId]);
+  }, [projectId, projectID]);
 
   return (
     <>
@@ -158,6 +164,7 @@ function Booking() {
                   className="form-control form-select text-capitalize"
                   placeholder=""
                   id="project"
+                  value={formik.values.project}
                   onChange={(e) => {
                     setProjectId(e.target.value);
                     formik.setFieldValue("project", e.target.value);

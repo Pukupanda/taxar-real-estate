@@ -246,7 +246,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* {show && <NotificationModal show={show} handleShow={handleShow} />} */}
+      {show && <NotificationModal show={show} handleShow={handleShow} />}
     </>
   );
 }
