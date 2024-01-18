@@ -59,7 +59,7 @@ function ProjectBox(props) {
                 className="property__card-title text-truncate"
                 title={props.item?.title}
               >
-                <span tabindex="0">{props.item?.title}</span> efer
+                <span tabindex="0">{props.item?.title}</span>
               </h3>
               {
                 <p className="property__card-location text-truncat text-capitalize">
