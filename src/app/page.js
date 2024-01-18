@@ -193,7 +193,7 @@ export default function Home() {
                 <SliderComponent setting={FourSlideSettings}>
                   {data?.featuredProject?.map((item, i) => (
                     <div key={i}>
-                      <ProjectBox item={item} status="0" />
+                      <ProjectBox item={item} status="1" />
                     </div>
                   ))}
                 </SliderComponent>
