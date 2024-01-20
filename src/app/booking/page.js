@@ -29,6 +29,11 @@ function Booking() {
   const propertyList = useDataStore((store) => store.ProjectDetails);
   const { fetchProjectDetails } = useDataStore();
 
+  const propertyListWIthoutProject = useDataStore(
+    (store) => store.propertyList
+  );
+  const { fetchpropertyList } = useDataStore();
+
   const detail = useDataStore((store) => store.getDetail);
 
   const initialValues = {
@@ -81,7 +86,7 @@ function Booking() {
   });
 
   const BookingPayment = () => {
-    console.log(formik.values, "jshfrjbv f,dzhbg ");
+    // console.log(formik.values, "jshfrjbv f,dzhbg ");
     if (formik.values?.paymentSlip) {
       createBookingApi({
         email: formik.values.email,
@@ -112,8 +117,8 @@ function Booking() {
   useEffect(() => {
     if (projectId) {
       fetchProjectDetails(projectId);
-    } else if (projectID) {
-      fetchProjectDetails(projectID);
+    } else {
+      fetchpropertyList();
     }
   }, [projectId, projectID]);
 
@@ -177,7 +182,7 @@ function Booking() {
                   }}
                   onBlur={formik.handleBlur}
                 >
-                  <option>Select Project</option>
+                  <option value={""}>Select Project</option>
                   {projectList?.Project?.map((item, i) => (
                     <option value={item?._id} key={i}>
                       {item?.title}
@@ -197,18 +202,35 @@ function Booking() {
                   {...formik.getFieldProps("property")}
                 >
                   <option>Select Property</option>
-                  {propertyList?.properties?.map((item, i) => (
-                    <option value={item?._id} key={i}>
-                      <div className="d-grid">
-                        <span>
-                          Area-{item?.area}/{item?.unit}, Price-{item?.price},{" "}
-                        </span>
-                        <span>
-                          Plot No-{item?.plotNo}, Facing {item?.facingDirection}
-                        </span>
-                      </div>
-                    </option>
-                  ))}
+                  {formik.values.project
+                    ? propertyList?.properties?.map((item, i) => (
+                        <option value={item?._id} key={i}>
+                          <div className="d-grid">
+                            <span>
+                              Area-{item?.area}/{item?.unit}, Price-
+                              {item?.price},{" "}
+                            </span>
+                            <span>
+                              Plot No-{item?.plotNo}, Facing{" "}
+                              {item?.facingDirection}
+                            </span>
+                          </div>
+                        </option>
+                      ))
+                    : propertyListWIthoutProject?.properties?.map((item, i) => (
+                        <option value={item?._id} key={i}>
+                          <div className="d-grid">
+                            <span>
+                              Area-{item?.area}/{item?.unit}, Price-
+                              {item?.price},{" "}
+                            </span>
+                            <span>
+                              Plot No-{item?.plotNo}, Facing{" "}
+                              {item?.facingDirection}
+                            </span>
+                          </div>
+                        </option>
+                      ))}
                 </select>
                 <label for="Property">Property</label>
                 {formik.errors.property && formik.touched.property && (
