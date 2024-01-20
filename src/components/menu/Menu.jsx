@@ -16,6 +16,8 @@ function Menu() {
   const { push } = useRouter();
   const pathname = usePathname();
 
+  const listNoti = useDataStore((store) => store.priorityMessage);
+
   const [show, setShow] = useState(false);
   const [ModalName, setModalName] = useState("");
 
@@ -48,6 +50,23 @@ function Menu() {
 
   return (
     <>
+      <div className="notiTop">
+        {/* <span className="highBg">Highlights</span> */}
+        <marquee>
+          {listNoti?.blogs?.map((item, i) => (
+            <span key={i}>{item?.title}</span>
+          ))}
+          {listNoti?.careers?.map((item, i) => (
+            <span key={i}>{item?.title}</span>
+          ))}
+          {listNoti?.newsEvents?.map((item, i) => (
+            <span key={i}>{item?.title}</span>
+          ))}
+          {listNoti?.publications?.map((item, i) => (
+            <span key={i}>{item?.title}</span>
+          ))}
+        </marquee>
+      </div>
       <nav className={`navbar navbar-expand-lg navFixed ${stickyClass}`}>
         <div className="container">
           <Link className="navbar-brand py-0" href="/">
@@ -75,7 +94,7 @@ function Menu() {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <ul className="navbar-nav ms-auto align-items-center text-capitalize">
+              <ul className="navbar-nav ms-auto align-items-start align-items-lg-center text-capitalize">
                 <li className="nav-item dropdown">
                   <a
                     className={
@@ -95,7 +114,11 @@ function Menu() {
                     Home
                   </a>
                   <ul
-                    className="dropdown-menu dropdown-menu-light"
+                    className={
+                      isTabletOrMobile
+                        ? "dropdown-menu dropdown-menu-light cole"
+                        : "dropdown-menu dropdown-menu-light"
+                    }
                     aria-labelledby="navbarDarkDropdownMenuLink"
                   >
                     <li>
@@ -192,7 +215,11 @@ function Menu() {
                     articles
                   </a>
                   <ul
-                    className="dropdown-menu dropdown-menu-light"
+                    className={
+                      isTabletOrMobile
+                        ? "dropdown-menu dropdown-menu-light cole"
+                        : "dropdown-menu dropdown-menu-light"
+                    }
                     aria-labelledby="navbarDarkDropdownMenuLink"
                   >
                     <li>
@@ -272,7 +299,11 @@ function Menu() {
                     tool
                   </a>
                   <ul
-                    className="dropdown-menu dropdown-menu-light"
+                    className={
+                      isTabletOrMobile
+                        ? "dropdown-menu dropdown-menu-light cole"
+                        : "dropdown-menu dropdown-menu-light"
+                    }
                     aria-labelledby="navbarDarkDropdownMenuLink"
                   >
                     <li>

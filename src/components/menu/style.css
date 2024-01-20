@@ -2,7 +2,7 @@
   max-height: 80px;
 }
 .navFixed {
-  position: fixed;
+  position: sticky;
   top: 0;
   background-color: transparent;
   -webkit-transition: all 0.2s ease;
@@ -94,4 +94,19 @@
     left: 0px;
     width: 10%;
   }
+}
+.notiTop {
+  display: flex;
+  align-items: center;
+  grid-gap: 10px;
+  font-size: 12px;
+}
+.notiTop {
+  background: #277150;
+  color: #fff;
+  /* padding: 2px; */
+}
+ul.dropdown-menu.dropdown-menu-light.cole.show {
+  position: static !important;
+  transform: translate3d(0px, 0px, 0px) !important;
 }
