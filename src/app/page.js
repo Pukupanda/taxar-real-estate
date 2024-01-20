@@ -15,7 +15,7 @@ import NotificationModal from "@/components/modals/NotificationModal";
 export default function Home() {
   const { push } = useRouter();
 
-  const [show, setshow] = useState(true);
+  const [show, setshow] = useState(false);
 
   const handleShow = () => {
     setshow(!show);
@@ -33,6 +33,16 @@ export default function Home() {
       fetchhomeScreen();
     });
   };
+
+  const list = useDataStore((store) => store.priorityMessage);
+  const { fetchpriorityMessage } = useDataStore();
+
+  useEffect(() => {
+    fetchpriorityMessage().then(() => {
+      handleShow();
+    });
+  }, []);
+
   return (
     <>
       <section className="homeSlider">
@@ -246,7 +256,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {show && <NotificationModal show={show} handleShow={handleShow} />}
+      {show && (
+        <NotificationModal show={show} handleShow={handleShow} list={list} />
+      )}
     </>
   );
 }
