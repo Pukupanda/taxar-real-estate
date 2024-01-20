@@ -39,6 +39,7 @@ function Booking() {
     mobile: detail?.mobileNumber ? detail?.mobileNumber : "",
     email: detail?.email ? detail?.email : "",
     paymentSlip: "",
+    currency: "100000",
   };
 
   const formik = useFormik({
@@ -58,6 +59,7 @@ function Booking() {
         name: values.userName,
         propertyId: values.property,
         contactNumber: `${values.countryCode} ${values.mobile}`,
+        fileUrl: values.paymentSlip,
       };
 
       setmodalName("payment");
@@ -81,24 +83,27 @@ function Booking() {
   const BookingPayment = () => {
     console.log(formik.values, "jshfrjbv f,dzhbg ");
     if (formik.values?.paymentSlip) {
-      setmodalName("success");
-      handleShow();
+      createBookingApi({
+        email: formik.values.email,
+        name: formik.values.userName,
+        propertyId: formik.values.property,
+        contactNumber: `${formik.values.countryCode} ${formik.values.mobile}`,
+        fileUrl: formik.values.paymentSlip,
+        currency: "100000",
+      }).then((data) => {
+        setLoading(false);
+        if (data?.code === 1) {
+          toast.success(data.message);
+          setmodalName("success");
+          handleShow();
+        } else {
+          setLoading(false);
+          toast.error(data.message);
+        }
+      });
     } else {
       toast.error("Please upload Payment Sceenshot.");
     }
-
-    // createBookingApi(payload).then((data) => {
-    //   setLoading(false);
-    //   if (data?.code === 1) {
-    //     toast.success(data.message);
-    //     // setmodalName("success");
-    //     setmodalName("payment");
-    //     handleShow();
-    //   } else {
-    //     setLoading(false);
-    //     toast.error(data.message);
-    //   }
-    // });
   };
 
   useEffect(() => {

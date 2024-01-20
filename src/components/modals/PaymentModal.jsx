@@ -50,8 +50,8 @@ function PaymentModal(props) {
       <Modal.Body className="px-4">
         <p className="text-center">
           As per the company policy, in order to book a property, you need to
-          make an initial down payment. Kindly make the payment using below QR
-          code.
+          make an initial down payment<b>(रु 1,00,000)</b>. Kindly make the
+          payment using below QR code.
         </p>
         <div className="text-center">
           <Image
