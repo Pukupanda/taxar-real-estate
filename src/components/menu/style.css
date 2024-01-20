@@ -1,9 +1,9 @@
 .logo {
-  max-height: 80px;
+  max-height: 50px;
 }
 .navFixed {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 10;
   background-color: transparent;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
@@ -99,7 +99,7 @@
   display: flex;
   align-items: center;
   grid-gap: 10px;
-  font-size: 12px;
+  font-size: 15px;
 }
 .notiTop {
   background: #277150;
