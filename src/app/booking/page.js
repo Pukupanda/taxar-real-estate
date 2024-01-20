@@ -43,7 +43,8 @@ function Booking() {
     countryCode: "",
     mobile: detail?.mobileNumber ? detail?.mobileNumber : "",
     email: detail?.email ? detail?.email : "",
-    paymentSlip: "",
+    paymentSlip:
+      "https://res.cloudinary.com/dyiacxies/image/upload/v1705757759/mdflzgtr1i0jvao5owbt.jpg",
     currency: "100000",
   };
 
@@ -53,7 +54,7 @@ function Booking() {
       userName: Yup.string().required("Required"),
       mobile: Yup.string().required("Required"),
       email: Yup.string().required("Required"),
-      project: Yup.string().required("Required"),
+      // project: Yup.string().required("Required"),
       property: Yup.string().required("Required"),
     }),
     enableReinitialize: true,
@@ -87,6 +88,8 @@ function Booking() {
 
   const BookingPayment = () => {
     // console.log(formik.values, "jshfrjbv f,dzhbg ");
+    Cookies.remove("property");
+    Cookies.remove("project");
     if (formik.values?.paymentSlip) {
       createBookingApi({
         email: formik.values.email,
