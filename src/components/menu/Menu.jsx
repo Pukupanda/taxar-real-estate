@@ -45,8 +45,10 @@ function Menu() {
   };
 
   useEffect(() => {
-    fetchgetDetail();
-  }, [token]);
+    if (token) {
+      fetchgetDetail();
+    }
+  }, []);
 
   return (
     <>
