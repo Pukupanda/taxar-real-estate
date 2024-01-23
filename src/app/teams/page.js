@@ -37,7 +37,7 @@ function Teams() {
                         <div
                           className="bg-white shadow rounded p-3"
                           onClick={() => {
-                            setdescription(item?.description);
+                            setdescription(item);
                             handleShow();
                           }}
                           role="button"

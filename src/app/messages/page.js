@@ -40,7 +40,7 @@ function Messages() {
                           <div
                             className="bg-white shadow rounded p-3"
                             onClick={() => {
-                              setdescription(item?.message);
+                              setdescription(item);
                               handleShow();
                             }}
                             role="button"
