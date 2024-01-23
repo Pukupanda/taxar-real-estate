@@ -31,51 +31,53 @@ function Messages() {
                     {/* <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
                         <h3>{tm?._id}</h3>
                       </div> */}
-                    {tm?.teams?.map((item, ii) => (
-                      <div
-                        className="col-sm-12 col-md-12 col-lg-12 mb-4"
-                        key={ii}
-                      >
+                    {tm?.teams
+                      ?.filter((it) => it?.message !== undefined)
+                      .map((item, ii) => (
                         <div
-                          className="bg-white shadow rounded p-3"
-                          onClick={() => {
-                            setdescription(item);
-                            handleShow();
-                          }}
-                          role="button"
+                          className="col-sm-12 col-md-12 col-lg-12 mb-4"
+                          key={ii}
                         >
-                          <div className="d-grid text-center gap-3">
-                            <Image
-                              src={
-                                item?.profilePicture?.includes("http")
-                                  ? item?.profilePicture
-                                  : "/assets/img/dummyImage.png"
-                              }
-                              alt=""
-                              quality={100}
-                              priority
-                              width={80}
-                              height={80}
-                              className="rounded-circle ob-cover m-auto"
-                            />
-                            <div>
-                              <h5 className="text-capitalize">
-                                {item?.fullName}
-                              </h5>
-                              <h6>
-                                <i>{item?.designation}</i>
-                              </h6>
-                            </div>
-                          </div>
                           <div
-                            className="line2"
-                            dangerouslySetInnerHTML={{
-                              __html: item?.message,
+                            className="bg-white shadow rounded p-3"
+                            onClick={() => {
+                              setdescription(item);
+                              handleShow();
                             }}
-                          ></div>
+                            role="button"
+                          >
+                            <div className="d-grid text-center gap-3">
+                              <Image
+                                src={
+                                  item?.profilePicture?.includes("http")
+                                    ? item?.profilePicture
+                                    : "/assets/img/dummyImage.png"
+                                }
+                                alt=""
+                                quality={100}
+                                priority
+                                width={100}
+                                height={100}
+                                className="rounded-circle ob-cover m-auto"
+                              />
+                              <div>
+                                <h5 className="text-capitalize">
+                                  {item?.fullName}
+                                </h5>
+                                <h6>
+                                  <i>{item?.designation}</i>
+                                </h6>
+                              </div>
+                            </div>
+                            <div
+                              className="line2 text-center"
+                              dangerouslySetInnerHTML={{
+                                __html: item?.message,
+                              }}
+                            ></div>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
                   </div>
                 </>
               ))

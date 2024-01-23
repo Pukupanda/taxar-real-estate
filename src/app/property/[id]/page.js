@@ -152,7 +152,9 @@ function Property() {
                       <div className="tag tag-black text-capitalize">
                         {item?.category}
                       </div>
-                      <p className="fw-bold">रु{item?.price}</p>
+                      <p className="fw-bold my-1 fs-6 themeOrg">
+                        रु{item?.price}
+                      </p>
                       <h5 className="text-capitalize fw-bold">{item?.title}</h5>
                       <div className="mb-2 text-capitalize">
                         <img
