@@ -501,6 +501,7 @@ tr {
 .fixedBotoRi {
   right: 88px;
   bottom: 22px;
+  z-index: 9;
 }
 .ql-snow .ql-picker.ql-size .ql-picker-label[data-value]::before,
 .ql-snow .ql-picker.ql-size .ql-picker-item[data-value]::before,
