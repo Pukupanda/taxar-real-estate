@@ -178,14 +178,6 @@
   background-color: #ef6b23;
 }
 
-.btn-link,
-.btn-link:hover {
-  background: #ef6b23;
-  color: #fff;
-  font-size: 12px;
-  padding: 5px 10px;
-  text-decoration: none;
-}
 .LikeUnlike {
   position: absolute;
   right: 5px;

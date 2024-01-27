@@ -13,10 +13,15 @@ import { FacebookProvider, CustomChat } from "react-facebook";
 function Menu() {
   const [stickyClass, setStickyClass] = useState("");
   const token = Cookies.get("Taxar");
-  const { push } = useRouter();
   const pathname = usePathname();
 
   const listNoti = useDataStore((store) => store.priorityMessage);
+
+  const { fetchpriorityMessage } = useDataStore();
+
+  useEffect(() => {
+    fetchpriorityMessage();
+  }, []);
 
   const [show, setShow] = useState(false);
   const [ModalName, setModalName] = useState("");
@@ -369,15 +374,15 @@ function Menu() {
                   <Link
                     className={
                       isTabletOrMobile
-                        ? "nav-link loginBtn px-2 mb-2 rounded"
-                        : "nav-link loginBtn px-3 py-1"
+                        ? "nav-link btn-link px-2 mb-2 rounded"
+                        : "nav-link btn-link px-3 py-1"
                     }
                     onClick={() => {
                       handleClose();
                     }}
                     href="/booking"
                   >
-                    booking
+                    Book Now
                   </Link>
                 </li>
               </ul>

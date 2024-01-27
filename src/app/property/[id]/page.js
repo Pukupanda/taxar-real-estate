@@ -227,7 +227,7 @@ function Property() {
                         </div>
                         <Link
                           href={"/booking"}
-                          className="loginBtn btn"
+                          className="btn btn-link fs-6"
                           onClick={() => {
                             Cookies.set("project", id);
                             Cookies.set("property", item?._id);

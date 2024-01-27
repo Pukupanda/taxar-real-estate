@@ -29,6 +29,10 @@ import {
 } from "../apiCall";
 
 export const useDataStore = create((set) => ({
+  OpenModal: true,
+  showModal: async (data) => {
+    set({ OpenModal: await data });
+  },
   getDetail: {},
   fetchgetDetail: async (data) => {
     const res = await getDetailApi(data);

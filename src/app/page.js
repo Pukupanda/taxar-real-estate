@@ -15,17 +15,19 @@ import NotificationModal from "@/components/modals/NotificationModal";
 export default function Home() {
   const { push } = useRouter();
 
-  const [show, setshow] = useState(false);
-
-  const handleShow = () => {
-    setshow(!show);
-  };
+  const [NotoData, setNotoData] = useState("");
 
   const data = useDataStore((store) => store.homeScreen);
   const { fetchhomeScreen } = useDataStore();
   useEffect(() => {
     fetchhomeScreen();
   }, []);
+
+  const show = useDataStore((store) => store.OpenModal);
+  const { showModal } = useDataStore();
+  const handleShow = () => {
+    showModal(!show);
+  };
 
   const LikeUnlikeProperty = (val) => {
     LikeUnlikePropertyApi(val).then((res) => {
@@ -39,7 +41,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchpriorityMessage().then(() => {
-      handleShow();
+      setNotoData("show");
     });
   }, []);
 
@@ -256,7 +258,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {show && (
+      {show && NotoData === "show" && (
         <NotificationModal show={show} handleShow={handleShow} list={list} />
       )}
     </>

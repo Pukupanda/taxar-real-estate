@@ -586,6 +586,7 @@ function AddEditProperty() {
                       >
                         <option value="">Select Unit</option>
                         <option value="sq.ft">sq.ft</option>
+                        <option value="bigha">bigha</option>
                         <option value="meter">meter</option>
                         <option value="cm">cm</option>
                       </select>

@@ -356,3 +356,11 @@ section .events .eventCard .details a:hover {
   height: 250px !important;
   object-fit: contain;
 }
+.btn-link,
+.btn-link:hover {
+  background: #ef6b23 !important;
+  color: #fff !important;
+  font-size: 12px;
+  padding: 5px 10px;
+  text-decoration: none;
+}
