@@ -38,7 +38,7 @@ function Detail() {
             <div className="container">
               <div className="row">
                 <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
-                  <div className="properyList">
+                  <div className="properyList p-4">
                     <div className="w-100">
                       <p className="d-flex justify-content-between align-items-center mb-2 fw-bold text-capitalize">
                         <span className="fs-5 fw-bold">
@@ -101,7 +101,7 @@ function Detail() {
                   </div>
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-9">
-                  <div className="properyList d-block text-capitalize">
+                  <div className="properyList p-4 d-block text-capitalize">
                     <div className="row">
                       <div className="col-sm-6 col-md-4 col-lg-3 mb-3">
                         <h6 className="fw-bold">Area</h6>
@@ -132,7 +132,7 @@ function Detail() {
                     </div>
                   </div>
                   {detail?.propertyDetails?.shortDescription && (
-                    <div className="properyList">
+                    <div className="properyList p-4">
                       <div className="w-100">
                         <div className="">
                           <h5>Overview</h5>
@@ -145,7 +145,7 @@ function Detail() {
                       </div>
                     </div>
                   )}
-                  <div className="properyList">
+                  <div className="properyList p-4">
                     <div className="w-100">
                       <div className="">
                         <h5 className="">Features</h5>
@@ -222,7 +222,7 @@ function Detail() {
                     </div>
                   </div>
 
-                  <div className="properyList">
+                  <div className="properyList p-4">
                     <div className="w-100">
                       <div className="">
                         <h5>Description</h5>
@@ -235,7 +235,7 @@ function Detail() {
                     </div>
                   </div>
                   {detail?.propertyDetails?.faqs?.length > 0 && (
-                    <div className="properyList">
+                    <div className="properyList p-4">
                       <div className="w-100">
                         <div className="">
                           <h5>Faqs</h5>
@@ -263,7 +263,7 @@ function Detail() {
                       </div>
                     </div>
                   )}
-                  <div className="properyList">
+                  <div className="properyList p-4">
                     <div className="w-100">
                       <div className="">
                         <h5 className="mt4">View on Map</h5>
@@ -281,7 +281,7 @@ function Detail() {
                   </div>
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-3 position-relative">
-                  <div className="properyList d-block position-sticky top-85 text-center">
+                  <div className="properyList p-4 d-block position-sticky top-85 text-center">
                     <h3 className="text-start">Contact Sellers </h3>
                     <hr />
                     {detail?.UserDetail?.profilePicture?.includes("http") && (
