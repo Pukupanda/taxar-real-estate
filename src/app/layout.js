@@ -4,6 +4,7 @@ import Script from "next/script";
 import Provider from "@/components/provider/Provider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SocketProvider from "@/components/provider/SocketProvider";
 
 export const metadata = {
   title: "Taxar Real Estate",
@@ -22,7 +23,9 @@ export default function RootLayout({ children }) {
       />
       <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
       <body>
-        <Provider>{children}</Provider>
+        <SocketProvider>
+          <Provider>{children}</Provider>
+        </SocketProvider>
         <ToastContainer position="top-center" autoClose={3000} />
       </body>
     </html>
