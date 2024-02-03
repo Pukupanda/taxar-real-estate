@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader/Loader";
 import NotificationModal from "@/components/modals/NotificationModal";
 import io from "socket.io-client";
+// import { socket } from "@/socket";
 
 export default function Home() {
   const { push } = useRouter();
@@ -46,18 +47,32 @@ export default function Home() {
     });
   }, []);
 
+  // const [isConnected, setIsConnected] = useState(socket.connected);
+  // const [fooEvents, setFooEvents] = useState([]);
+
+  // console.log(isConnected, "isConnected");
+  // const socket = io();
   useEffect(() => {
-    const socket = io();
-
-    console.log(socket, "kjkvrgb");
-
-    socket.on("connected", (socket) => {
-      console.log("Connected to server", "efaefiwbf b,jsudagv");
-    });
-
-    // socket.on("disconnect", () => {
-    //   console.log("Disconnected from server");
+    // socket.on("connect", () => {
+    //   console.log("socket.connected"); // true
     // });
+    // function onConnect() {
+    //   setIsConnected(true);
+    // }
+    // function onDisconnect() {
+    //   setIsConnected(false);
+    // }
+    // function onFooEvent(value) {
+    //   setFooEvents((previous) => [...previous, value]);
+    // }
+    // socket.on("connect", onConnect);
+    // socket.on("disconnect", onDisconnect);
+    // socket.on("foo", onFooEvent);
+    // return () => {
+    //   socket.off("connect", onConnect);
+    //   socket.off("disconnect", onDisconnect);
+    //   socket.off("foo", onFooEvent);
+    // };
   }, []);
 
   return (
