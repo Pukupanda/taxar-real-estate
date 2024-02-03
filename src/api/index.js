@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 var querystring = require("querystring");
-const BASE_URL = "https://real-state-project-rho.vercel.app/api/v1/";
+const BASE_URL = "https://real-state-project-coral.vercel.app/api/v1/";
 
 export const postFormDataNoToken = async (url = "", data = {}) => {
   try {
