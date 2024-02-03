@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import io from "socket.io-client";
 
-const socket = io("https://real-state-project-rho.vercel.app");
+const socket = io("https://real-state-project-rho.vercel.app", {
+  crossDomain: true,
+});
 
 function SocketProvider({ children }) {
   const [notification, setNotification] = useState("");
