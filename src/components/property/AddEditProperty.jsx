@@ -958,7 +958,7 @@ function AddEditProperty() {
                     </h6>
                   </div>
                 </div>
-                <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
+                {/* <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
                   <div className="">
                     <div className="input-container">
                       <textarea
@@ -976,7 +976,7 @@ function AddEditProperty() {
                         {formik.errors.shortDetails}
                       </div>
                     )}
-                </div>
+                </div> */}
                 <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
                   <div className="form-group">
                     <div className="input-container">
