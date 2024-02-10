@@ -356,6 +356,9 @@ section .events .eventCard .details a:hover {
   height: 250px !important;
   object-fit: contain;
 }
+.navbar-nav .nav-link.btn-link:hover {
+  color: #fff !important;
+}
 .btn-link,
 .btn-link:hover {
   background: #ef6b23 !important;
