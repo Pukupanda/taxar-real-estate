@@ -22,7 +22,6 @@ export default function RootLayout({ children }) {
         referrerPolicy="no-referrer"
       />
       <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
-      {/* <Script src="https://js.pusher.com/8.2.0/pusher.min.js" /> */}
       <body>
         <SocketProvider>
           <Provider>{children}</Provider>
