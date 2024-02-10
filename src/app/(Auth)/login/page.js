@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import Loader from "@/components/Loader/Loader";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import { LoginApi } from "@/api/apiCall";
+import { LoginApi, sendNotification } from "@/api/apiCall";
 import { useDataStore } from "@/api/store/store";
 
 function Login() {
@@ -37,9 +37,10 @@ function Login() {
         email: values.email,
         password: values.password,
       };
-      LoginApi(payload).then((data) => {
+      LoginApi(payload).then(async (data) => {
         if (data?.code === 1) {
           toast.success(data.message);
+          await sendNotification();
           Cookies.set("Taxar", data?.data?.user?.token);
           fetchgetDetail();
           if (pageUrl) {

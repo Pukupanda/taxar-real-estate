@@ -11,6 +11,11 @@ import {
   putRawData,
 } from "./index";
 
+export const sendNotification = async (payload) => {
+  return postRawData("send-notification", payload).then((data) => {
+    return data;
+  });
+};
 export const LoginApi = async (payload) => {
   return postRawData("auth/login", payload).then((data) => {
     return data;

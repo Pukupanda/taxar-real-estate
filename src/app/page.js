@@ -11,8 +11,6 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader/Loader";
 import NotificationModal from "@/components/modals/NotificationModal";
-import io from "socket.io-client";
-// import { socket } from "@/socket";
 
 export default function Home() {
   const { push } = useRouter();
@@ -46,9 +44,6 @@ export default function Home() {
       setNotoData("show");
     });
   }, []);
-
-  // const [isConnected, setIsConnected] = useState(socket.connected);
-  // const [fooEvents, setFooEvents] = useState([]);
 
   return (
     <>

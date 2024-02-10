@@ -19,6 +19,8 @@
     "multi-range-slider-react": "^2.0.7",
     "next": "14.0.4",
     "npm": "^10.2.5",
+    "pusher": "^5.2.0",
+    "pusher-js": "^8.4.0-rc2",
     "react": "^18",
     "react-bootstrap": "^2.9.1",
     "react-chartjs-2": "^5.2.0",
