@@ -90,17 +90,65 @@ input:focus {
   padding: 6rem 0 1rem;
 }
 .aboutFixedBg {
-  position: relative;
+  /* position: relative;
   background-image: url(/assets/img/banner2.jpeg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
-  padding: 48px 38px;
+  padding: 48px 38px; */
 }
 .aboutContent {
   position: relative;
   background: rgba(255, 255, 255, 0.9);
+}
+.aboutUsLine {
+  width: 100%;
+  background-color: #f06024;
+  height: 2px;
+  margin: 2rem 0;
+  position: relative;
+}
+.aboutUsLine .span {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 0 11px;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+.aboutImag {
+  box-shadow: 0 5px 9px 4px #ee692257;
+  margin: 2rem 0;
+  border-radius: 20px;
+}
+
+.sevtextTent {
+  width: 100%;
+  background-color: #f06024;
+  height: 2px;
+  margin: 2rem 0;
+  position: relative;
+}
+.posiSpan {
+  position: absolute;
+  top: -35px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 0 11px;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+.posiSpan .span2 {
+  background-color: #f06024;
+  color: #fff;
+  border-radius: 5px;
+  padding: 8px;
 }
 /*=============== Category style ============*/
 .categoryProjectBg {

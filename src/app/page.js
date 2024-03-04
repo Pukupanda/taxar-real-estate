@@ -1,5 +1,9 @@
 "use client";
-import { FourSlideSettings, SingleImageCarouselsettings } from "@/Utils";
+import {
+  FourSlideSettings,
+  SingleImageCarouselsettings,
+  TwoSlideSettings,
+} from "@/Utils";
 import SliderComponent from "@/components/sliderComponent/SliderComponent";
 import ProjectBox from "@/components/projectBox/ProjectBox";
 import { useDataStore } from "@/api/store/store";
@@ -74,28 +78,32 @@ export default function Home() {
       <section className="aboutUs">
         <div className="container">
           <div className="aboutFixedBg">
-            <div className="aboutContent">
+            <div className="">
               <div className="row">
-                <div className="col-sm-12 col-md-6 col-lg-4">
-                  <img
-                    src={
-                      data?.AboutUs?.aboutImage?.includes("http")
-                        ? data?.AboutUs?.aboutImage
-                        : "assets/img/dummyImage.png"
-                    }
-                    alt=""
-                    className="img-fluid"
-                  />
-                </div>
-                <div className="col-sm-12 col-md-6 col-lg-8">
+                <div className="col-sm-12 col-md-6 col-lg-6">
                   <div className="p-4">
-                    <h3>About Us</h3>
+                    <h3 className="text-center themeOrg aboutContent aboutUsLine">
+                      <span className="span">About Us</span>
+                    </h3>
                     <div
                       className="line9"
                       dangerouslySetInnerHTML={{
                         __html: data?.AboutUs?.aboutUs,
                       }}
                     ></div>
+                  </div>
+                </div>
+                <div className="col-sm-12 col-md-6 col-lg-6">
+                  <div className="aboutImag">
+                    <img
+                      src={
+                        data?.AboutUs?.aboutImage?.includes("http")
+                          ? data?.AboutUs?.aboutImage
+                          : "assets/img/dummyImage.png"
+                      }
+                      alt=""
+                      className="img-fluid rounded-4"
+                    />
                   </div>
                 </div>
               </div>
@@ -106,17 +114,21 @@ export default function Home() {
       <section className="bg-white py-4">
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-10 col-lg-10 mb-4">
-              <h3 className="text-dark">Featured Property</h3>
+            <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
+              <h3 className="sevtextTent">
+                <span className="bg-white p-3 posiSpan">
+                  <span className="span2">Featured Property</span>
+                </span>
+              </h3>
             </div>
-            <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
+            {/* <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
               <Link href={"/property"} className="text-dark fw-bold">
                 View All
               </Link>
-            </div>
+            </div> */}
             <div className="col-sm-12 col-md-12 col-lg-12">
               {data?.featuredProperties?.length > 0 ? (
-                <SliderComponent setting={FourSlideSettings}>
+                <SliderComponent setting={TwoSlideSettings}>
                   {data?.featuredProperties?.map((item, i) => (
                     <div key={i}>
                       <PropertyBox

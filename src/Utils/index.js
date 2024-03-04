@@ -1,3 +1,65 @@
+export const TwoSlideSettings = {
+  dots: false,
+  infinite: false,
+  autoplay: true,
+  autoplaySpeed: 5000,
+  arrows: true,
+  slidesToShow: 2,
+  slidesToScroll: 2,
+  initialSlide: 0,
+  className: "Carouselsettings",
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: false,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 991,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 1,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        initialSlide: 1,
+      },
+    },
+    {
+      breakpoint: 590,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+      },
+    },
+    {
+      breakpoint: 575,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+      },
+    },
+    {
+      breakpoint: 400,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+      },
+    },
+  ],
+};
 export const ThreeSlideSettings = {
   dots: false,
   infinite: false,
