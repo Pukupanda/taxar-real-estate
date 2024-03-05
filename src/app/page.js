@@ -115,11 +115,11 @@ export default function Home() {
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
-              <h3 className="sevtextTent">
+              <h5 className="sevtextTent">
                 <span className="bg-white p-3 posiSpan">
                   <span className="span2">Featured Property</span>
                 </span>
-              </h3>
+              </h5>
             </div>
             {/* <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
               <Link href={"/property"} className="text-dark fw-bold">
