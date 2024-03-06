@@ -59,10 +59,22 @@ input:focus {
 }
 /*=============== Slider style ============*/
 .homeSlider {
-  background-image: url(/assets/img/banner-ba.png);
+  background-image: url(/assets/img/mainBanner.png);
   background-repeat: no-repeat;
-  background-size: cover;
-  padding: 4rem 0;
+  background-size: 100%;
+  padding: 0rem 0;
+  height: 720px;
+}
+.mainBannerHeigth {
+  height: 600px;
+}
+.mainBannerText {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  height: fit-content;
 }
 .homeSlider .bannerImg {
   width: 100%;

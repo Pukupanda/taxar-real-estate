@@ -26,6 +26,7 @@ function ForgotPassword() {
       setLoading(true);
       const payload = {
         email: values.email,
+        serType: 1,
       };
       ForgotPasswordApi(payload).then((data) => {
         if (data?.code === 1) {

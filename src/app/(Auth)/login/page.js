@@ -36,6 +36,7 @@ function Login() {
       const payload = {
         email: values.email,
         password: values.password,
+        userType: 1,
       };
       LoginApi(payload).then(async (data) => {
         if (data?.code === 1) {

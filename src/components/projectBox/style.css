@@ -2,14 +2,15 @@
   border-radius: 8px;
   margin-bottom: 3px;
   background-color: #fff;
-  box-shadow: 0 5px 9px 4px #ee692257;
+  /* box-shadow: 0 5px 9px 4px #ee692257; */
 }
 .property__card-media {
   position: relative;
-  height: 212px;
+  height: 325px;
   border-radius: 4px 4px 0 0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   overflow: hidden;
+  /* padding: 15px; */
 }
 /* .property__card-media > div {
   height: 100%;
@@ -188,4 +189,10 @@
   border-radius: 50%;
   text-align: center;
   line-height: 4px;
+}
+.styCard .slick-track .slick-active .property__card-media {
+  border-radius: 40px 0px 40px 0px;
+}
+.styCard .slick-track .slick-active.slick-current .property__card-media {
+  border-radius: 0px 40px 0px 40px;
 }

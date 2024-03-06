@@ -28,6 +28,7 @@ function OTP() {
   const resendCode = () => {
     ForgotPasswordApi({
       email: email,
+      serType: 1,
     }).then((data) => {
       if (data?.code === 1) {
         toast.success(data?.message);
@@ -56,6 +57,7 @@ function OTP() {
       const payload = {
         email: email,
         otp: parseInt(values.otp),
+        serType: 1,
       };
       OTPVerificationApi(payload).then((data) => {
         if (data?.code === 1) {

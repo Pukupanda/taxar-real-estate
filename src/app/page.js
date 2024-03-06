@@ -54,24 +54,26 @@ export default function Home() {
       <section className="homeSlider">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-sm-12 col-md-6 col-lg-6 mb-3">
-              <h1 className="themeOrg mb-3">
-                &apos;Connecting People to Property and Prosperity&apos;
-              </h1>
-              <Link
-                className="btn-link d-block fs-5 py-2 px-4 rounded-pill w-50 text-center"
-                href="/booking"
-              >
-                Book Now
-              </Link>
+            <div className="col-sm-12 col-md-6 col-lg-6 mb-3 position-relative mainBannerHeigth">
+              <div className="mainBannerText">
+                <h1 className="themeOrg mb-3">
+                  &apos;Connecting People to Property and Prosperity&apos;
+                </h1>
+                <Link
+                  className="btn-link d-block fs-5 py-2 px-4 rounded-pill w-50 text-center"
+                  href="/booking"
+                >
+                  Book Now
+                </Link>
+              </div>
             </div>
-            <div className="col-sm-12 col-md-6 col-lg-6 mb-3">
+            {/* <div className="col-sm-12 col-md-6 col-lg-6 mb-3">
               <img
                 src="assets/img/left-img.png"
                 alt=""
                 className="img-fluid w-100"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -128,7 +130,7 @@ export default function Home() {
             </div> */}
             <div className="col-sm-12 col-md-12 col-lg-12">
               {data?.featuredProperties?.length > 0 ? (
-                <SliderComponent setting={TwoSlideSettings}>
+                <SliderComponent setting={TwoSlideSettings} className="styCard">
                   {data?.featuredProperties?.map((item, i) => (
                     <div key={i}>
                       <PropertyBox
@@ -149,13 +151,20 @@ export default function Home() {
       <section className="">
         <div className="container">
           <div className="row justify-content-center align-items-center">
-            <div className="col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
+              <h5 className="sevtextTent">
+                <span className="bg-white p-3 posiSpan">
+                  <span className="span2">Our Core Services</span>
+                </span>
+              </h5>
+            </div>
+            {/* <div className="col-sm-6 col-md-4 col-lg-3 mb-4">
               <div className="serviceBg">
                 <h3>Our Core Services</h3>
                 <p>List it on Nepalhomes and get genuine leads.</p>
               </div>
-            </div>
-            <div className="col-sm-6 col-md-4 col-lg-3 mb-4">
+            </div> */}
+            <div className="col-sm-6 col-md-4 col-lg-4 mb-4">
               <div className="text-center">
                 <img
                   src="assets/img/buy-a-home-svg.png"
@@ -169,7 +178,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div className="col-sm-6 col-md-4 col-lg-4 mb-4">
               <div className="text-center">
                 <img
                   src="assets/img/rent-a-home-svg.png"
@@ -183,7 +192,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div className="col-sm-6 col-md-4 col-lg-4 mb-4">
               <div className="text-center">
                 <img
                   src="assets/img/home-loans-svg.png"
@@ -204,14 +213,19 @@ export default function Home() {
       <section className="bg-white py-4">
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-10 col-lg-10  mb-4">
-              <h3 className="text-dark">Featured Projects</h3>
+            <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
+              <h5 className="sevtextTent">
+                <span className="bg-white p-3 posiSpan">
+                  <span className="span2">Featured Projects</span>
+                </span>
+              </h5>
             </div>
-            <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
+
+            {/* <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
               <Link href={"/projects"} className="text-dark fw-bold">
                 View All
               </Link>
-            </div>
+            </div> */}
             <div className="col-sm-12 col-md-12 col-lg-12">
               {data?.featuredProject?.length > 0 ? (
                 <SliderComponent setting={FourSlideSettings}>
