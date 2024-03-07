@@ -1,19 +1,18 @@
+"use client";
+import { usePathname } from "next/navigation";
 import React from "react";
-import Menu from "../menu/Menu";
-import Footer from "../footer/Footer";
 import Bredthcred from "@/components/bredthcred/Bredthcred";
 
-function Provider(props) {
+function CoverProvider() {
+  const pathname = usePathname();
   return (
     <>
-      <Menu />
-      <section className={props.pathname !== "/" && "bgColor"}>
+      <section className={pathname !== "/" && "bgColor"}>
         <Bredthcred />
         <div className="min-vh-50">{props.children}</div>
       </section>
-      <Footer />
     </>
   );
 }
 
-export default Provider;
+export default CoverProvider;

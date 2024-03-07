@@ -77,7 +77,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="aboutUs">
+      <section className="aboutUs bg-white">
         <div className="container">
           <div className="aboutFixedBg">
             <div className="">
@@ -149,7 +149,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="">
+      <section className="bg-white">
         <div className="container">
           <div className="row justify-content-center align-items-center">
             <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
