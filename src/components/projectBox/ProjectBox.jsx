@@ -24,15 +24,15 @@ function ProjectBox(props) {
         <div className="property__card-media cursor-pointer">
           <Image
             src={
-              props.item?.image?.includes("http")
-                ? props.item?.image
+              props.item?.images?.[0]?.image?.includes("http")
+                ? props.item?.images?.[0]?.image
                 : "/assets/img/dummyImage.png"
             }
             alt={props.item?.title}
             onClick={() => {
-              if (props.item?.image?.includes("http")) {
+              if (props.item?.images?.[0]?.image?.includes("http")) {
                 setmodalName("image modal");
-                setImage(props.item?.image);
+                setImage(props.item?.images?.[0]?.image);
                 handleShow();
               }
             }}

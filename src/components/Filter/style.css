@@ -28,7 +28,7 @@
 }
 
 .radio-buttons input[type="radio"]:checked + label {
-  background-color: #fc9934;
+  background-color: #f06a23;
   color: #fff;
 }
 .multi-range-slider {

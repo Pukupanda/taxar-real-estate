@@ -7,8 +7,10 @@ function Provider(props) {
   return (
     <>
       <Menu />
-      <Bredthcred />
-      <div className="min-vh-50">{props.children}</div>
+      <section className="bgColor">
+        <Bredthcred />
+        <div className="min-vh-50">{props.children}</div>
+      </section>
       <Footer />
     </>
   );

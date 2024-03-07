@@ -36,10 +36,10 @@ h6 {
   font-weight: 700;
 }
 .themeOrg {
-  color: #fc9934 !important;
+  color: #f06a23 !important;
 }
 .BgOrg {
-  background-color: #fc9934 !important;
+  background-color: #f06a23 !important;
 }
 .themeGrn {
   color: #277150 !important;
@@ -84,21 +84,21 @@ input:focus {
 }
 /*=============== About us style ============*/
 .bgColor {
-  /* background: rgb(242, 119, 33);
+  background: rgb(213, 224, 219);
   background: linear-gradient(
-    145deg,
-    rgba(242, 119, 33, 0.6587885154061625) 0%,
-    rgba(39, 113, 80, 0.9529061624649859) 0%,
-    rgba(239, 107, 35, 0.9473039215686274) 64%,
-    rgba(239, 107, 35, 0.9501050420168067) 100%
-  ); */
-  background: linear-gradient(
+    0deg,
+    rgba(213, 224, 219, 0.24702380952380953) 0%,
+    rgba(213, 224, 219, 0.5999649859943977) 45%,
+    rgba(138, 173, 157, 0.8828781512605042) 77%,
+    rgba(93, 144, 121, 1) 100%
+  );
+  /* background: linear-gradient(
     160deg,
     #ffe3b4,
     #ffcc77 32%,
     #c9f39e 60%,
     #beff7c
-  );
+  ); */
   padding: 6rem 0 1rem;
 }
 .aboutFixedBg {
@@ -116,7 +116,7 @@ input:focus {
 }
 .aboutUsLine {
   width: 100%;
-  background-color: #f06024;
+  background-color: #f06a23;
   height: 2px;
   margin: 2rem 0;
   position: relative;
@@ -140,7 +140,7 @@ input:focus {
 
 .sevtextTent {
   width: 100%;
-  background-color: #f06024;
+  background-color: #f06a23;
   height: 2px;
   margin: 2rem 0;
   position: relative;
@@ -157,7 +157,7 @@ input:focus {
   margin: auto;
 }
 .posiSpan .span2 {
-  background-color: #f06024;
+  background-color: #f06a23;
   color: #fff;
   border-radius: 5px;
   padding: 8px;
@@ -212,7 +212,7 @@ input:focus {
   padding: 20px 15px 15px;
   margin-right: 10px;
   flex: 0 0 16%;
-  background: linear-gradient(135deg, #f06024 50%, #fff 0) 100% 100%;
+  background: linear-gradient(135deg, #f06a23 50%, #fff 0) 100% 100%;
   background-size: 300% 102%;
   transition: all 0.5s ease-in-out;
   min-width: 250px;
@@ -414,13 +414,13 @@ input:focus {
 }
 /*=============== Footer style ============*/
 footer {
-  background: linear-gradient(
+  /* background: linear-gradient(
     160deg,
     #ffe3b4,
     #ffcc77 32%,
     #c9f39e 60%,
     #beff7c
-  );
+  ); */
   /* background: rgb(242, 119, 33);
   background: linear-gradient(
     145deg,
@@ -511,7 +511,7 @@ footer {
 }
 
 .radio-buttons input[type="checkbox"]:checked + label {
-  background-color: #fc9934;
+  background-color: #f06a23;
   color: #fff;
 }
 .ql-editor {
@@ -586,6 +586,64 @@ tr {
 
 .checkboxStyle input[type="checkbox"]:checked::before {
   transform: scale(1);
+}
+.dottedBorer {
+  border-bottom: 3px dotted #f06a23;
+  margin: 10px 0;
+}
+.text-align-justify {
+  text-align: justify;
+}
+.hover01 {
+  position: relative;
+  /* float: left; */
+  width: 100%;
+  height: 250px;
+  -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.5s;
+  cursor: pointer;
+}
+figure {
+  width: 100%;
+  height: 250px;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.hover01 figure img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  width: 100%;
+}
+.hover01:hover img {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+.missinContent {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+  color: #fff;
+  height: 70px;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.hover01:hover .missinContent {
+  height: 100%;
+  overflow: visible;
+  background-color: #00000091;
+  transition: all ease-in-out 0.5s;
+  border-radius: 25px;
+  width: 100%;
+  visibility: visible;
 }
 /*================ Responsive ================ */
 

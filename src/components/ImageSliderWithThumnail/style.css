@@ -8,6 +8,6 @@
 .image-gallery-thumbnail:focus,
 .image-gallery-thumbnail:hover {
   outline: none;
-  border: 4px solid #fc9934;
+  border: 4px solid #f06a23;
   border-radius: 10px;
 }

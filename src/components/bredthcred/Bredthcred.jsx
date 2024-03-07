@@ -9,9 +9,9 @@ function Bredthcred(props) {
   return (
     <>
       {pathname !== "/" ? (
-        <section className="bgColor">
+        <section className="bgColor1">
           <div className="container text-capitalize text-center">
-            <h3 className="fw-bold Roboto themeGrn">
+            <h3 className="fw-bold Roboto text-white">
               {pathname?.includes("/publication/detail")
                 ? path?.[2]?.replaceAll("-", " ")
                 : path?.[1]?.replaceAll("-", " ")}

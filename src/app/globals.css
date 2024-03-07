@@ -184,7 +184,7 @@
   display: block;
   width: 225px;
   padding: 6px 0;
-  background-color: #fc9934;
+  background-color: #f06a23;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   color: #fff;
   font-size: 13px;
@@ -256,7 +256,7 @@ section .events .eventCard .time {
 /* Styling the hover effect
   of events section */
 section .events .eventCard:hover .time {
-  background: #fc9934;
+  background: #f06a23;
 }
 
 /* Styling the header of time 
@@ -324,9 +324,9 @@ section .events .eventCard .details a {
 
 /* Styling the details class's hover effect */
 section .events .eventCard .details a:hover {
-  background: #fc9934;
+  background: #f06a23;
   color: #fff;
-  border-color: #fc9934;
+  border-color: #f06a23;
 }
 
 /* file upload button */

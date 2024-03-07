@@ -123,11 +123,7 @@ export default function Home() {
                 </span>
               </h5>
             </div>
-            {/* <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
-              <Link href={"/property"} className="text-dark fw-bold">
-                View All
-              </Link>
-            </div> */}
+
             <div className="col-sm-12 col-md-12 col-lg-12">
               {data?.featuredProperties?.length > 0 ? (
                 <SliderComponent setting={TwoSlideSettings} className="styCard">
@@ -144,6 +140,11 @@ export default function Home() {
               ) : (
                 <Loader />
               )}
+            </div>
+            <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
+              <Link href={"/property"} className="text-dark fw-bold">
+                View All
+              </Link>
             </div>
           </div>
         </div>
@@ -165,42 +166,45 @@ export default function Home() {
               </div>
             </div> */}
             <div className="col-sm-6 col-md-4 col-lg-4 mb-4">
-              <div className="text-center">
+              <div className="text-start">
                 <img
                   src="assets/img/buy-a-home-svg.png"
                   alt=""
                   className="mb-3"
                 />
-                <h3>Buy a Home</h3>
-                <p>
+                <h3 className="themeOrg">Buy a Home</h3>
+                <div className="dottedBorer"></div>
+                <p className="text-align-justify">
                   From our centralized search engine, you will find a property
-                  you want to call home.
+                  you want to call home
                 </p>
               </div>
             </div>
             <div className="col-sm-6 col-md-4 col-lg-4 mb-4">
-              <div className="text-center">
+              <div className="text-start">
                 <img
                   src="assets/img/rent-a-home-svg.png"
                   alt=""
                   className="mb-3"
                 />
-                <h3>Rent a Home</h3>
-                <p>
+                <h3 className="themeOrg">Rent a Home</h3>
+                <div className="dottedBorer"></div>
+                <p className="text-align-justify">
                   Whether you are a tenant or a landlord, renting property has
                   never become this easy with NepalHomes.
                 </p>
               </div>
             </div>
             <div className="col-sm-6 col-md-4 col-lg-4 mb-4">
-              <div className="text-center">
+              <div className="text-start">
                 <img
                   src="assets/img/home-loans-svg.png"
                   alt=""
                   className="mb-3"
                 />
-                <h3>Home Loans</h3>
-                <p>
+                <h3 className="themeOrg">Home Loans</h3>
+                <div className="dottedBorer"></div>
+                <p className="text-align-justify">
                   Explore our exclusive home loan guides and help yourself make
                   safer investment decisions.
                 </p>
@@ -221,23 +225,48 @@ export default function Home() {
               </h5>
             </div>
 
-            {/* <div className="col-sm-12 col-md-2 col-lg-2 mb-4 text-sm-end">
+            {data?.featuredProject?.length > 0 ? (
+              data?.featuredProject?.map((item, i) => (
+                <div className="col-sm-6 col-md-4 col-lg-4 mb-4" key={i}>
+                  <div
+                    className="hover01"
+                    onClick={() => {
+                      push(`/property/${item?._id}`);
+                    }}
+                  >
+                    <figure>
+                      <img
+                        src={
+                          item?.images?.[0]?.image?.includes("http")
+                            ? item?.images?.[0]?.image
+                            : "/assets/img/dummyImage.png"
+                        }
+                        className="img-fluid"
+                      />
+                    </figure>
+                    <div className="missinContent">
+                      <h3 className="text-capitalize">{item?.title}</h3>
+                      <p className="mb-0">{item?.location}</p>
+                      <p className="mb-0">{item?.propertyType}</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              // <SliderComponent setting={FourSlideSettings}>
+              //   {data?.featuredProject?.map((item, i) => (
+              //     <div key={i}>
+              //       <ProjectBox item={item} status="1" />
+              //     </div>
+              //   ))}
+              // </SliderComponent>
+              <Loader />
+            )}
+
+            <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
               <Link href={"/projects"} className="text-dark fw-bold">
                 View All
               </Link>
-            </div> */}
-            <div className="col-sm-12 col-md-12 col-lg-12">
-              {data?.featuredProject?.length > 0 ? (
-                <SliderComponent setting={FourSlideSettings}>
-                  {data?.featuredProject?.map((item, i) => (
-                    <div key={i}>
-                      <ProjectBox item={item} status="1" />
-                    </div>
-                  ))}
-                </SliderComponent>
-              ) : (
-                <Loader />
-              )}
             </div>
           </div>
         </div>
