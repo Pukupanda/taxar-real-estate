@@ -1,5 +1,25 @@
+.navbar-brand {
+  background: rgb(240, 249, 238);
+  background: linear-gradient(
+    0deg,
+    rgba(240, 249, 238, 1) 0%,
+    rgba(178, 223, 168, 1) 45%,
+    rgba(145, 209, 130, 1) 100%
+  );
+  border-radius: 50%;
+  width: 85px;
+  height: 85px;
+  text-align: center;
+  margin-right: 0;
+  display: grid;
+}
 .logo {
-  max-height: 60px;
+  height: 68px;
+  width: 68px;
+  object-fit: contain;
+  display: table-column;
+  /* vertical-align: middle; */
+  margin: auto;
 }
 .navFixed {
   position: fixed;

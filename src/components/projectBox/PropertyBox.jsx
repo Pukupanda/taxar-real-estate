@@ -66,13 +66,13 @@ function PropertyBox(props) {
         <Link href={`/detail/${props.item?._id}`}>
           <div className="px-0 pb-3">
             <div className="property__card-header">
-              <div className=" d-flex justify-content-between text-capitalize align-items-center">
+              <div className="propertyTileS text-capitalize">
                 <div>
                   <span className="property__card-type" tabindex="0">
                     {props.item?.subCategory}/{props.item?.propertyFor}
                   </span>
                   <h3
-                    className="property__card-title text-truncate"
+                    className="property__card-title line2"
                     title={`${props.item?.title} - ${props.item?.pArea}`}
                   >
                     <span tabindex="0">{props.item?.title} - </span>

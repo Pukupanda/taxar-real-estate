@@ -196,3 +196,15 @@
 .styCard .slick-track .slick-active.slick-current .property__card-media {
   border-radius: 0px 40px 0px 40px;
 }
+.propertyTileS {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.slick-slider.detailPage .propertyTileS {
+  display: grid;
+  padding: 0 10px;
+}
+.slick-slider.detailPage .property__card-media {
+  height: 250px;
+}

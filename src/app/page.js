@@ -1,20 +1,15 @@
 "use client";
-import {
-  FourSlideSettings,
-  SingleImageCarouselsettings,
-  TwoSlideSettings,
-} from "@/Utils";
-import SliderComponent from "@/components/sliderComponent/SliderComponent";
-import ProjectBox from "@/components/projectBox/ProjectBox";
-import { useDataStore } from "@/api/store/store";
-import { useEffect, useState } from "react";
-import PropertyBox from "@/components/projectBox/PropertyBox";
-import Link from "next/link";
+import { SingleImageCarouselsettings, TwoSlideSettings } from "@/Utils";
 import { LikeUnlikePropertyApi } from "@/api/apiCall";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { useDataStore } from "@/api/store/store";
 import Loader from "@/components/Loader/Loader";
 import NotificationModal from "@/components/modals/NotificationModal";
+import PropertyBox from "@/components/projectBox/PropertyBox";
+import SliderComponent from "@/components/sliderComponent/SliderComponent";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Home() {
   const { push } = useRouter();
@@ -88,7 +83,7 @@ export default function Home() {
                       <span className="span">About Us</span>
                     </h3>
                     <div
-                      className="line9"
+                      className="line13"
                       dangerouslySetInnerHTML={{
                         __html: data?.AboutUs?.aboutUs,
                       }}
@@ -272,18 +267,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="aboutFixedBg mt-5">
+      <section className="bg-white">
         <div className="container">
           <div className="row justify-content-center py-4 bg-white">
             <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
-              <h3 className="">Our Teams</h3>
+              <h5 className="sevtextTent">
+                <span className="bg-white p-3 posiSpan">
+                  <span className="span2">Our Teams</span>
+                </span>
+              </h5>
             </div>
-            <div className="col-sm-12 col-md-9 col-lg-8">
+            <div className="col-sm-12 col-md-12 col-lg-12">
               {data?.teams?.length > 0 ? (
-                <SliderComponent setting={SingleImageCarouselsettings}>
+                <SliderComponent setting={TwoSlideSettings}>
                   {data?.teams?.map((item, i) => (
                     <div key={i}>
-                      <div className="ourTeam text-center">
+                      <div className="ourTeam">
                         <img
                           src={
                             item?.profilePicture?.includes("http")
@@ -291,17 +290,18 @@ export default function Home() {
                               : "/assets/img/dummyImage.png"
                           }
                           alt=""
-                          width="100px"
-                          height="100px"
-                          className="rounded-circle m-auto ob-cover"
+                          fill
+                          className="ourTeamImag position-static"
                         />
-                        <h4 className="mt-3 text-capitalize">
-                          {item?.fullName}
-                        </h4>
-                        <h6>
-                          <i>{item?.designation}</i>
-                        </h6>
-                        <p>{item?.description}</p>
+                        <div>
+                          <h4 className="mt-3 themeGrn fw-bold text-capitalize">
+                            {item?.fullName}
+                          </h4>
+                          <h6 className="themeGrn">
+                            <i>{item?.designation}</i>
+                          </h6>
+                          <p className="themeGrn line3">{item?.description}</p>
+                        </div>
                       </div>
                     </div>
                   ))}

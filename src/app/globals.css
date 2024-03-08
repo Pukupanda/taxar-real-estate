@@ -367,3 +367,23 @@ section .events .eventCard .details a:hover {
   padding: 5px 10px;
   text-decoration: none;
 }
+.ourTeam {
+  display: flex;
+  grid-gap: 20px;
+  background: rgb(213, 224, 219);
+  background: linear-gradient(
+    0deg,
+    rgba(213, 224, 219, 0.24702380952380953) 0%,
+    rgba(213, 224, 219, 0.5999649859943977) 45%,
+    rgb(138 173 157 / 35%) 77%,
+    rgb(93 144 121 / 33%) 100%
+  );
+  border-radius: 20px;
+  box-shadow: 1px 1px 7px 8px rgb(0 0 0 / 9%);
+}
+.ourTeamImag {
+  width: 250px;
+  height: 250px;
+  border-radius: 20px 0 0px 20px;
+  object-fit: cover;
+}

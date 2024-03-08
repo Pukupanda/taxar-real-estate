@@ -333,7 +333,10 @@ function Detail() {
                   <h3 className="">More Properties</h3>
                 </div>
                 <div className="col-sm-12 col-md-12 col-lg-12">
-                  <SliderComponent setting={FourSlideSettings}>
+                  <SliderComponent
+                    setting={FourSlideSettings}
+                    className="detailPage"
+                  >
                     {detail?.otherProperties?.map((item, i) => (
                       <div key={i}>
                         <PropertyBox item={item} />
