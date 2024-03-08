@@ -201,10 +201,12 @@
   justify-content: space-between;
   align-items: center;
 }
-.slick-slider.detailPage .propertyTileS {
+.slick-slider.detailPage .propertyTileS,
+.detailPage .propertyTileS {
   display: grid;
   padding: 0 10px;
 }
-.slick-slider.detailPage .property__card-media {
+.slick-slider.detailPage .property__card-media,
+.detailPage .property__card-media {
   height: 250px;
 }

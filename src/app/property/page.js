@@ -113,12 +113,14 @@ function PropertyList() {
                 ) : list?.properties?.length > 0 ? (
                   list?.properties?.map((item, i) => (
                     <div className="col-sm-6 col-md-4 col-lg-4 mb-3" key={i}>
-                      <PropertyBox
-                        item={item}
-                        LikeUnlikeProperty={LikeUnlikeProperty}
-                        push={push}
-                        pathname={pathname}
-                      />
+                      <div className="detailPage">
+                        <PropertyBox
+                          item={item}
+                          LikeUnlikeProperty={LikeUnlikeProperty}
+                          push={push}
+                          pathname={pathname}
+                        />
+                      </div>
                     </div>
                   ))
                 ) : (
