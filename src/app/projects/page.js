@@ -59,7 +59,10 @@ function Projects() {
               </div>
             ) : list?.Project?.length > 0 ? (
               list?.Project?.map((item, i) => (
-                <div className="col-sm-6 col-md-4 col-lg-3 mb-3" key={i}>
+                <div
+                  className="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-3"
+                  key={i}
+                >
                   <ProjectBox item={item} status={status} />
                 </div>
               ))

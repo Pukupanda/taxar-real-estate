@@ -21,7 +21,7 @@ export const TwoSlideSettings = {
     {
       breakpoint: 991,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 2,
         initialSlide: 1,
       },
@@ -29,7 +29,7 @@ export const TwoSlideSettings = {
     {
       breakpoint: 768,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 1,
       },
