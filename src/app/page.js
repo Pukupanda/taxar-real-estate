@@ -51,7 +51,7 @@ export default function Home() {
           <div className="row align-items-center">
             <div className="col-sm-12 col-md-6 col-lg-6 mb-3 position-relative mainBannerHeigth">
               <div className="mainBannerText">
-                <h1 className="themeOrg mb-3">
+                <h1 className="text-white mb-3">
                   &apos;Connecting People to Property and Prosperity&apos;
                 </h1>
                 <Link
