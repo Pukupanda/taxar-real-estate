@@ -68,9 +68,9 @@ function PropertyBox(props) {
             <div className="property__card-header">
               <div className="propertyTileS text-capitalize">
                 <div>
-                  <span className="property__card-type" tabindex="0">
+                  {/* <span className="property__card-type" tabindex="0">
                     {props.item?.subCategory}/{props.item?.propertyFor}
-                  </span>
+                  </span> */}
                   <h3
                     className="property__card-title line2"
                     title={`${props.item?.title} - ${props.item?.pArea}`}

@@ -1,14 +1,16 @@
 "use client";
-import React, { useState } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { toast } from "react-toastify";
-import Loader from "@/components/Loader/Loader";
-import { useRouter } from "next/navigation";
-import ImageUploadInput from "@/components/ImageUploadInput/ImageUploadInput";
-import MobileInput from "@/components/PhoneInput/MobileInput";
 import { editProfileApi, signUpApi } from "@/api/apiCall";
+import { registerBrokerApi, updatebrokerApi } from "@/api/broker/apis";
 import { useDataStore } from "@/api/store/store";
+import ImageUploadInput from "@/components/ImageUploadInput/ImageUploadInput";
+import Loader from "@/components/Loader/Loader";
+import MobileInput from "@/components/PhoneInput/MobileInput";
+import { useFormik } from "formik";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
 
 function SignupEditProfileForm(props) {
   const { push } = useRouter();
@@ -18,6 +20,7 @@ function SignupEditProfileForm(props) {
   const { fetchgetDetail } = useDataStore();
 
   const initialValues = {
+    userType: detail?.userType ? detail?.userType?.toString() : "",
     userName: detail?.userName ? detail?.userName : "",
     firstName: detail?.firstName ? detail?.firstName : "",
     lastName: detail?.lastName ? detail?.lastName : "",
@@ -29,15 +32,20 @@ function SignupEditProfileForm(props) {
     profilePicture: detail?.profilePicture ? detail?.profilePicture : "",
     toggle: false,
     toggle1: false,
+    idProofUrl: detail?.idProofUrl ? detail?.idProofUrl : "",
   };
 
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: Yup.object({
-      userName: Yup.string().required("Required"),
+      userType: Yup.string().required("Required"),
+      userName:
+        initialValues?.userType === "1" && Yup.string().required("Required"),
       firstName: Yup.string().required("Required"),
       mobile: Yup.string().required("Required"),
       email: Yup.string().required("Required"),
+      idProofUrl:
+        initialValues?.userType === "2" && Yup.string().required("Required"),
       password:
         props.pageName === "signup" && Yup.string().required("Required"),
       confirmPassword:
@@ -50,6 +58,7 @@ function SignupEditProfileForm(props) {
     onSubmit: (values, { isSubmitting, resetForm }) => {
       setLoading(true);
       const payload = {
+        userType: values.userType,
         email: values.email,
         password: props.pageName === "signup" ? values.password : null,
         userName: values.userName,
@@ -59,29 +68,61 @@ function SignupEditProfileForm(props) {
         profilePicture: values.profilePicture,
       };
 
+      const brokerPaylod = {
+        ...payload,
+        idProofUrl: values.idProofUrl,
+      };
+
       if (props.pageName === "signup") {
-        signUpApi(payload).then((data) => {
-          if (data?.code === 1) {
-            toast.success(data.message);
-            push("/login");
-            setLoading(false);
-          } else {
-            setLoading(false);
-            toast.error(data.message);
-          }
-        });
+        if (values.userType === "1") {
+          signUpApi(payload).then((data) => {
+            if (data?.code === 1) {
+              toast.success(data.message);
+              push("/login");
+              setLoading(false);
+            } else {
+              setLoading(false);
+              toast.error(data.message);
+            }
+          });
+        } else {
+          registerBrokerApi(brokerPaylod).then((data) => {
+            if (data?.code === 1) {
+              toast.success(data.message);
+              push("/login");
+              setLoading(false);
+            } else {
+              setLoading(false);
+              toast.error(data.message);
+            }
+          });
+        }
       } else {
-        editProfileApi(payload).then((data) => {
-          setLoading(false);
-          if (data?.code === 1) {
-            toast.success(data.message);
-            fetchgetDetail();
-            push("/");
-          } else {
+        if (values.userType === "1") {
+          editProfileApi(payload).then((data) => {
             setLoading(false);
-            toast.error(data.message);
-          }
-        });
+            if (data?.code === 1) {
+              toast.success(data.message);
+              fetchgetDetail();
+              push("/");
+            } else {
+              setLoading(false);
+              toast.error(data.message);
+            }
+          });
+        } else {
+          updatebrokerApi(brokerPaylod).then((data) => {
+            setLoading(false);
+            if (data?.code === 1) {
+              toast.success(data.message);
+              fetchgetDetail();
+              push("/");
+            } else {
+              setLoading(false);
+              toast.error(data.message);
+            }
+          });
+        }
       }
     },
   });
@@ -100,6 +141,66 @@ function SignupEditProfileForm(props) {
             <div className="text-danger"> {formik.errors.profilePicture}</div>
           )}
         </div>
+        {props.pageName === "signup" && (
+          <>
+            <h6>Are You a</h6>
+            <div className="d-flex justify-content-start gap-4 align-items-center mb-3">
+              <label role="button" className="d-flex gap-2 align-items-center">
+                <input
+                  type="radio"
+                  className="d-none"
+                  placeholder=""
+                  value={"1"}
+                  name="userType"
+                  onChange={(e) => {
+                    formik.setFieldValue("userType", e.target.value);
+                  }}
+                />
+                <Image
+                  src={`/assets/img/${
+                    formik.values.userType === "1"
+                      ? "RadioSelected.png"
+                      : "radioUnselect.png"
+                  }`}
+                  alt=""
+                  width={18}
+                  height={18}
+                  quality={100}
+                  priority
+                />
+                User
+              </label>
+              <label role="button" className="d-flex gap-2 align-items-center">
+                <input
+                  type="radio"
+                  className="d-none"
+                  placeholder=""
+                  value={"2"}
+                  name="userType"
+                  onChange={(e) => {
+                    formik.setFieldValue("userType", e.target.value);
+                  }}
+                />
+                <Image
+                  src={`/assets/img/${
+                    formik.values.userType === "2"
+                      ? "RadioSelected.png"
+                      : "radioUnselect.png"
+                  }`}
+                  alt=""
+                  width={18}
+                  height={18}
+                  quality={100}
+                  priority
+                />
+                Broker
+              </label>
+              {formik.errors.userType && formik.touched.userType && (
+                <div className="text-danger"> {formik.errors.userType}</div>
+              )}
+            </div>
+          </>
+        )}
         <div className="form-floating mb-3">
           <input
             type="text"
@@ -126,19 +227,21 @@ function SignupEditProfileForm(props) {
             <div className="text-danger"> {formik.errors.lastName}</div>
           )}
         </div>
-        <div className="form-floating mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder=""
-            id="UserName"
-            {...formik.getFieldProps("userName")}
-          />
-          <label for="UserName">User Name</label>
-          {formik.errors.userName && formik.touched.userName && (
-            <div className="text-danger"> {formik.errors.userName}</div>
-          )}
-        </div>
+        {formik.values.userType === "1" && (
+          <div className="form-floating mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder=""
+              id="UserName"
+              {...formik.getFieldProps("userName")}
+            />
+            <label for="UserName">User Name</label>
+            {formik.errors.userName && formik.touched.userName && (
+              <div className="text-danger"> {formik.errors.userName}</div>
+            )}
+          </div>
+        )}
         <div className="form-floating mb-3">
           <input
             type="email"
@@ -237,6 +340,22 @@ function SignupEditProfileForm(props) {
             <div className="text-danger"> {formik.errors.confirmPassword}</div>
           )}
         </div>
+        {formik.values.userType === "2" && (
+          <div className="form-floating text-center mb-3">
+            <ImageUploadInput
+              imageURL={formik.values.idProofUrl}
+              defaultImg="employe.png"
+              inputKey="idProofUrl"
+              formik={formik}
+              mainClass="upload-btn-wrapper banner"
+              showText="yes"
+              Text="upload Id Proof"
+            />
+            {formik.errors.idProofUrl && formik.touched.idProofUrl && (
+              <div className="text-danger"> {formik.errors.idProofUrl}</div>
+            )}
+          </div>
+        )}
         <div className="text-center mb-3">
           <button
             type="submit"

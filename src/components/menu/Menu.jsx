@@ -34,6 +34,8 @@ function Menu() {
   const detail = useDataStore((store) => store.getDetail);
   const { fetchgetDetail } = useDataStore();
 
+  console.log(detail, "detail");
+
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
 
@@ -346,7 +348,7 @@ function Menu() {
                   </ul>
                 </li>
 
-                {detail?.userName ? (
+                {detail?.firstName ? (
                   <UserDropMenu
                     detail={detail}
                     fetchgetDetail={fetchgetDetail}

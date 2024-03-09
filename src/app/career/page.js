@@ -56,7 +56,10 @@ function Career() {
                     <div className="proprtyInfo w-100">
                       <h5 className="text-capitalize">{item?.title}</h5>
                       <h6>{item?.experience}</h6>
-                      <p className="line6">{item?.description}</p>
+                      <div
+                        className="line5 dangp0"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                       <div
                         className="loginBtn btn deailViewAbsula"
                         role="button"

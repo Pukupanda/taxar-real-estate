@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { LoginApi, sendNotification } from "@/api/apiCall";
 import { useDataStore } from "@/api/store/store";
+import Image from "next/image";
 
 function Login() {
   const { push } = useRouter();
@@ -19,6 +20,7 @@ function Login() {
   const pageUrl = Cookies.get("pageUrl");
 
   const initialValues = {
+    userType: "",
     email: "",
     password: "",
     toggle: false,
@@ -36,7 +38,7 @@ function Login() {
       const payload = {
         email: values.email,
         password: values.password,
-        userType: 1,
+        userType: values.userType,
       };
       LoginApi(payload).then(async (data) => {
         if (data?.code === 1) {
@@ -67,6 +69,68 @@ function Login() {
               {/* <div className="text-center">
                 <h3>Log In</h3>
               </div> */}
+              <h6>Are You a</h6>
+              <div className="d-flex justify-content-start gap-4 align-items-center mb-3">
+                <label
+                  role="button"
+                  className="d-flex gap-2 align-items-center"
+                >
+                  <input
+                    type="radio"
+                    className="d-none"
+                    placeholder=""
+                    value={"1"}
+                    name="userType"
+                    onChange={(e) => {
+                      formik.setFieldValue("userType", e.target.value);
+                    }}
+                  />
+                  <Image
+                    src={`/assets/img/${
+                      formik.values.userType === "1"
+                        ? "RadioSelected.png"
+                        : "radioUnselect.png"
+                    }`}
+                    alt=""
+                    width={18}
+                    height={18}
+                    quality={100}
+                    priority
+                  />
+                  User
+                </label>
+                <label
+                  role="button"
+                  className="d-flex gap-2 align-items-center"
+                >
+                  <input
+                    type="radio"
+                    className="d-none"
+                    placeholder=""
+                    value={"2"}
+                    name="userType"
+                    onChange={(e) => {
+                      formik.setFieldValue("userType", e.target.value);
+                    }}
+                  />
+                  <Image
+                    src={`/assets/img/${
+                      formik.values.userType === "2"
+                        ? "RadioSelected.png"
+                        : "radioUnselect.png"
+                    }`}
+                    alt=""
+                    width={18}
+                    height={18}
+                    quality={100}
+                    priority
+                  />
+                  Broker
+                </label>
+                {formik.errors.userType && formik.touched.userType && (
+                  <div className="text-danger"> {formik.errors.userType}</div>
+                )}
+              </div>
               <div className="form-floating mb-3">
                 <input
                   type="email"

@@ -40,7 +40,13 @@ function NewsEventDetail() {
                           {detail?.NewsEvent?.title}
                         </h3>
                         <span className="text-end text-capitalize">
-                          <p className="mb-0">{detail?.NewsEvent?.date}</p>
+                          <p className="mb-0">
+                            {detail?.NewsEvent?.date !== "Invalid date"
+                              ? detail?.NewsEvent?.date
+                              : moment(detail?.NewsEvent?.createdAt).format(
+                                  "DD-MM-YYYY"
+                                )}
+                          </p>
                           <p className="mb-0">{detail?.NewsEvent?.type}</p>
                         </span>
                       </div>
@@ -86,7 +92,12 @@ function NewsEventDetail() {
                           </h3>
                           <span>{item?.type}</span>
                           <span>{item?.data}</span>
-                          <p className="line1">{item?.description}</p>
+                          <div
+                            className="line2 dangp0"
+                            dangerouslySetInnerHTML={{
+                              __html: item?.description,
+                            }}
+                          ></div>
                           <Link
                             href={`/news-event/detail/${item?._id}`}
                             className="fs12 py-1 px-2"

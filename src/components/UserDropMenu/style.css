@@ -14,3 +14,10 @@
   display: grid;
   grid-gap: 10px;
 }
+.showProfile a {
+  color: #277150 !important;
+}
+.showProfile a.active,
+.showProfile a:hover {
+  color: #f06a23 !important;
+}

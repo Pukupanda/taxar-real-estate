@@ -118,7 +118,7 @@ function AddEditProperty() {
         : Feature
       : Feature,
     otherFeatures: detail?.propertyDetails?.otherFeatures || "",
-    shortDetails: id ? detail?.propertyDetails?.shortDescription : "",
+    shortDetails: id ? detail?.propertyDetails?.shortDescription : "sde",
     details: id ? detail?.propertyDetails?.details : "",
     pArea: id ? detail?.propertyDetails?.pArea : "",
     isFeatured: id ? detail?.propertyDetails?.isFeatured : false,
@@ -146,7 +146,7 @@ function AddEditProperty() {
       facingDirection: Yup.string().required("Required"),
       propertyFor: Yup.string().required("Required"),
       details: Yup.string().required("Required"),
-      shortDetails: Yup.string().required("Required"),
+      // shortDetails: Yup.string().required("Required"),
       displayImage: Yup.string().required("Required"),
       contactNo: Yup.string().required("Required"),
       plotNo: Yup.string().required("Required"),
@@ -317,7 +317,7 @@ function AddEditProperty() {
               <h2 className="themeGrn mb-3">{id ? "Edit" : "Add"} Property</h2>
             </div>
             <form
-              className="p-3 px-sm-5 formStyle shadow"
+              className="p-3 px-sm-5 formStyle shadow bg-white"
               onSubmit={formik.handleSubmit}
             >
               <div className="row">

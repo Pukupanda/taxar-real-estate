@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Pagination from "react-js-pagination";
 import "./style.css";
 
-function Paginations({ handlePage, page, total }) {
+function Paginations({ handlePage, page, total, limit }) {
   const [counter, setCounter] = useState(page);
 
   const onChangeHandler = (value) => {
@@ -17,7 +17,7 @@ function Paginations({ handlePage, page, total }) {
         <Pagination
           itemClass="page-item"
           linkClass="page-link"
-          itemsCountPerPage={10}
+          itemsCountPerPage={limit || 10}
           activePage={Number(counter)}
           totalItemsCount={Number(total)}
           pageRangeDisplayed={5}

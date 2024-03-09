@@ -10,7 +10,10 @@
   border-radius: 4px 4px 0 0;
   margin-bottom: 10px;
   overflow: hidden;
-  /* padding: 15px; */
+  -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.5s;
 }
 /* .property__card-media > div {
   height: 100%;
@@ -23,6 +26,14 @@
   object-fit: cover;
   -o-object-position: center;
   object-position: center;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.property__card-media:hover img {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
 }
 .property__card-media-widgets {
   position: absolute;
@@ -191,10 +202,10 @@
   line-height: 4px;
 }
 .styCard .slick-track .slick-active .property__card-media {
-  border-radius: 40px 0px 40px 0px;
+  border-radius: 50px 0px 50px 0px;
 }
 .styCard .slick-track .slick-active.slick-current .property__card-media {
-  border-radius: 0px 40px 0px 40px;
+  border-radius: 0px 50px 0px 50px;
 }
 .propertyTileS {
   display: flex;

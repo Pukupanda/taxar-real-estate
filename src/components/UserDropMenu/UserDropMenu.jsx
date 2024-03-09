@@ -41,14 +41,12 @@ function UserDropMenu(props) {
           }
           role="button"
         >
-          {props.detail?.userName}
+          {props.detail?.firstName}
         </span>
         <div className="profileDrop">
           <Link
             href="/edit-profile"
-            className={
-              pathname?.includes("edit-profile") ? "themeOrg" : "themeGrn"
-            }
+            className={pathname?.includes("edit-profile") ? "active" : ""}
             onClick={() => {
               props.handleClose();
             }}
@@ -57,9 +55,7 @@ function UserDropMenu(props) {
           </Link>
           <Link
             href="/my-property"
-            className={
-              pathname?.includes("my-property") ? "themeOrg" : "themeGrn"
-            }
+            className={pathname?.includes("my-property") ? "active" : ""}
             onClick={() => {
               props.handleClose();
             }}
@@ -68,31 +64,27 @@ function UserDropMenu(props) {
           </Link>
           <Link
             href="/my-booking"
-            className={
-              pathname?.includes("my-booking") ? "themeOrg" : "themeGrn"
-            }
+            className={pathname?.includes("my-booking") ? "active" : ""}
             onClick={() => {
               props.handleClose();
             }}
           >
             my booking
           </Link>
-          <Link
-            href="/liked-property"
-            className={
-              pathname?.includes("liked-property") ? "themeOrg" : "themeGrn"
-            }
-            onClick={() => {
-              props.handleClose();
-            }}
-          >
-            liked property
-          </Link>
+          {props.detail?.userType === 1 && (
+            <Link
+              href="/liked-property"
+              className={pathname?.includes("liked-property") ? "active" : ""}
+              onClick={() => {
+                props.handleClose();
+              }}
+            >
+              liked property
+            </Link>
+          )}
           <Link
             href="/change-password"
-            className={
-              pathname?.includes("change-password") ? "themeOrg" : "themeGrn"
-            }
+            className={pathname?.includes("change-password") ? "active" : ""}
             onClick={() => {
               props.handleClose();
             }}

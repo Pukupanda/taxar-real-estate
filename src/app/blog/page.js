@@ -48,7 +48,10 @@ function Blogs() {
                     </div>
                     <div className="proprtyInfo w-100">
                       <h5 className="text-capitalize">{item?.title}</h5>
-                      <p className="line7">{item?.description}</p>
+                      <div
+                        className="line5 dangp0"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                       <Link
                         href={`/blog/detail/${item?._id}`}
                         className="loginBtn btn deailViewAbsula"

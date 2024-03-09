@@ -39,16 +39,25 @@ function NewsEvent() {
                   <div className="eventCard">
                     <div class="time">
                       <h2>
-                        {moment(item?.date, "DD-MM-YYYY").format("DD")}
+                        {item?.date !== "Invalid date"
+                          ? moment(item?.date, "DD-MM-YYYY").format("DD")
+                          : moment(item?.createdAt).format("DD")}
                         <span>
-                          {moment(item?.date, "DD-MM-YYYY").format("MMM YYYY")}
+                          {item?.date !== "Invalid date"
+                            ? moment(item?.date, "DD-MM-YYYY").format(
+                                "MMM YYYY"
+                              )
+                            : moment(item?.createdAt).format("MMM YYYY")}
                         </span>
                       </h2>
                     </div>
                     <div class="details">
                       <h3 className="text-capitalize">{item?.title || "NA"}</h3>
                       <span>{item?.type}</span>
-                      <p className="line2">{item?.description}</p>
+                      <div
+                        className="line2 dangp0"
+                        dangerouslySetInnerHTML={{ __html: item?.description }}
+                      ></div>
                       <Link href={`/news-event/detail/${item?._id}`}>
                         View Details
                       </Link>
