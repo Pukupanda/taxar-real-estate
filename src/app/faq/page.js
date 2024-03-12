@@ -41,7 +41,12 @@ function FAQ() {
                   >
                     {item?.question}
                   </h3>
-                  {show === item?._id && <p className="mb-0">{item?.answer}</p>}
+                  {show === item?._id && (
+                    <div
+                      className=""
+                      dangerouslySetInnerHTML={{ __html: item?.answer }}
+                    ></div>
+                  )}
                 </div>
               </div>
             ))
