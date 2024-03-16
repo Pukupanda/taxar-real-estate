@@ -657,6 +657,13 @@ figure {
     padding: 50px 1rem;
   }
 }
+@media (min-width: 991.9px) and (max-width: 1199.9px) {
+  .properyList .propertyImgBox,
+  .properyList .propImg {
+    width: 235px !important;
+    height: 190px !important;
+  }
+}
 @media (max-width: 991.9px) {
   .homeSlider .bannerImg {
     height: auto;
