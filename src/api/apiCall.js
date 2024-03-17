@@ -238,3 +238,8 @@ export const priorityMessageApi = async (payload) => {
     return data;
   });
 };
+export const BarCodeApi = async (payload) => {
+  return getData("auth/barCode", payload).then((data) => {
+    return data;
+  });
+};

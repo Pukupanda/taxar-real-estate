@@ -43,8 +43,7 @@ function Booking() {
     countryCode: "",
     mobile: detail?.mobileNumber ? detail?.mobileNumber : "",
     email: detail?.email ? detail?.email : "",
-    paymentSlip:
-      "https://res.cloudinary.com/dyiacxies/image/upload/v1705757759/mdflzgtr1i0jvao5owbt.jpg",
+    paymentSlip: "",
     currency: "100000",
   };
 
@@ -124,6 +123,13 @@ function Booking() {
       fetchpropertyList();
     }
   }, [projectId, projectID]);
+
+  const BarCode = useDataStore((store) => store.BarCode);
+  const { fetchBarCode } = useDataStore();
+
+  useEffect(() => {
+    fetchBarCode();
+  }, []);
 
   return (
     <>
@@ -264,6 +270,7 @@ function Booking() {
           inputKey="paymentSlip"
           BookingPayment={BookingPayment}
           imageValue={formik.values?.paymentSlip}
+          BarCode={BarCode}
         />
       )}
     </>

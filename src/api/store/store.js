@@ -2,6 +2,7 @@
 
 import { create } from "zustand";
 import {
+  BarCodeApi,
   FooterAddressApi,
   ProjectDetailsApi,
   ProjectListApi,
@@ -130,6 +131,12 @@ export const useDataStore = create((set) => ({
   fetchhomeScreen: async (data) => {
     const res = await homeScreenApi(data);
     set({ homeScreen: await res?.data });
+  },
+
+  BarCode: {},
+  fetchBarCode: async (data) => {
+    const res = await BarCodeApi(data);
+    set({ BarCode: await res?.data });
   },
 
   FooterAddress: {},

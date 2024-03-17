@@ -1,10 +1,12 @@
 "use client";
 import { uploadImageApi } from "@/api/apiCall";
+import { useDataStore } from "@/api/store/store";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
+import { toast } from "react-toastify";
 
 function PaymentModal(props) {
   const [progressBar, setProgressBar] = useState(false);
@@ -55,7 +57,11 @@ function PaymentModal(props) {
         </p>
         <div className="text-center">
           <Image
-            src="/assets/img/paymentQR.png"
+            src={
+              props.BarCode?.includes("http")
+                ? props.BarCode
+                : "/assets/img/paymentQR.png"
+            }
             alt=""
             quality={100}
             fill
@@ -81,9 +87,11 @@ function PaymentModal(props) {
           <Button
             variant="success"
             onClick={() => {
-              props.BookingPayment();
               if (props.imageValue) {
                 props.handleShow();
+                // props.BookingPayment();
+              } else {
+                toast.error("Please Upload Payment Screenshot");
               }
             }}
           >
