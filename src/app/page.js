@@ -103,42 +103,47 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="bg-white py-4">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
-              <h5 className="sevtextTent">
-                <span className="bg-white p-3 posiSpan">
-                  <span className="span2">Featured Property</span>
-                </span>
-              </h5>
-            </div>
+      {data?.featuredProperties?.length > 0 && (
+        <section className="bg-white py-4">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-12 col-md-12 col-lg-12 mb-4">
+                <h5 className="sevtextTent">
+                  <span className="bg-white p-3 posiSpan">
+                    <span className="span2">Featured Property</span>
+                  </span>
+                </h5>
+              </div>
 
-            <div className="col-sm-12 col-md-12 col-lg-12">
-              {data?.featuredProperties?.length > 0 ? (
-                <SliderComponent setting={TwoSlideSettings} className="styCard">
-                  {data?.featuredProperties?.map((item, i) => (
-                    <div key={i}>
-                      <PropertyBox
-                        item={item}
-                        LikeUnlikeProperty={LikeUnlikeProperty}
-                        push={push}
-                      />
-                    </div>
-                  ))}
-                </SliderComponent>
-              ) : (
-                <Loader />
-              )}
-            </div>
-            <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
-              <Link href={"/property"} className="text-dark fw-bold">
-                View All
-              </Link>
+              <div className="col-sm-12 col-md-12 col-lg-12">
+                {data?.featuredProperties?.length > 0 ? (
+                  <SliderComponent
+                    setting={TwoSlideSettings}
+                    className="styCard"
+                  >
+                    {data?.featuredProperties?.map((item, i) => (
+                      <div key={i}>
+                        <PropertyBox
+                          item={item}
+                          LikeUnlikeProperty={LikeUnlikeProperty}
+                          push={push}
+                        />
+                      </div>
+                    ))}
+                  </SliderComponent>
+                ) : (
+                  <Loader />
+                )}
+              </div>
+              <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
+                <Link href={"/property"} className="text-dark fw-bold">
+                  View All
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       <section className="bg-white">
         <div className="container">
           <div className="row justify-content-center align-items-center">
