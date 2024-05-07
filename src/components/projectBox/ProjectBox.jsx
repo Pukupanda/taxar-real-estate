@@ -4,8 +4,11 @@ import React, { useState } from "react";
 import "./style.css";
 import ImageModal from "../modals/ImageModal";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
+import { useRouter } from "next/navigation";
 function ProjectBox(props) {
+  const { push } = useRouter();
   const [modalName, setmodalName] = useState("");
   const [image, setImage] = useState("");
   const [show, setShow] = useState(false);
@@ -77,13 +80,29 @@ function ProjectBox(props) {
                 </span>
               )}
             </div>
+
             {props.status && props.status === "1" ? (
+              <div
+                className="btn btn-link"
+                onClick={() => {
+                  Cookies.set("project", props.item?._id);
+                  Cookies.set("property", null);
+                  push("/booking");
+                }}
+              >
+                Book Now
+              </div>
+            ) : (
+              <div className="btn-link">Completed</div>
+            )}
+
+            {/* {props.status && props.status === "1" ? (
               <Link href={`/property/${props.item?._id}`}>
                 <div className="btn btn-link">View Details</div>
               </Link>
             ) : (
               <div className="btn-link">Completed</div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
