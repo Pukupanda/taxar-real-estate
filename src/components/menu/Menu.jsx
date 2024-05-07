@@ -21,7 +21,7 @@ function Menu() {
 
   useEffect(() => {
     fetchpriorityMessage();
-  }, []);
+  }, [fetchpriorityMessage]);
 
   const [show, setShow] = useState(false);
   const [ModalName, setModalName] = useState("");
@@ -55,7 +55,7 @@ function Menu() {
     if (token) {
       fetchgetDetail();
     }
-  }, []);
+  }, [token, fetchgetDetail]);
 
   return (
     <>

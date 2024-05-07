@@ -30,10 +30,23 @@ function Teams() {
                     key={i}
                   >
                     <div className="col-sm-12 col-md-12 col-lg-12 mb-4 text-center">
-                      <h3>{tm?._id}</h3>
+                      <h4
+                        style={{
+                          margin: "auto",
+                          color: "white",
+                          width: "fit-content",
+                          placeItems: "center",
+                          padding: "5px",
+                          borderRadius: "5px",
+                          backgroundColor: "#ef6b23",
+                          marginBottom: "0px",
+                        }}
+                      >
+                        {tm?.designation}
+                      </h4>
                     </div>
                     {tm?.teams?.map((item, ii) => (
-                      <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={ii}>
+                      <div className="col-sm-6 col-md-4 col-lg-3 mb-5" key={ii}>
                         <div
                           className="bg-white shadow rounded p-3"
                           onClick={() => {

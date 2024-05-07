@@ -1,11 +1,9 @@
-import "../../public/assets/css/plugns.css";
-import "./globals.css";
-import Script from "next/script";
 import Provider from "@/components/provider/Provider";
-import { ToastContainer } from "react-toastify";
+import "bootstrap/dist/css/bootstrap.css";
 import "react-toastify/dist/ReactToastify.css";
-import SocketProvider from "@/components/provider/SocketProvider";
-
+import "../../public/assets/css/plugns.css";
+import BootstrapClient from "../components/bootstrapClient";
+import "./globals.css";
 export const metadata = {
   title: "Taxar Real Estate",
   description: "Taxar Real Estate",
@@ -21,12 +19,12 @@ export default function RootLayout({ children }) {
         crossOrigin="anonymous"
         referrerPolicy="no-referrer"
       />
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
+      {/* <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" /> */}
       <body>
-        <SocketProvider>
+        <>
           <Provider>{children}</Provider>
-          <ToastContainer position="top-right" autoClose={3000} />
-        </SocketProvider>
+          <BootstrapClient />
+        </>
       </body>
     </html>
   );

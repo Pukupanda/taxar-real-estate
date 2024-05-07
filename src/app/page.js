@@ -1,5 +1,5 @@
 "use client";
-import { SingleImageCarouselsettings, TwoSlideSettings } from "@/Utils";
+import { TwoSlideSettings } from "@/Utils";
 import { LikeUnlikePropertyApi } from "@/api/apiCall";
 import { useDataStore } from "@/api/store/store";
 import Loader from "@/components/Loader/Loader";
@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import HeroSection from "../components/heroSection";
 
 export default function Home() {
   const { push } = useRouter();
@@ -20,7 +21,7 @@ export default function Home() {
   const { fetchhomeScreen } = useDataStore();
   useEffect(() => {
     fetchhomeScreen();
-  }, []);
+  }, [fetchhomeScreen]);
 
   const show = useDataStore((store) => store.OpenModal);
   const { showModal } = useDataStore();
@@ -42,11 +43,11 @@ export default function Home() {
     fetchpriorityMessage().then(() => {
       setNotoData("show");
     });
-  }, []);
+  }, [fetchpriorityMessage]);
 
   return (
     <>
-      <section className="homeSlider">
+      {/* <section className="homeSlider">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-sm-12 col-md-6 col-lg-6 mb-3 position-relative mainBannerHeigth">
@@ -62,21 +63,15 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            {/* <div className="col-sm-12 col-md-6 col-lg-6 mb-3">
-              <img
-                src="assets/img/left-img.png"
-                alt=""
-                className="img-fluid w-100"
-              />
-            </div> */}
           </div>
         </div>
-      </section>
+      </section> */}
+      <HeroSection />
       <section className="aboutUs bg-white">
         <div className="container">
           <div className="aboutFixedBg">
             <div className="">
-              <div className="row">
+              <div className="row order">
                 <div className="col-sm-12 col-md-6 col-lg-6">
                   <div className="p-4">
                     <h3 className="text-center themeOrg aboutContent aboutUsLine">
@@ -96,10 +91,10 @@ export default function Home() {
                       src={
                         data?.AboutUs?.aboutImage?.includes("http")
                           ? data?.AboutUs?.aboutImage
-                          : "assets/img/dummyImage.png"
+                          : "assets/img/banner1.jpeg"
                       }
                       alt=""
-                      className="img-fluid rounded-4"
+                      className="img-fluid rounded-4 w-full"
                     />
                   </div>
                 </div>

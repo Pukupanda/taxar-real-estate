@@ -1,0 +1,43 @@
+.hero__container {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins", "sans-serif";
+}
+
+.hero__overlay {
+  width: 100%;
+  position: relative;
+}
+.hero__img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+.hero__card {
+  color: white;
+  /* border: 1px solid red; */
+  position: absolute;
+  top: 30ch;
+  left: 0;
+  padding: 20px;
+}
+.hero__card h1 {
+  font-size: xx-large;
+}
+
+@media (max-width: 772px) {
+  .hero__card {
+    width: 100%;
+    text-align: center;
+    top: 30ch;
+
+    background: rgba(240, 106, 35, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+  }
+
+  .hero__button {
+    background-color: white !important;
+    color: rgb(240, 106, 35) !important;
+  }
+}
