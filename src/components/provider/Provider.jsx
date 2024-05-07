@@ -8,7 +8,7 @@ function Provider(props) {
   return (
     <>
       <Menu />
-      <section className={props.pathname !== "/" && ""}>
+      <section className={props.pathname !== "/" && "bgColor"}>
         {/* bgColor */}
         <Bredthcred />
         <div className="min-vh-50 pb-3">{props.children}</div>
