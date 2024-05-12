@@ -160,7 +160,17 @@ export const useDataStore = create((set) => ({
   priorityMessage: {},
   fetchpriorityMessage: async (data) => {
     const res = await priorityMessageApi(data);
+    set({
+      OpenModal:
+        res?.data?.blogs?.length > 0 &&
+        res?.data?.careers?.length > 0 &&
+        res?.data?.newsEvents?.length > 0 &&
+        res?.data?.publications?.length > 0
+          ? true
+          : false,
+    });
     set({ priorityMessage: await res?.data });
+    // console.log(res?.data, "res?.data");
   },
 
   about: {},

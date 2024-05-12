@@ -28,7 +28,7 @@ export default function Home() {
   const handleShow = () => {
     showModal(!show);
   };
-
+  // console.log(show, "showshowshowshow");
   const LikeUnlikeProperty = (val) => {
     LikeUnlikePropertyApi(val).then((res) => {
       toast.success(res?.message);

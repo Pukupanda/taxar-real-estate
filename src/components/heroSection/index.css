@@ -1,7 +1,11 @@
 .hero__container {
-  height: 100vh;
-  width: 100vw;
+  /* height: 100vh; */
+  /* width: 100vw; */
   font-family: "Poppins", "sans-serif";
+  background-image: url("/assets/img/mainBanner.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 4rem 0;
 }
 
 .hero__overlay {
@@ -16,10 +20,13 @@
 .hero__card {
   color: white;
   /* border: 1px solid red; */
-  position: absolute;
+  /* position: absolute;
   top: 30ch;
-  left: 0;
+  left: 0; */
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .hero__card h1 {
   font-size: xx-large;
@@ -27,13 +34,19 @@
 
 @media (max-width: 772px) {
   .hero__card {
-    width: 100%;
+    display: grid;
+  }
+  .hero__container {
+    padding: 8rem 0 4rem;
+  }
+  .hero__card {
+    /* width: 100%;
     text-align: center;
     top: 30ch;
 
     background: rgba(240, 106, 35, 0.3);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px); */
   }
 
   .hero__button {

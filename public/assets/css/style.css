@@ -340,7 +340,7 @@ input:focus {
 }
 .singleBoxBg {
   position: relative;
-  background-color: #fff;
+  /* background-color: #fff; */
   /* background: linear-gradient(
     86deg,
     rgba(242, 119, 33, 0.6587885154061625) 0%,

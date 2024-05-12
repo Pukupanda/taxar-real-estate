@@ -111,9 +111,6 @@ function Menu() {
                         ? "nav-link  dropdown-toggle active"
                         : "nav-link  dropdown-toggle"
                     }
-                    onClick={() => {
-                      handleClose();
-                    }}
                     href="#"
                     id="navbarDarkDropdownMenuLink"
                     role="button"
