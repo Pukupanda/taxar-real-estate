@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import DescriptionModal from "../../components/modals/DescriptionModal";
+import DescriptionModal from "@/components/modals/DescriptionModal";
 import { useEffect, useState } from "react";
-import { useDataStore } from "../../api/store/store";
+import { useDataStore } from "@/api/store/store";
 
 function Messages() {
   const [show, setshow] = useState(false);
