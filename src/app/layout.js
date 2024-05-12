@@ -4,6 +4,10 @@ import "react-toastify/dist/ReactToastify.css";
 import "../../public/assets/css/plugns.css";
 import BootstrapClient from "../components/bootstrapClient";
 import "./globals.css";
+import Menu from "@/components/menu/Menu";
+import Footer from "@/components/footer/Footer";
+import { ToastContainer } from "react-toastify";
+
 export const metadata = {
   title: "Taxar Real Estate",
   description: "Taxar Real Estate",
@@ -22,7 +26,10 @@ export default function RootLayout({ children }) {
       {/* <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" /> */}
       <body>
         <>
-          <Provider>{children}</Provider>
+          <Menu />
+          {children}
+          <Footer />
+          <ToastContainer position="top-right" autoClose={3000} />
           <BootstrapClient />
         </>
       </body>

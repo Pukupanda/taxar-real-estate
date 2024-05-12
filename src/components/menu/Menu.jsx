@@ -59,23 +59,28 @@ function Menu() {
 
   return (
     <>
-      <div className="notiTop">
-        {/* <span className="highBg">Highlights</span> */}
-        <marquee>
-          {listNoti?.blogs?.map((item, i) => (
-            <span key={i}>{item?.title}</span>
-          ))}
-          {listNoti?.careers?.map((item, i) => (
-            <span key={i}>{item?.title}</span>
-          ))}
-          {listNoti?.newsEvents?.map((item, i) => (
-            <span key={i}>{item?.title}</span>
-          ))}
-          {listNoti?.publications?.map((item, i) => (
-            <span key={i}>{item?.title}</span>
-          ))}
-        </marquee>
-      </div>
+      {listNoti?.blogs?.length > 0 &&
+        listNoti?.careers?.length > 0 &&
+        listNoti?.newsEvents?.length > 0 &&
+        listNoti?.publications?.length > 0 && (
+          <div className="notiTop">
+            <marquee>
+              {listNoti?.blogs?.map((item, i) => (
+                <span key={i}>{item?.title}</span>
+              ))}
+              {listNoti?.careers?.map((item, i) => (
+                <span key={i}>{item?.title}</span>
+              ))}
+              {listNoti?.newsEvents?.map((item, i) => (
+                <span key={i}>{item?.title}</span>
+              ))}
+              {listNoti?.publications?.map((item, i) => (
+                <span key={i}>{item?.title}</span>
+              ))}
+            </marquee>
+          </div>
+        )}
+
       <nav className={`navbar navbar-expand-lg navFixed ${stickyClass}`}>
         <div className="container">
           <Link className="navbar-brand py-0" href="/">

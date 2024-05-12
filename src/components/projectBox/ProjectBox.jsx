@@ -48,11 +48,12 @@ function ProjectBox(props) {
         </div>
         <div className="property__card-text cursor-pointer">
           <Link
-            href={
-              props.status && props.status === "1"
-                ? `/property/${props.item?._id}`
-                : ""
-            }
+            href={"/"}
+            // href={
+            //   props.status && props.status === "1"
+            //     ? `/property/${props.item?._id}`
+            //     : ""
+            // }
           >
             <div className="property__card-header">
               <span className="property__card-type" tabindex="0">
