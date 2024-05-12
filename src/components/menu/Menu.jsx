@@ -81,7 +81,16 @@ function Menu() {
           </div>
         )}
 
-      <nav className={`navbar navbar-expand-lg navFixed ${stickyClass}`}>
+      <nav
+        className={`navbar navbar-expand-lg navFixed ${stickyClass} ${
+          listNoti?.blogs?.length > 0 &&
+          listNoti?.careers?.length > 0 &&
+          listNoti?.newsEvents?.length > 0 &&
+          listNoti?.publications?.length > 0
+            ? ""
+            : "top-0"
+        }`}
+      >
         <div className="container">
           <Link className="navbar-brand py-0" href="/">
             <img src="/assets/img/logo.png" alt="" className="logo" />
