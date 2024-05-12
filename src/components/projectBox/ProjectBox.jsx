@@ -48,7 +48,11 @@ function ProjectBox(props) {
         </div>
         <div className="property__card-text cursor-pointer">
           <Link
-            href={"/"}
+            href={"/booking"}
+            onClick={() => {
+              Cookies.set("project", props.item?._id);
+              Cookies.set("property", null);
+            }}
             // href={
             //   props.status && props.status === "1"
             //     ? `/property/${props.item?._id}`
